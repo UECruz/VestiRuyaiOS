@@ -1,0 +1,1057 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8317CD0E1A8D2DD7E1E854C8 /* Pods_VestiRuya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA7CDFE6D4CD366D155D1AD2 /* Pods_VestiRuya.framework */; };
+		AC17566B21C20A6200AC9E16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17566A21C20A6200AC9E16 /* AppDelegate.swift */; };
+		AC17567021C20A6200AC9E16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC17566E21C20A6200AC9E16 /* Main.storyboard */; };
+		AC17567321C20A6200AC9E16 /* VestiRuya.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC17567121C20A6200AC9E16 /* VestiRuya.xcdatamodeld */; };
+		AC17567521C20A6400AC9E16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC17567421C20A6400AC9E16 /* Assets.xcassets */; };
+		AC17567821C20A6400AC9E16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC17567621C20A6400AC9E16 /* LaunchScreen.storyboard */; };
+		AC17568321C20A6400AC9E16 /* VestiRuyaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17568221C20A6400AC9E16 /* VestiRuyaTests.swift */; };
+		AC17568E21C20A6400AC9E16 /* VestiRuyaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17568D21C20A6400AC9E16 /* VestiRuyaUITests.swift */; };
+		AC1756A021C213CC00AC9E16 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC17569F21C213CC00AC9E16 /* Accelerate.framework */; };
+		AC1756A221C213E700AC9E16 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC1756A121C213E700AC9E16 /* AudioToolbox.framework */; };
+		AC1756A421C213EE00AC9E16 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC1756A321C213EE00AC9E16 /* AVFoundation.framework */; };
+		AC1756AB21C2144100AC9E16 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC1756A521C2144100AC9E16 /* Messages.framework */; };
+		AC1756AC21C2144100AC9E16 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC1756A621C2144100AC9E16 /* CoreLocation.framework */; };
+		AC1756AD21C2144100AC9E16 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC1756A721C2144100AC9E16 /* CoreMedia.framework */; };
+		AC1756AE21C2144100AC9E16 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC1756A821C2144100AC9E16 /* SystemConfiguration.framework */; };
+		AC1756AF21C2144100AC9E16 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC1756A921C2144100AC9E16 /* MobileCoreServices.framework */; };
+		AC1756B021C2144100AC9E16 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC1756AA21C2144100AC9E16 /* SafariServices.framework */; };
+		AC17570921C2199100AC9E16 /* MeasurementItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1756FB21C2199100AC9E16 /* MeasurementItem.swift */; };
+		AC17570A21C2199100AC9E16 /* OrderItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1756FC21C2199100AC9E16 /* OrderItems.swift */; };
+		AC17570B21C2199100AC9E16 /* CustomerOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1756FD21C2199100AC9E16 /* CustomerOrder.swift */; };
+		AC17570C21C2199100AC9E16 /* ReviewReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1756FE21C2199100AC9E16 /* ReviewReader.swift */; };
+		AC17570D21C2199100AC9E16 /* AcceptedTailorUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1756FF21C2199100AC9E16 /* AcceptedTailorUser.swift */; };
+		AC17570E21C2199100AC9E16 /* OrderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17570021C2199100AC9E16 /* OrderData.swift */; };
+		AC17570F21C2199100AC9E16 /* JobOrders.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17570121C2199100AC9E16 /* JobOrders.swift */; };
+		AC17571021C2199100AC9E16 /* TailorJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17570221C2199100AC9E16 /* TailorJob.swift */; };
+		AC17571121C2199100AC9E16 /* SideJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17570321C2199100AC9E16 /* SideJob.swift */; };
+		AC17571221C2199100AC9E16 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17570421C2199100AC9E16 /* Alerts.swift */; };
+		AC17571321C2199100AC9E16 /* SummaryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17570521C2199100AC9E16 /* SummaryItem.swift */; };
+		AC17571421C2199100AC9E16 /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17570621C2199100AC9E16 /* Material.swift */; };
+		AC17571521C2199100AC9E16 /* CustomerUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17570721C2199100AC9E16 /* CustomerUsers.swift */; };
+		AC17571621C2199100AC9E16 /* OrderForCustomer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17570821C2199100AC9E16 /* OrderForCustomer.swift */; };
+		AC17573821C219AE00AC9E16 /* CustomScreen05.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17571721C219AB00AC9E16 /* CustomScreen05.swift */; };
+		AC17573921C219AE00AC9E16 /* TailorAdditionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17571821C219AB00AC9E16 /* TailorAdditionInfo.swift */; };
+		AC17573A21C219AE00AC9E16 /* JobDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17571921C219AB00AC9E16 /* JobDetail.swift */; };
+		AC17573B21C219AE00AC9E16 /* CustomerAddintionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17571A21C219AB00AC9E16 /* CustomerAddintionInfo.swift */; };
+		AC17573C21C219AE00AC9E16 /* CustomScreen06.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17571B21C219AB00AC9E16 /* CustomScreen06.swift */; };
+		AC17573D21C219AE00AC9E16 /* TailorLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17571C21C219AB00AC9E16 /* TailorLogin.swift */; };
+		AC17573E21C219AE00AC9E16 /* CustomerLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17571D21C219AB00AC9E16 /* CustomerLogin.swift */; };
+		AC17573F21C219AE00AC9E16 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17571E21C219AB00AC9E16 /* ChatViewController.swift */; };
+		AC17574021C219AE00AC9E16 /* CustomScreen03.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17571F21C219AC00AC9E16 /* CustomScreen03.swift */; };
+		AC17574121C219AE00AC9E16 /* CustomerRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17572021C219AC00AC9E16 /* CustomerRegister.swift */; };
+		AC17574221C219AE00AC9E16 /* CustomScreen04.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17572121C219AC00AC9E16 /* CustomScreen04.swift */; };
+		AC17574321C219AE00AC9E16 /* TailorProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17572221C219AC00AC9E16 /* TailorProfile.swift */; };
+		AC17574421C219AE00AC9E16 /* TailorInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17572321C219AC00AC9E16 /* TailorInfo.swift */; };
+		AC17574521C219AE00AC9E16 /* TailorHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17572421C219AC00AC9E16 /* TailorHome.swift */; };
+		AC17574621C219AE00AC9E16 /* ConfirmCustomer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17572521C219AC00AC9E16 /* ConfirmCustomer.swift */; };
+		AC17574721C219AE00AC9E16 /* CustomerHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17572621C219AC00AC9E16 /* CustomerHome.swift */; };
+		AC17574821C219AE00AC9E16 /* ChatContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17572721C219AC00AC9E16 /* ChatContainerViewController.swift */; };
+		AC17574921C219AE00AC9E16 /* OrdeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17572821C219AC00AC9E16 /* OrdeDetail.swift */; };
+		AC17574A21C219AE00AC9E16 /* CustomerProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17572921C219AC00AC9E16 /* CustomerProfile.swift */; };
+		AC17574B21C219AE00AC9E16 /* CustomerChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17572A21C219AC00AC9E16 /* CustomerChatController.swift */; };
+		AC17574C21C219AE00AC9E16 /* CustomScreen01.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17572B21C219AC00AC9E16 /* CustomScreen01.swift */; };
+		AC17574D21C219AE00AC9E16 /* JobList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17572C21C219AC00AC9E16 /* JobList.swift */; };
+		AC17574E21C219AE00AC9E16 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17572D21C219AC00AC9E16 /* ViewController.swift */; };
+		AC17574F21C219AE00AC9E16 /* CustomScreen02.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17572E21C219AD00AC9E16 /* CustomScreen02.swift */; };
+		AC17575021C219AE00AC9E16 /* CustomerEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17572F21C219AD00AC9E16 /* CustomerEditor.swift */; };
+		AC17575121C219AE00AC9E16 /* TailorChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17573021C219AD00AC9E16 /* TailorChatController.swift */; };
+		AC17575221C219AE00AC9E16 /* CheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17573121C219AD00AC9E16 /* CheckView.swift */; };
+		AC17575321C219AE00AC9E16 /* PayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17573221C219AD00AC9E16 /* PayView.swift */; };
+		AC17575421C219AE00AC9E16 /* CustomScreen07.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17573321C219AD00AC9E16 /* CustomScreen07.swift */; };
+		AC17575521C219AE00AC9E16 /* CustomSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17573421C219AD00AC9E16 /* CustomSummary.swift */; };
+		AC17575621C219AE00AC9E16 /* CustomerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17573521C219AD00AC9E16 /* CustomerInfo.swift */; };
+		AC17575721C219AE00AC9E16 /* TailorEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17573621C219AD00AC9E16 /* TailorEditor.swift */; };
+		AC17575821C219AE00AC9E16 /* TailorRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17573721C219AD00AC9E16 /* TailorRegister.swift */; };
+		AC17576521C21A0300AC9E16 /* ItemDetail04.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17575921C21A0200AC9E16 /* ItemDetail04.swift */; };
+		AC17576621C21A0300AC9E16 /* ItemDetail06.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17575A21C21A0200AC9E16 /* ItemDetail06.swift */; };
+		AC17576721C21A0300AC9E16 /* ItemDetail07.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17575B21C21A0200AC9E16 /* ItemDetail07.swift */; };
+		AC17576821C21A0300AC9E16 /* JobCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17575C21C21A0200AC9E16 /* JobCell.swift */; };
+		AC17576921C21A0300AC9E16 /* ItemDetail01.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17575D21C21A0200AC9E16 /* ItemDetail01.swift */; };
+		AC17576A21C21A0300AC9E16 /* ItemDetail03.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17575E21C21A0200AC9E16 /* ItemDetail03.swift */; };
+		AC17576B21C21A0300AC9E16 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17575F21C21A0300AC9E16 /* ReviewCell.swift */; };
+		AC17576C21C21A0300AC9E16 /* ItemDetail02.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17576021C21A0300AC9E16 /* ItemDetail02.swift */; };
+		AC17576D21C21A0300AC9E16 /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17576121C21A0300AC9E16 /* HistoryCell.swift */; };
+		AC17576E21C21A0300AC9E16 /* JobAcceptCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17576221C21A0300AC9E16 /* JobAcceptCell.swift */; };
+		AC17576F21C21A0300AC9E16 /* TailorOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17576321C21A0300AC9E16 /* TailorOffer.swift */; };
+		AC17577021C21A0300AC9E16 /* ItemDetail05.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17576421C21A0300AC9E16 /* ItemDetail05.swift */; };
+		AC17577321C2240C00AC9E16 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC17577221C2240C00AC9E16 /* GoogleService-Info.plist */; };
+		AC2226C421C3360800D2744A /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2226C321C3360800D2744A /* UserProfile.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AC17567F21C20A6400AC9E16 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC17565F21C20A6200AC9E16 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC17566621C20A6200AC9E16;
+			remoteInfo = VestiRuya;
+		};
+		AC17568A21C20A6400AC9E16 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC17565F21C20A6200AC9E16 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC17566621C20A6200AC9E16;
+			remoteInfo = VestiRuya;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		30A3A7C0089A2D98BB7BC70A /* Pods-VestiRuya.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VestiRuya.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VestiRuya/Pods-VestiRuya.debug.xcconfig"; sourceTree = "<group>"; };
+		AC17566721C20A6200AC9E16 /* VestiRuya.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VestiRuya.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC17566A21C20A6200AC9E16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AC17566F21C20A6200AC9E16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AC17567221C20A6200AC9E16 /* VestiRuya.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VestiRuya.xcdatamodel; sourceTree = "<group>"; };
+		AC17567421C20A6400AC9E16 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AC17567721C20A6400AC9E16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AC17567921C20A6400AC9E16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC17567E21C20A6400AC9E16 /* VestiRuyaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VestiRuyaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC17568221C20A6400AC9E16 /* VestiRuyaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VestiRuyaTests.swift; sourceTree = "<group>"; };
+		AC17568421C20A6400AC9E16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC17568921C20A6400AC9E16 /* VestiRuyaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VestiRuyaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC17568D21C20A6400AC9E16 /* VestiRuyaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VestiRuyaUITests.swift; sourceTree = "<group>"; };
+		AC17568F21C20A6400AC9E16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC17569B21C2131400AC9E16 /* VestiRuya-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VestiRuya-Bridging-Header.h"; sourceTree = "<group>"; };
+		AC17569E21C2137300AC9E16 /* ZZAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZAppDelegate.h; sourceTree = "<group>"; };
+		AC17569F21C213CC00AC9E16 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		AC1756A121C213E700AC9E16 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		AC1756A321C213EE00AC9E16 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		AC1756A521C2144100AC9E16 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
+		AC1756A621C2144100AC9E16 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		AC1756A721C2144100AC9E16 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		AC1756A821C2144100AC9E16 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		AC1756A921C2144100AC9E16 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		AC1756AA21C2144100AC9E16 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		AC1756FB21C2199100AC9E16 /* MeasurementItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurementItem.swift; sourceTree = "<group>"; };
+		AC1756FC21C2199100AC9E16 /* OrderItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderItems.swift; sourceTree = "<group>"; };
+		AC1756FD21C2199100AC9E16 /* CustomerOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerOrder.swift; sourceTree = "<group>"; };
+		AC1756FE21C2199100AC9E16 /* ReviewReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewReader.swift; sourceTree = "<group>"; };
+		AC1756FF21C2199100AC9E16 /* AcceptedTailorUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcceptedTailorUser.swift; sourceTree = "<group>"; };
+		AC17570021C2199100AC9E16 /* OrderData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderData.swift; sourceTree = "<group>"; };
+		AC17570121C2199100AC9E16 /* JobOrders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobOrders.swift; sourceTree = "<group>"; };
+		AC17570221C2199100AC9E16 /* TailorJob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TailorJob.swift; sourceTree = "<group>"; };
+		AC17570321C2199100AC9E16 /* SideJob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideJob.swift; sourceTree = "<group>"; };
+		AC17570421C2199100AC9E16 /* Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		AC17570521C2199100AC9E16 /* SummaryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryItem.swift; sourceTree = "<group>"; };
+		AC17570621C2199100AC9E16 /* Material.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
+		AC17570721C2199100AC9E16 /* CustomerUsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerUsers.swift; sourceTree = "<group>"; };
+		AC17570821C2199100AC9E16 /* OrderForCustomer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderForCustomer.swift; sourceTree = "<group>"; };
+		AC17571721C219AB00AC9E16 /* CustomScreen05.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomScreen05.swift; sourceTree = "<group>"; };
+		AC17571821C219AB00AC9E16 /* TailorAdditionInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TailorAdditionInfo.swift; sourceTree = "<group>"; };
+		AC17571921C219AB00AC9E16 /* JobDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobDetail.swift; sourceTree = "<group>"; };
+		AC17571A21C219AB00AC9E16 /* CustomerAddintionInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerAddintionInfo.swift; sourceTree = "<group>"; };
+		AC17571B21C219AB00AC9E16 /* CustomScreen06.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomScreen06.swift; sourceTree = "<group>"; };
+		AC17571C21C219AB00AC9E16 /* TailorLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TailorLogin.swift; sourceTree = "<group>"; };
+		AC17571D21C219AB00AC9E16 /* CustomerLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerLogin.swift; sourceTree = "<group>"; };
+		AC17571E21C219AB00AC9E16 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		AC17571F21C219AC00AC9E16 /* CustomScreen03.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomScreen03.swift; sourceTree = "<group>"; };
+		AC17572021C219AC00AC9E16 /* CustomerRegister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerRegister.swift; sourceTree = "<group>"; };
+		AC17572121C219AC00AC9E16 /* CustomScreen04.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomScreen04.swift; sourceTree = "<group>"; };
+		AC17572221C219AC00AC9E16 /* TailorProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TailorProfile.swift; sourceTree = "<group>"; };
+		AC17572321C219AC00AC9E16 /* TailorInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TailorInfo.swift; sourceTree = "<group>"; };
+		AC17572421C219AC00AC9E16 /* TailorHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TailorHome.swift; sourceTree = "<group>"; };
+		AC17572521C219AC00AC9E16 /* ConfirmCustomer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmCustomer.swift; sourceTree = "<group>"; };
+		AC17572621C219AC00AC9E16 /* CustomerHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerHome.swift; sourceTree = "<group>"; };
+		AC17572721C219AC00AC9E16 /* ChatContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatContainerViewController.swift; sourceTree = "<group>"; };
+		AC17572821C219AC00AC9E16 /* OrdeDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdeDetail.swift; sourceTree = "<group>"; };
+		AC17572921C219AC00AC9E16 /* CustomerProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerProfile.swift; sourceTree = "<group>"; };
+		AC17572A21C219AC00AC9E16 /* CustomerChatController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerChatController.swift; sourceTree = "<group>"; };
+		AC17572B21C219AC00AC9E16 /* CustomScreen01.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomScreen01.swift; sourceTree = "<group>"; };
+		AC17572C21C219AC00AC9E16 /* JobList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobList.swift; sourceTree = "<group>"; };
+		AC17572D21C219AC00AC9E16 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AC17572E21C219AD00AC9E16 /* CustomScreen02.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomScreen02.swift; sourceTree = "<group>"; };
+		AC17572F21C219AD00AC9E16 /* CustomerEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerEditor.swift; sourceTree = "<group>"; };
+		AC17573021C219AD00AC9E16 /* TailorChatController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TailorChatController.swift; sourceTree = "<group>"; };
+		AC17573121C219AD00AC9E16 /* CheckView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckView.swift; sourceTree = "<group>"; };
+		AC17573221C219AD00AC9E16 /* PayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayView.swift; sourceTree = "<group>"; };
+		AC17573321C219AD00AC9E16 /* CustomScreen07.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomScreen07.swift; sourceTree = "<group>"; };
+		AC17573421C219AD00AC9E16 /* CustomSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSummary.swift; sourceTree = "<group>"; };
+		AC17573521C219AD00AC9E16 /* CustomerInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerInfo.swift; sourceTree = "<group>"; };
+		AC17573621C219AD00AC9E16 /* TailorEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TailorEditor.swift; sourceTree = "<group>"; };
+		AC17573721C219AD00AC9E16 /* TailorRegister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TailorRegister.swift; sourceTree = "<group>"; };
+		AC17575921C21A0200AC9E16 /* ItemDetail04.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetail04.swift; sourceTree = "<group>"; };
+		AC17575A21C21A0200AC9E16 /* ItemDetail06.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetail06.swift; sourceTree = "<group>"; };
+		AC17575B21C21A0200AC9E16 /* ItemDetail07.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetail07.swift; sourceTree = "<group>"; };
+		AC17575C21C21A0200AC9E16 /* JobCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobCell.swift; sourceTree = "<group>"; };
+		AC17575D21C21A0200AC9E16 /* ItemDetail01.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetail01.swift; sourceTree = "<group>"; };
+		AC17575E21C21A0200AC9E16 /* ItemDetail03.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetail03.swift; sourceTree = "<group>"; };
+		AC17575F21C21A0300AC9E16 /* ReviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
+		AC17576021C21A0300AC9E16 /* ItemDetail02.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetail02.swift; sourceTree = "<group>"; };
+		AC17576121C21A0300AC9E16 /* HistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
+		AC17576221C21A0300AC9E16 /* JobAcceptCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobAcceptCell.swift; sourceTree = "<group>"; };
+		AC17576321C21A0300AC9E16 /* TailorOffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TailorOffer.swift; sourceTree = "<group>"; };
+		AC17576421C21A0300AC9E16 /* ItemDetail05.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetail05.swift; sourceTree = "<group>"; };
+		AC17577121C2236C00AC9E16 /* BridingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BridingHeader.h; path = VestiRuya/BridingHeader.h; sourceTree = "<group>"; };
+		AC17577221C2240C00AC9E16 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		AC2226C321C3360800D2744A /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		BA7CDFE6D4CD366D155D1AD2 /* Pods_VestiRuya.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VestiRuya.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6235B49903A431D8294034F /* Pods-VestiRuya.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VestiRuya.release.xcconfig"; path = "Pods/Target Support Files/Pods-VestiRuya/Pods-VestiRuya.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AC17566421C20A6200AC9E16 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC1756AB21C2144100AC9E16 /* Messages.framework in Frameworks */,
+				AC1756AC21C2144100AC9E16 /* CoreLocation.framework in Frameworks */,
+				AC1756AD21C2144100AC9E16 /* CoreMedia.framework in Frameworks */,
+				AC1756AE21C2144100AC9E16 /* SystemConfiguration.framework in Frameworks */,
+				AC1756AF21C2144100AC9E16 /* MobileCoreServices.framework in Frameworks */,
+				AC1756B021C2144100AC9E16 /* SafariServices.framework in Frameworks */,
+				AC1756A421C213EE00AC9E16 /* AVFoundation.framework in Frameworks */,
+				AC1756A221C213E700AC9E16 /* AudioToolbox.framework in Frameworks */,
+				AC1756A021C213CC00AC9E16 /* Accelerate.framework in Frameworks */,
+				8317CD0E1A8D2DD7E1E854C8 /* Pods_VestiRuya.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC17567B21C20A6400AC9E16 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC17568621C20A6400AC9E16 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		30D4DC2BD58B1AF40CACCC70 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				30A3A7C0089A2D98BB7BC70A /* Pods-VestiRuya.debug.xcconfig */,
+				F6235B49903A431D8294034F /* Pods-VestiRuya.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		491C1A41B3CAA4B78FF1F476 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AC1756A621C2144100AC9E16 /* CoreLocation.framework */,
+				AC1756A721C2144100AC9E16 /* CoreMedia.framework */,
+				AC1756A521C2144100AC9E16 /* Messages.framework */,
+				AC1756A921C2144100AC9E16 /* MobileCoreServices.framework */,
+				AC1756AA21C2144100AC9E16 /* SafariServices.framework */,
+				AC1756A821C2144100AC9E16 /* SystemConfiguration.framework */,
+				AC1756A321C213EE00AC9E16 /* AVFoundation.framework */,
+				AC1756A121C213E700AC9E16 /* AudioToolbox.framework */,
+				AC17569F21C213CC00AC9E16 /* Accelerate.framework */,
+				BA7CDFE6D4CD366D155D1AD2 /* Pods_VestiRuya.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AC17565E21C20A6200AC9E16 = {
+			isa = PBXGroup;
+			children = (
+				AC17577121C2236C00AC9E16 /* BridingHeader.h */,
+				AC17566921C20A6200AC9E16 /* VestiRuya */,
+				AC17568121C20A6400AC9E16 /* VestiRuyaTests */,
+				AC17568C21C20A6400AC9E16 /* VestiRuyaUITests */,
+				AC17566821C20A6200AC9E16 /* Products */,
+				30D4DC2BD58B1AF40CACCC70 /* Pods */,
+				491C1A41B3CAA4B78FF1F476 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		AC17566821C20A6200AC9E16 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AC17566721C20A6200AC9E16 /* VestiRuya.app */,
+				AC17567E21C20A6400AC9E16 /* VestiRuyaTests.xctest */,
+				AC17568921C20A6400AC9E16 /* VestiRuyaUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AC17566921C20A6200AC9E16 /* VestiRuya */ = {
+			isa = PBXGroup;
+			children = (
+				AC17577421C2258800AC9E16 /* Basic */,
+				AC1756B221C215F700AC9E16 /* Tailors */,
+				AC1756B121C215EC00AC9E16 /* Customers */,
+				AC17566A21C20A6200AC9E16 /* AppDelegate.swift */,
+				AC17566E21C20A6200AC9E16 /* Main.storyboard */,
+				AC17577221C2240C00AC9E16 /* GoogleService-Info.plist */,
+				AC17567421C20A6400AC9E16 /* Assets.xcassets */,
+				AC17567621C20A6400AC9E16 /* LaunchScreen.storyboard */,
+				AC17567921C20A6400AC9E16 /* Info.plist */,
+				AC17567121C20A6200AC9E16 /* VestiRuya.xcdatamodeld */,
+				AC17569B21C2131400AC9E16 /* VestiRuya-Bridging-Header.h */,
+				AC17569E21C2137300AC9E16 /* ZZAppDelegate.h */,
+			);
+			path = VestiRuya;
+			sourceTree = "<group>";
+		};
+		AC17568121C20A6400AC9E16 /* VestiRuyaTests */ = {
+			isa = PBXGroup;
+			children = (
+				AC17568221C20A6400AC9E16 /* VestiRuyaTests.swift */,
+				AC17568421C20A6400AC9E16 /* Info.plist */,
+			);
+			path = VestiRuyaTests;
+			sourceTree = "<group>";
+		};
+		AC17568C21C20A6400AC9E16 /* VestiRuyaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AC17568D21C20A6400AC9E16 /* VestiRuyaUITests.swift */,
+				AC17568F21C20A6400AC9E16 /* Info.plist */,
+			);
+			path = VestiRuyaUITests;
+			sourceTree = "<group>";
+		};
+		AC1756B121C215EC00AC9E16 /* Customers */ = {
+			isa = PBXGroup;
+			children = (
+				AC1756FA21C216CE00AC9E16 /* ViewController */,
+				AC1756F921C216C800AC9E16 /* Model */,
+				AC1756F821C216C300AC9E16 /* Cells */,
+			);
+			path = Customers;
+			sourceTree = "<group>";
+		};
+		AC1756B221C215F700AC9E16 /* Tailors */ = {
+			isa = PBXGroup;
+			children = (
+				AC1756F721C216B300AC9E16 /* Cells */,
+				AC1756F621C216AC00AC9E16 /* Model */,
+				AC1756F521C2169B00AC9E16 /* ViewController */,
+			);
+			path = Tailors;
+			sourceTree = "<group>";
+		};
+		AC1756F521C2169B00AC9E16 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AC17573521C219AD00AC9E16 /* CustomerInfo.swift */,
+				AC17571921C219AB00AC9E16 /* JobDetail.swift */,
+				AC17572C21C219AC00AC9E16 /* JobList.swift */,
+				AC17571821C219AB00AC9E16 /* TailorAdditionInfo.swift */,
+				AC17573621C219AD00AC9E16 /* TailorEditor.swift */,
+				AC17572421C219AC00AC9E16 /* TailorHome.swift */,
+				AC17571C21C219AB00AC9E16 /* TailorLogin.swift */,
+				AC17572221C219AC00AC9E16 /* TailorProfile.swift */,
+				AC17572821C219AC00AC9E16 /* OrdeDetail.swift */,
+				AC17573721C219AD00AC9E16 /* TailorRegister.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		AC1756F621C216AC00AC9E16 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AC1756FF21C2199100AC9E16 /* AcceptedTailorUser.swift */,
+				AC17570121C2199100AC9E16 /* JobOrders.swift */,
+				AC17570321C2199100AC9E16 /* SideJob.swift */,
+				AC17570221C2199100AC9E16 /* TailorJob.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AC1756F721C216B300AC9E16 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				AC17576121C21A0300AC9E16 /* HistoryCell.swift */,
+				AC17576221C21A0300AC9E16 /* JobAcceptCell.swift */,
+				AC17575C21C21A0200AC9E16 /* JobCell.swift */,
+				AC17576321C21A0300AC9E16 /* TailorOffer.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		AC1756F821C216C300AC9E16 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				AC17575D21C21A0200AC9E16 /* ItemDetail01.swift */,
+				AC17576021C21A0300AC9E16 /* ItemDetail02.swift */,
+				AC17575E21C21A0200AC9E16 /* ItemDetail03.swift */,
+				AC17575921C21A0200AC9E16 /* ItemDetail04.swift */,
+				AC17576421C21A0300AC9E16 /* ItemDetail05.swift */,
+				AC17575A21C21A0200AC9E16 /* ItemDetail06.swift */,
+				AC17575B21C21A0200AC9E16 /* ItemDetail07.swift */,
+				AC17575F21C21A0300AC9E16 /* ReviewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		AC1756F921C216C800AC9E16 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AC1756FD21C2199100AC9E16 /* CustomerOrder.swift */,
+				AC17570721C2199100AC9E16 /* CustomerUsers.swift */,
+				AC17570621C2199100AC9E16 /* Material.swift */,
+				AC1756FB21C2199100AC9E16 /* MeasurementItem.swift */,
+				AC17570021C2199100AC9E16 /* OrderData.swift */,
+				AC17570821C2199100AC9E16 /* OrderForCustomer.swift */,
+				AC1756FC21C2199100AC9E16 /* OrderItems.swift */,
+				AC1756FE21C2199100AC9E16 /* ReviewReader.swift */,
+				AC17570521C2199100AC9E16 /* SummaryItem.swift */,
+				AC2226C321C3360800D2744A /* UserProfile.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AC1756FA21C216CE00AC9E16 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AC17573121C219AD00AC9E16 /* CheckView.swift */,
+				AC17572521C219AC00AC9E16 /* ConfirmCustomer.swift */,
+				AC17571A21C219AB00AC9E16 /* CustomerAddintionInfo.swift */,
+				AC17572A21C219AC00AC9E16 /* CustomerChatController.swift */,
+				AC17572F21C219AD00AC9E16 /* CustomerEditor.swift */,
+				AC17572621C219AC00AC9E16 /* CustomerHome.swift */,
+				AC17571D21C219AB00AC9E16 /* CustomerLogin.swift */,
+				AC17572921C219AC00AC9E16 /* CustomerProfile.swift */,
+				AC17572021C219AC00AC9E16 /* CustomerRegister.swift */,
+				AC17572B21C219AC00AC9E16 /* CustomScreen01.swift */,
+				AC17572E21C219AD00AC9E16 /* CustomScreen02.swift */,
+				AC17571F21C219AC00AC9E16 /* CustomScreen03.swift */,
+				AC17572121C219AC00AC9E16 /* CustomScreen04.swift */,
+				AC17571721C219AB00AC9E16 /* CustomScreen05.swift */,
+				AC17571B21C219AB00AC9E16 /* CustomScreen06.swift */,
+				AC17573321C219AD00AC9E16 /* CustomScreen07.swift */,
+				AC17573421C219AD00AC9E16 /* CustomSummary.swift */,
+				AC17573221C219AD00AC9E16 /* PayView.swift */,
+				AC17572321C219AC00AC9E16 /* TailorInfo.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		AC17577421C2258800AC9E16 /* Basic */ = {
+			isa = PBXGroup;
+			children = (
+				AC17570421C2199100AC9E16 /* Alerts.swift */,
+				AC17572D21C219AC00AC9E16 /* ViewController.swift */,
+				AC17572721C219AC00AC9E16 /* ChatContainerViewController.swift */,
+				AC17571E21C219AB00AC9E16 /* ChatViewController.swift */,
+				AC17573021C219AD00AC9E16 /* TailorChatController.swift */,
+			);
+			path = Basic;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AC17566621C20A6200AC9E16 /* VestiRuya */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC17569221C20A6400AC9E16 /* Build configuration list for PBXNativeTarget "VestiRuya" */;
+			buildPhases = (
+				B6367929A9BF74C2F3C87E21 /* [CP] Check Pods Manifest.lock */,
+				AC17566321C20A6200AC9E16 /* Sources */,
+				AC17566421C20A6200AC9E16 /* Frameworks */,
+				AC17566521C20A6200AC9E16 /* Resources */,
+				6E29D4076890D658B33DAAFF /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VestiRuya;
+			productName = VestiRuya;
+			productReference = AC17566721C20A6200AC9E16 /* VestiRuya.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AC17567D21C20A6400AC9E16 /* VestiRuyaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC17569521C20A6400AC9E16 /* Build configuration list for PBXNativeTarget "VestiRuyaTests" */;
+			buildPhases = (
+				AC17567A21C20A6400AC9E16 /* Sources */,
+				AC17567B21C20A6400AC9E16 /* Frameworks */,
+				AC17567C21C20A6400AC9E16 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC17568021C20A6400AC9E16 /* PBXTargetDependency */,
+			);
+			name = VestiRuyaTests;
+			productName = VestiRuyaTests;
+			productReference = AC17567E21C20A6400AC9E16 /* VestiRuyaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AC17568821C20A6400AC9E16 /* VestiRuyaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC17569821C20A6400AC9E16 /* Build configuration list for PBXNativeTarget "VestiRuyaUITests" */;
+			buildPhases = (
+				AC17568521C20A6400AC9E16 /* Sources */,
+				AC17568621C20A6400AC9E16 /* Frameworks */,
+				AC17568721C20A6400AC9E16 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC17568B21C20A6400AC9E16 /* PBXTargetDependency */,
+			);
+			name = VestiRuyaUITests;
+			productName = VestiRuyaUITests;
+			productReference = AC17568921C20A6400AC9E16 /* VestiRuyaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AC17565F21C20A6200AC9E16 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "Ursula Cruz";
+				TargetAttributes = {
+					AC17566621C20A6200AC9E16 = {
+						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
+					};
+					AC17567D21C20A6400AC9E16 = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = AC17566621C20A6200AC9E16;
+					};
+					AC17568821C20A6400AC9E16 = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = AC17566621C20A6200AC9E16;
+					};
+				};
+			};
+			buildConfigurationList = AC17566221C20A6200AC9E16 /* Build configuration list for PBXProject "VestiRuya" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AC17565E21C20A6200AC9E16;
+			productRefGroup = AC17566821C20A6200AC9E16 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AC17566621C20A6200AC9E16 /* VestiRuya */,
+				AC17567D21C20A6400AC9E16 /* VestiRuyaTests */,
+				AC17568821C20A6400AC9E16 /* VestiRuyaUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AC17566521C20A6200AC9E16 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC17567821C20A6400AC9E16 /* LaunchScreen.storyboard in Resources */,
+				AC17577321C2240C00AC9E16 /* GoogleService-Info.plist in Resources */,
+				AC17567521C20A6400AC9E16 /* Assets.xcassets in Resources */,
+				AC17567021C20A6200AC9E16 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC17567C21C20A6400AC9E16 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC17568721C20A6400AC9E16 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6E29D4076890D658B33DAAFF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-VestiRuya/Pods-VestiRuya-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
+				"${BUILT_PRODUCTS_DIR}/FlexibleSteppedProgressBar/FlexibleSteppedProgressBar.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/MessageKit/MessageKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlexibleSteppedProgressBar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VestiRuya/Pods-VestiRuya-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B6367929A9BF74C2F3C87E21 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VestiRuya-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AC17566321C20A6200AC9E16 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC17574421C219AE00AC9E16 /* TailorInfo.swift in Sources */,
+				AC17571421C2199100AC9E16 /* Material.swift in Sources */,
+				AC17570E21C2199100AC9E16 /* OrderData.swift in Sources */,
+				AC17566B21C20A6200AC9E16 /* AppDelegate.swift in Sources */,
+				AC2226C421C3360800D2744A /* UserProfile.swift in Sources */,
+				AC17571021C2199100AC9E16 /* TailorJob.swift in Sources */,
+				AC17574B21C219AE00AC9E16 /* CustomerChatController.swift in Sources */,
+				AC17575121C219AE00AC9E16 /* TailorChatController.swift in Sources */,
+				AC17574521C219AE00AC9E16 /* TailorHome.swift in Sources */,
+				AC17570F21C2199100AC9E16 /* JobOrders.swift in Sources */,
+				AC17574A21C219AE00AC9E16 /* CustomerProfile.swift in Sources */,
+				AC17570A21C2199100AC9E16 /* OrderItems.swift in Sources */,
+				AC17574721C219AE00AC9E16 /* CustomerHome.swift in Sources */,
+				AC17573D21C219AE00AC9E16 /* TailorLogin.swift in Sources */,
+				AC17576B21C21A0300AC9E16 /* ReviewCell.swift in Sources */,
+				AC17574921C219AE00AC9E16 /* OrdeDetail.swift in Sources */,
+				AC17571621C2199100AC9E16 /* OrderForCustomer.swift in Sources */,
+				AC17575721C219AE00AC9E16 /* TailorEditor.swift in Sources */,
+				AC17570B21C2199100AC9E16 /* CustomerOrder.swift in Sources */,
+				AC17574021C219AE00AC9E16 /* CustomScreen03.swift in Sources */,
+				AC17576921C21A0300AC9E16 /* ItemDetail01.swift in Sources */,
+				AC17571521C2199100AC9E16 /* CustomerUsers.swift in Sources */,
+				AC17573F21C219AE00AC9E16 /* ChatViewController.swift in Sources */,
+				AC17573E21C219AE00AC9E16 /* CustomerLogin.swift in Sources */,
+				AC17576E21C21A0300AC9E16 /* JobAcceptCell.swift in Sources */,
+				AC17570D21C2199100AC9E16 /* AcceptedTailorUser.swift in Sources */,
+				AC17576A21C21A0300AC9E16 /* ItemDetail03.swift in Sources */,
+				AC17574F21C219AE00AC9E16 /* CustomScreen02.swift in Sources */,
+				AC17574121C219AE00AC9E16 /* CustomerRegister.swift in Sources */,
+				AC17574E21C219AE00AC9E16 /* ViewController.swift in Sources */,
+				AC17574C21C219AE00AC9E16 /* CustomScreen01.swift in Sources */,
+				AC17571321C2199100AC9E16 /* SummaryItem.swift in Sources */,
+				AC17571121C2199100AC9E16 /* SideJob.swift in Sources */,
+				AC17570921C2199100AC9E16 /* MeasurementItem.swift in Sources */,
+				AC17576F21C21A0300AC9E16 /* TailorOffer.swift in Sources */,
+				AC17576821C21A0300AC9E16 /* JobCell.swift in Sources */,
+				AC17575221C219AE00AC9E16 /* CheckView.swift in Sources */,
+				AC17574321C219AE00AC9E16 /* TailorProfile.swift in Sources */,
+				AC17570C21C2199100AC9E16 /* ReviewReader.swift in Sources */,
+				AC17573B21C219AE00AC9E16 /* CustomerAddintionInfo.swift in Sources */,
+				AC17573921C219AE00AC9E16 /* TailorAdditionInfo.swift in Sources */,
+				AC17575421C219AE00AC9E16 /* CustomScreen07.swift in Sources */,
+				AC17575821C219AE00AC9E16 /* TailorRegister.swift in Sources */,
+				AC17576621C21A0300AC9E16 /* ItemDetail06.swift in Sources */,
+				AC17575321C219AE00AC9E16 /* PayView.swift in Sources */,
+				AC17575021C219AE00AC9E16 /* CustomerEditor.swift in Sources */,
+				AC17574D21C219AE00AC9E16 /* JobList.swift in Sources */,
+				AC17574621C219AE00AC9E16 /* ConfirmCustomer.swift in Sources */,
+				AC17571221C2199100AC9E16 /* Alerts.swift in Sources */,
+				AC17574221C219AE00AC9E16 /* CustomScreen04.swift in Sources */,
+				AC17567321C20A6200AC9E16 /* VestiRuya.xcdatamodeld in Sources */,
+				AC17576D21C21A0300AC9E16 /* HistoryCell.swift in Sources */,
+				AC17576521C21A0300AC9E16 /* ItemDetail04.swift in Sources */,
+				AC17573C21C219AE00AC9E16 /* CustomScreen06.swift in Sources */,
+				AC17576721C21A0300AC9E16 /* ItemDetail07.swift in Sources */,
+				AC17576C21C21A0300AC9E16 /* ItemDetail02.swift in Sources */,
+				AC17573A21C219AE00AC9E16 /* JobDetail.swift in Sources */,
+				AC17575621C219AE00AC9E16 /* CustomerInfo.swift in Sources */,
+				AC17573821C219AE00AC9E16 /* CustomScreen05.swift in Sources */,
+				AC17574821C219AE00AC9E16 /* ChatContainerViewController.swift in Sources */,
+				AC17575521C219AE00AC9E16 /* CustomSummary.swift in Sources */,
+				AC17577021C21A0300AC9E16 /* ItemDetail05.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC17567A21C20A6400AC9E16 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC17568321C20A6400AC9E16 /* VestiRuyaTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC17568521C20A6400AC9E16 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC17568E21C20A6400AC9E16 /* VestiRuyaUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AC17568021C20A6400AC9E16 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC17566621C20A6200AC9E16 /* VestiRuya */;
+			targetProxy = AC17567F21C20A6400AC9E16 /* PBXContainerItemProxy */;
+		};
+		AC17568B21C20A6400AC9E16 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC17566621C20A6200AC9E16 /* VestiRuya */;
+			targetProxy = AC17568A21C20A6400AC9E16 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AC17566E21C20A6200AC9E16 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC17566F21C20A6200AC9E16 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AC17567621C20A6400AC9E16 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC17567721C20A6400AC9E16 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AC17569021C20A6400AC9E16 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AC17569121C20A6400AC9E16 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AC17569321C20A6400AC9E16 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30A3A7C0089A2D98BB7BC70A /* Pods-VestiRuya.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TW5V72YMHT;
+				INFOPLIST_FILE = VestiRuya/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fullsail.VestiRuya;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "VestiRuya/VestiRuya-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AC17569421C20A6400AC9E16 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F6235B49903A431D8294034F /* Pods-VestiRuya.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TW5V72YMHT;
+				INFOPLIST_FILE = VestiRuya/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fullsail.VestiRuya;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "VestiRuya/VestiRuya-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		AC17569621C20A6400AC9E16 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = VestiRuyaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fullsail.VestiRuyaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VestiRuya.app/VestiRuya";
+			};
+			name = Debug;
+		};
+		AC17569721C20A6400AC9E16 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = VestiRuyaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fullsail.VestiRuyaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VestiRuya.app/VestiRuya";
+			};
+			name = Release;
+		};
+		AC17569921C20A6400AC9E16 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = VestiRuyaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fullsail.VestiRuyaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = VestiRuya;
+			};
+			name = Debug;
+		};
+		AC17569A21C20A6400AC9E16 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = VestiRuyaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fullsail.VestiRuyaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = VestiRuya;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AC17566221C20A6200AC9E16 /* Build configuration list for PBXProject "VestiRuya" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC17569021C20A6400AC9E16 /* Debug */,
+				AC17569121C20A6400AC9E16 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC17569221C20A6400AC9E16 /* Build configuration list for PBXNativeTarget "VestiRuya" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC17569321C20A6400AC9E16 /* Debug */,
+				AC17569421C20A6400AC9E16 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC17569521C20A6400AC9E16 /* Build configuration list for PBXNativeTarget "VestiRuyaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC17569621C20A6400AC9E16 /* Debug */,
+				AC17569721C20A6400AC9E16 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC17569821C20A6400AC9E16 /* Build configuration list for PBXNativeTarget "VestiRuyaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC17569921C20A6400AC9E16 /* Debug */,
+				AC17569A21C20A6400AC9E16 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AC17567121C20A6200AC9E16 /* VestiRuya.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AC17567221C20A6200AC9E16 /* VestiRuya.xcdatamodel */,
+			);
+			currentVersion = AC17567221C20A6200AC9E16 /* VestiRuya.xcdatamodel */;
+			path = VestiRuya.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = AC17565F21C20A6200AC9E16 /* Project object */;
+}

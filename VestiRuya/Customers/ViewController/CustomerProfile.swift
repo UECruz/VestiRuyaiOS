@@ -1,0 +1,98 @@
+//
+//  CustomerProfile.swift
+//  VestiRuya
+//
+//  Created by Ursula Cruz on 11/13/18.
+//  Copyright © 2018 Ursula Cruz. All rights reserved.
+//
+
+import UIKit
+import Firebase
+import FirebaseDatabase
+import FirebaseAuth
+import Kingfisher
+
+class CustomerProfile: UIViewController {
+    
+    @IBOutlet weak var navi: UINavigationBar!
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var userLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var passwordLabel: UILabel!
+    @IBOutlet weak var address1: UILabel!
+    @IBOutlet weak var address2: UILabel!
+    
+    var ref: DatabaseReference!
+    var profile : [UserProfile] = []
+    var pro : UserProfile?
+    var email:String?
+    var password:String?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navi.topItem?.title = "Customer Profile"
+
+        // Do any additional setup after loading the view.
+        let user = Auth.auth().currentUser?.uid
+        ref = Database.database().reference()
+        ref.child("Customers").child("\(user!)").observeSingleEvent(of: .value, with: {(snapshot) in
+            let value = snapshot.value as? NSDictionary
+            let username = value?["username"] as? String ?? ""
+            self.email = value?["email"] as? String
+            self.password = value?["password"] as? String
+            let pic = value?["profilePic"] as? String
+            let add1 = value?["address"] as? String
+            let add2 = value?["City,State"] as? String
+            
+            self.userLabel.text = username
+            self.emailLabel.text = self.email
+            self.passwordLabel.text = self.password
+            self.address1.text = add1
+            self.address2.text = add2
+            self.profileImage.kf.setImage(with: URL(string: pic!))
+            
+            
+        }){ (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    
+    
+    @IBAction func goToEdit(_ sender: Any){
+        let vc = storyboard?.instantiateViewController(withIdentifier: "CustomerEditor") as! CustomerEditor
+        vc.email = self.email
+        vc.password = self.password
+        self.present(vc, animated: false, completion: nil)
+    }
+
+    
+    @IBAction func back(_ sender: Any) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "CustomerHome") as! CustomerHome
+        self.present(vc, animated: false, completion: nil)
+    }
+    @IBAction func logOut(_ sender: Any) {
+        try! Auth.auth().signOut()
+        if let storyboard = self.storyboard {
+            let vc = storyboard.instantiateViewController(withIdentifier: "CustomerLogin") as! CustomerLogin
+            self.present(vc, animated: false, completion: nil)
+        }
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}

@@ -1,0 +1,93 @@
+//
+//  TailorProfile.swift
+//  VestiRuya
+//
+//  Created by Ursula Cruz on 11/13/18.
+//  Copyright © 2018 Ursula Cruz. All rights reserved.
+//
+
+import UIKit
+import Kingfisher
+import Firebase
+import FirebaseDatabase
+import FirebaseAuth
+
+class TailorProfile: UIViewController {
+    
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var userLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var passwordLabel: UILabel!
+    @IBOutlet weak var add: UILabel!
+    
+    @IBOutlet weak var navi: UINavigationBar!
+    var ref: DatabaseReference!
+    var email:String?
+    var password:String?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navi.topItem?.title = "Tailor Profile"
+
+        // Do any additional setup after loading the view.
+        let user = Auth.auth().currentUser?.uid
+        ref = Database.database().reference()
+        ref.child("Tailors").child("\(user!)").observeSingleEvent(of: .value, with: {(snapshot) in
+            let value = snapshot.value as? NSDictionary
+            let username = value?["username"] as? String ?? ""
+            self.email = value?["email"] as? String
+            self.password = value?["password"] as? String
+            let pic = value?["profilePic"] as? String
+            let city = value?["City,State"] as? String
+            
+            self.userLabel.text = username
+            self.emailLabel.text = self.email
+            self.passwordLabel.text = self.password
+            self.profileImage.kf.setImage(with: URL(string: pic!))
+            self.add.text = city
+            
+            print("Test 1")
+            print(username)
+            print("Test 2")
+            
+        }){ (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    @IBAction func goToEdit(_ sender: Any){
+        let vc = storyboard?.instantiateViewController(withIdentifier: "TailorEditor") as! TailorEditor
+        vc.email = self.email
+        vc.password = self.password
+        self.present(vc, animated: false, completion: nil)
+    }
+
+    @IBAction func back(_ sender: Any) {
+       let vc = storyboard?.instantiateViewController(withIdentifier: "TailorHome") as! TailorHome
+        self.present(vc, animated: false, completion: nil)
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func logOut(_ sender: Any) {
+        try! Auth.auth().signOut()
+        if let storyboard = self.storyboard {
+            let vc = storyboard.instantiateViewController(withIdentifier: "TailorLogin") as! TailorLogin
+            self.present(vc, animated: false, completion: nil)
+        }
+    }
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}
