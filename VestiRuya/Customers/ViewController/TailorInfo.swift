@@ -248,9 +248,9 @@ class TailorInfo: UIViewController, UITableViewDelegate,UITableViewDataSource {
             let identifier = "ORDERREMINDER_" + String(arc4random_uniform(100000))
             let components = Calendar.current.dateComponents([.second, .minute, .hour], from: Date().addingTimeInterval(3))
             appDelegate.createNotification(title: "Order Update", subtitle: "", body: "Your order is completed.", components: components, identifier: identifier)
-            jobConfirmationButton.setImage(#imageLiteral(resourceName: "Checked Black"), for: .normal)
+            jobConfirmationButton.setImage(#imageLiteral(resourceName: "New Job_black"), for: .normal)
         } else {
-            jobConfirmationButton.setImage(#imageLiteral(resourceName: "Checked White"), for: .normal)
+            jobConfirmationButton.setImage(#imageLiteral(resourceName: "New Job_white"), for: .normal)
         }
     }
 }
