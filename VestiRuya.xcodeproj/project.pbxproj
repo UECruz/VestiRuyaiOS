@@ -43,8 +43,6 @@
 		AC17573A21C219AE00AC9E16 /* JobDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17571921C219AB00AC9E16 /* JobDetail.swift */; };
 		AC17573B21C219AE00AC9E16 /* CustomerAddintionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17571A21C219AB00AC9E16 /* CustomerAddintionInfo.swift */; };
 		AC17573C21C219AE00AC9E16 /* CustomScreen06.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17571B21C219AB00AC9E16 /* CustomScreen06.swift */; };
-		AC17573D21C219AE00AC9E16 /* TailorLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17571C21C219AB00AC9E16 /* TailorLogin.swift */; };
-		AC17573E21C219AE00AC9E16 /* CustomerLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17571D21C219AB00AC9E16 /* CustomerLogin.swift */; };
 		AC17573F21C219AE00AC9E16 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17571E21C219AB00AC9E16 /* ChatViewController.swift */; };
 		AC17574021C219AE00AC9E16 /* CustomScreen03.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17571F21C219AC00AC9E16 /* CustomScreen03.swift */; };
 		AC17574121C219AE00AC9E16 /* CustomerRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17572021C219AC00AC9E16 /* CustomerRegister.swift */; };
@@ -84,6 +82,7 @@
 		AC17576F21C21A0300AC9E16 /* TailorOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17576321C21A0300AC9E16 /* TailorOffer.swift */; };
 		AC17577021C21A0300AC9E16 /* ItemDetail05.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17576421C21A0300AC9E16 /* ItemDetail05.swift */; };
 		AC17577321C2240C00AC9E16 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC17577221C2240C00AC9E16 /* GoogleService-Info.plist */; };
+		AC206C3D21EC7E5D00F378BB /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC206C3C21EC7E5D00F378BB /* LoginController.swift */; };
 		AC2226C421C3360800D2744A /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2226C321C3360800D2744A /* UserProfile.swift */; };
 /* End PBXBuildFile section */
 
@@ -149,8 +148,6 @@
 		AC17571921C219AB00AC9E16 /* JobDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobDetail.swift; sourceTree = "<group>"; };
 		AC17571A21C219AB00AC9E16 /* CustomerAddintionInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerAddintionInfo.swift; sourceTree = "<group>"; };
 		AC17571B21C219AB00AC9E16 /* CustomScreen06.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomScreen06.swift; sourceTree = "<group>"; };
-		AC17571C21C219AB00AC9E16 /* TailorLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TailorLogin.swift; sourceTree = "<group>"; };
-		AC17571D21C219AB00AC9E16 /* CustomerLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerLogin.swift; sourceTree = "<group>"; };
 		AC17571E21C219AB00AC9E16 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		AC17571F21C219AC00AC9E16 /* CustomScreen03.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomScreen03.swift; sourceTree = "<group>"; };
 		AC17572021C219AC00AC9E16 /* CustomerRegister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerRegister.swift; sourceTree = "<group>"; };
@@ -191,6 +188,7 @@
 		AC17576421C21A0300AC9E16 /* ItemDetail05.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetail05.swift; sourceTree = "<group>"; };
 		AC17577121C2236C00AC9E16 /* BridingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BridingHeader.h; path = VestiRuya/BridingHeader.h; sourceTree = "<group>"; };
 		AC17577221C2240C00AC9E16 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		AC206C3C21EC7E5D00F378BB /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		AC2226C321C3360800D2744A /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		BA7CDFE6D4CD366D155D1AD2 /* Pods_VestiRuya.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VestiRuya.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6235B49903A431D8294034F /* Pods-VestiRuya.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VestiRuya.release.xcconfig"; path = "Pods/Target Support Files/Pods-VestiRuya/Pods-VestiRuya.release.xcconfig"; sourceTree = "<group>"; };
@@ -346,7 +344,6 @@
 				AC17571821C219AB00AC9E16 /* TailorAdditionInfo.swift */,
 				AC17573621C219AD00AC9E16 /* TailorEditor.swift */,
 				AC17572421C219AC00AC9E16 /* TailorHome.swift */,
-				AC17571C21C219AB00AC9E16 /* TailorLogin.swift */,
 				AC17572221C219AC00AC9E16 /* TailorProfile.swift */,
 				AC17572821C219AC00AC9E16 /* OrdeDetail.swift */,
 				AC17573721C219AD00AC9E16 /* TailorRegister.swift */,
@@ -417,7 +414,6 @@
 				AC17572A21C219AC00AC9E16 /* CustomerChatController.swift */,
 				AC17572F21C219AD00AC9E16 /* CustomerEditor.swift */,
 				AC17572621C219AC00AC9E16 /* CustomerHome.swift */,
-				AC17571D21C219AB00AC9E16 /* CustomerLogin.swift */,
 				AC17572921C219AC00AC9E16 /* CustomerProfile.swift */,
 				AC17572021C219AC00AC9E16 /* CustomerRegister.swift */,
 				AC17572B21C219AC00AC9E16 /* CustomScreen01.swift */,
@@ -442,6 +438,7 @@
 				AC17572721C219AC00AC9E16 /* ChatContainerViewController.swift */,
 				AC17571E21C219AB00AC9E16 /* ChatViewController.swift */,
 				AC17573021C219AD00AC9E16 /* TailorChatController.swift */,
+				AC206C3C21EC7E5D00F378BB /* LoginController.swift */,
 			);
 			path = Basic;
 			sourceTree = "<group>";
@@ -661,7 +658,7 @@
 				AC17574A21C219AE00AC9E16 /* CustomerProfile.swift in Sources */,
 				AC17570A21C2199100AC9E16 /* OrderItems.swift in Sources */,
 				AC17574721C219AE00AC9E16 /* CustomerHome.swift in Sources */,
-				AC17573D21C219AE00AC9E16 /* TailorLogin.swift in Sources */,
+				AC206C3D21EC7E5D00F378BB /* LoginController.swift in Sources */,
 				AC17576B21C21A0300AC9E16 /* ReviewCell.swift in Sources */,
 				AC17574921C219AE00AC9E16 /* OrdeDetail.swift in Sources */,
 				AC17571621C2199100AC9E16 /* OrderForCustomer.swift in Sources */,
@@ -671,7 +668,6 @@
 				AC17576921C21A0300AC9E16 /* ItemDetail01.swift in Sources */,
 				AC17571521C2199100AC9E16 /* CustomerUsers.swift in Sources */,
 				AC17573F21C219AE00AC9E16 /* ChatViewController.swift in Sources */,
-				AC17573E21C219AE00AC9E16 /* CustomerLogin.swift in Sources */,
 				AC17576E21C21A0300AC9E16 /* JobAcceptCell.swift in Sources */,
 				AC17570D21C2199100AC9E16 /* AcceptedTailorUser.swift in Sources */,
 				AC17576A21C21A0300AC9E16 /* ItemDetail03.swift in Sources */,

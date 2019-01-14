@@ -74,7 +74,7 @@ class CustomerProfile: UIViewController {
     @IBAction func logOut(_ sender: Any) {
         try! Auth.auth().signOut()
         if let storyboard = self.storyboard {
-            let vc = storyboard.instantiateViewController(withIdentifier: "CustomerLogin") as! CustomerLogin
+            let vc = storyboard.instantiateViewController(withIdentifier: "Login") as! LoginController
             self.present(vc, animated: false, completion: nil)
         }
     }

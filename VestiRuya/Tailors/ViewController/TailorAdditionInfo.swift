@@ -32,14 +32,17 @@ class TailorAdditionInfo: UIViewController,UINavigationControllerDelegate, UIIma
     var sample2: UIImagePickerController?
     var sample3: UIImagePickerController?
     
+    @IBOutlet weak var navigation: UINavigationBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        navigation.topItem?.title = "Register Extra"
         // Do any additional setup after loading the view.
         ref = Database.database().reference()
         storageRef = Storage.storage().reference()
         showingInfo()
+        alertPopup()
     }
     
     @IBAction func imageUpload1(_ sender: Any) {
@@ -71,6 +74,10 @@ class TailorAdditionInfo: UIViewController,UINavigationControllerDelegate, UIIma
     
     @IBAction func saveSampleWork(_ sender: Any){
         savingSamples()
+    }
+    
+    func alertPopup(){
+        Alert.showAlert(self, title: "Advice", message: "Please select all the images to continue")
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

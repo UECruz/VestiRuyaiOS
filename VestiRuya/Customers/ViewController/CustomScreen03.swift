@@ -66,7 +66,7 @@ class CustomScreen03: UIViewController,UICollectionViewDelegate, UICollectionVie
         let x : Material
         
         x = data[indexPath.row]
-        cell.label.text = x.title
+        cell.label.text = x.title?.capitalized
         
         var imageUrl = ""
         if let image = x.pic   {

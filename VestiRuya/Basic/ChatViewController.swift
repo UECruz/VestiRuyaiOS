@@ -46,7 +46,7 @@ class ChatViewController: JSQMessagesViewController {
         let ref = Database.database().reference()
         var roomId: String!
 
-        if TailorLogin.isTailor{
+        if LoginController.isTailor{
             roomId = "\(myId)\(otherId)"
         }else{
             roomId = "\(otherId)\(myId)"

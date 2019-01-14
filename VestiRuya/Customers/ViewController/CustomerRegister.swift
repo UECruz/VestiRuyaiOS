@@ -108,7 +108,7 @@ class CustomerRegister: UIViewController,UINavigationControllerDelegate,UIImageP
                                 }
                                 
                                 let photoURL = url?.absoluteString
-                                self.ref.child("Customers").child("\(user!)").setValue(["username":"\(userName!)","email":"\(eMail!)","password":"\(passWord!)", "City,State":"\(sc!)","address": "\(ad!)", "profilePic" : "\(photoURL!)"])
+                                self.ref.child("Customers").child("\(user!)").setValue(["username":"\(userName!)","email":"\(eMail!)","password":"\(passWord!)", "City,State":"\(sc!)","address": "\(ad!)", "profilePic" : "\(photoURL!)","type" : "customers"])
                                 self.Next()
                             })
                             

@@ -365,7 +365,7 @@ extension TailorHome{
             self.tableview.backgroundView = nil
             if jobs.count == 0 {
                 let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
-                emptyLabel.text = "No job accepted"
+                emptyLabel.text = "No job accepted yet"
                 emptyLabel.textAlignment = NSTextAlignment.center
                 
                 self.tableview.backgroundView = emptyLabel
@@ -381,6 +381,16 @@ extension TailorHome{
             }
             
         } else if tableView == self.tableview2 {
+            self.tableview2.backgroundView = nil
+            if finishedJobs.count == 0{
+                let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
+                emptyLabel.text = "History are't made yet"
+                emptyLabel.textAlignment = NSTextAlignment.center
+                
+                self.tableview2.backgroundView = emptyLabel
+                self.tableview2.separatorStyle = UITableViewCellSeparatorStyle.none
+                return finishedJobs.count
+            }
             return finishedJobs.count
         } else {
             return 0

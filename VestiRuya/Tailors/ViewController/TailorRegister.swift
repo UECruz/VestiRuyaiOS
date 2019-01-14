@@ -62,7 +62,7 @@ class TailorRegister: UIViewController,UINavigationControllerDelegate,UIImagePic
     }
     
     func saveInfo(){
-        TailorLogin.isTailor = true
+        LoginController.isTailor = true
         let email = emailText.text
         let password = passwordText.text
         let username = usernameText.text
@@ -112,7 +112,7 @@ class TailorRegister: UIViewController,UINavigationControllerDelegate,UIImagePic
                                 }
                                 
                                 let photoURL = url?.absoluteString
-                                self.ref.child("Tailors").child("\(user!)").setValue(["username":"\(userName!)","email":"\(eMail!)","password":"\(passWord!)", "City,State":"\(sc!)", "profilePic" : "\(photoURL!)"])
+                                self.ref.child("Tailors").child("\(user!)").setValue(["username":"\(userName!)","email":"\(eMail!)","password":"\(passWord!)", "City,State":"\(sc!)", "profilePic" : "\(photoURL!)","type" : "tailors"])
                                 self.Next()
                             })
                             

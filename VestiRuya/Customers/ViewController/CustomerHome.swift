@@ -95,7 +95,6 @@ class CustomerHome: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @IBAction func profile(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "CustomerProfile") as! CustomerProfile
         self.present(vc, animated: false, completion: nil)
-//        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func goBack(_ sender: Any){
@@ -166,9 +165,35 @@ class CustomerHome: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 orderItemDict.updateValue(cOrder.orderItems.sleeves as AnyObject, forKey: "sleeves")
                 orderItemDict.updateValue(cOrder.orderItems.straps as AnyObject, forKey: "straps")
                 
-        
+                
                 let ordesFir = ["userid": customerUser!, "username": name ?? "","photoImage": profileImageURL ?? "", "price": price, "items": orderItemDict, "interestsShown":[], "tailorID":"", "isJobConfirmed":false,"canEdit":false] as [String : Any]
-                self.ref.child("Customers").child("Orders").childByAutoId().updateChildValues(ordesFir)
+                
+                
+                if self.isEditing{
+                    self.ref.child("Customers").child("Orders").observeSingleEvent(of: .value, with: {(snapshot) in
+                        if snapshot.childrenCount > 0{
+                            for x in snapshot.children.allObjects as! [DataSnapshot]{
+                                print("Object a: \(String(describing: snapshot.description))")
+                                if let obj = x.value as? [String: Any]{
+                                    guard let userId = obj["userid"] as? String else{
+                                        return
+                                    }
+                                    
+                                    if userId  != Auth.auth().currentUser?.uid {
+                                        continue
+                                    }
+                                    print(x.key)
+                                    
+                                    self.ref.child("Customers").child("Orders").child(x.key).updateChildValues(ordesFir)
+                                    
+                                }
+                            }
+                        }
+                    })
+                    
+                }else{
+                    self.ref.child("Customers").child("Orders").childByAutoId().updateChildValues(ordesFir)
+                }
                
             })
         }
@@ -292,7 +317,20 @@ class CustomerHome: UIViewController,UITableViewDelegate,UITableViewDataSource {
         }
         
         if tableView == self.tailorJobTable{
-            return tailorIntersted.count
+            count = tailorIntersted.count
+            self.tailorJobTable.backgroundView = nil
+            
+            if count == 0{
+                let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
+                emptyLabel.text = "No Tailor Are Intertest Yet."
+                emptyLabel.textAlignment = NSTextAlignment.center
+                self.tailorJobTable.backgroundView = emptyLabel
+                self.tailorJobTable.separatorStyle = UITableViewCellSeparatorStyle.none
+                return 0
+            }else{
+                 return tailorIntersted.count
+            }
+            
         }
         
         return count!
@@ -305,15 +343,15 @@ class CustomerHome: UIViewController,UITableViewDelegate,UITableViewDataSource {
            let cell = tableView.dequeueReusableCell(withIdentifier: "orderAdded") as! SummaryItem
             let orderSummary = orders[indexPath.row]
             print(orderSummary.description)
-            cell.name.text = orderSummary.username
-            cell.price.text = String(format: "$%.2f", orderSummary.totalPrice)//String(Double(orderSummary.totalPrice))
-            cell.backDetail.text = orderSummary.orderItems.backDetail
-            cell.fabric.text = orderSummary.orderItems.fabric
-            cell.bodyType.text = orderSummary.orderItems.bodyType
-            cell.neckline.text = orderSummary.orderItems.neckline
-            cell.sleeves.text = orderSummary.orderItems.sleeves
-            cell.straps.text = orderSummary.orderItems.straps
-            cell.embell.text = orderSummary.orderItems.embellishment
+            cell.name.text = orderSummary.username?.capitalized
+            cell.price.text = String(format: "$%.2f", orderSummary.totalPrice)
+            cell.backDetail.text = orderSummary.orderItems.backDetail?.capitalized
+            cell.fabric.text = orderSummary.orderItems.fabric?.capitalized
+            cell.bodyType.text = orderSummary.orderItems.bodyType?.capitalized
+            cell.neckline.text = orderSummary.orderItems.neckline?.capitalized
+            cell.sleeves.text = orderSummary.orderItems.sleeves?.capitalized
+            cell.straps.text = orderSummary.orderItems.straps?.capitalized
+            cell.embell.text = orderSummary.orderItems.embellishment?.capitalized
             
            return cell
         }
@@ -336,13 +374,22 @@ class CustomerHome: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
     {
+        
         let deleteBtm  = UITableViewRowAction(style: .default, title: "Delete") { (rowAction, indexPath) in
             self.deleteOrder()
             self.orders.remove(at: indexPath.row)
             self.orderTable.reloadData()
         }
         
-        return [deleteBtm]
+        let editBtm = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
+            self.isEditing = true
+            let goToCustomScreen = self.storyboard?.instantiateViewController(withIdentifier: "CustomScreen01") as! CustomScreen01
+            self.navigationController?.pushViewController(goToCustomScreen, animated: true)
+        }
+        
+        editBtm.backgroundColor = UIColor.blue
+        
+        return [deleteBtm, editBtm]
     }
     
     func deleteOrder(){

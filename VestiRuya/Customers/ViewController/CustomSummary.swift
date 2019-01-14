@@ -39,31 +39,31 @@ class CustomSummary: UIViewController, UITextFieldDelegate{
         
         
         if let bT = customDress[0] as? Dictionary<String,AnyObject>{
-            bodyType.text = bT["bodytype"] as? String
+            bodyType.text = bT["bodytype"]?.capitalized
         }
         
         if let fab = customDress[1] as? Dictionary<String,AnyObject>{
-            Fabric.text = fab["fabrics"] as? String
+            Fabric.text = fab["fabrics"]?.capitalized
         }
         
         if let neckLines = customDress[2] as? Dictionary<String,AnyObject>{
-            neckline.text = neckLines["neckline"] as? String
+            neckline.text = neckLines["neckline"]?.capitalized
         }
         
         if let sleve = customDress[3] as? Dictionary<String,AnyObject>{
-            sleeves.text = sleve["sleeves"] as? String
+            sleeves.text = sleve["sleeves"]?.capitalized
         }
         
         if let strap = customDress[4] as? Dictionary<String,AnyObject>{
-            straps.text = strap["straps"] as? String
+            straps.text = strap["straps"]?.capitalized
         }
         
         if let bD = customDress[5] as? Dictionary<String,AnyObject>{
-            backDetail.text = bD["backDetails"] as? String
+            backDetail.text = bD["backDetails"]?.capitalized
         }
         
         if let embell = customDress[6] as? Dictionary<String,AnyObject>{
-            embellish.text = embell["embellishment"] as? String
+            embellish.text = embell["embellishment"]?.capitalized
         }
         
     }

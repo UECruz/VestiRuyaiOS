@@ -9,6 +9,19 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+     var isTailorSelected = 0
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if  isTailorSelected == 1{
+            _ = segue.destination as! TailorRegister
+            
+        }else if isTailorSelected == 2{
+            _ = segue.destination as! CustomerRegister
+        }
+        
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

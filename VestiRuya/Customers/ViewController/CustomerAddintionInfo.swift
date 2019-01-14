@@ -52,6 +52,8 @@ class CustomerAddintionInfo: UIViewController,UINavigationControllerDelegate, UI
         
         ref = Database.database().reference()
         storageRef = Storage.storage().reference()
+        
+        alertPopup()
     }
 
     override func didReceiveMemoryWarning() {
@@ -130,6 +132,10 @@ class CustomerAddintionInfo: UIViewController,UINavigationControllerDelegate, UI
         self.naviagteToHomeScreen()
     }
     
+    func alertPopup(){
+        Alert.showAlert(self, title: "Advice", message: "Please select all the images to continue")
+    }
+    
     func naviagteToHomeScreen() {
         let tailorHomeVC = self.storyboard?.instantiateViewController(withIdentifier: "CustomerHome") as! CustomerHome
         self.navigationController?.pushViewController(tailorHomeVC, animated: true)
@@ -164,6 +170,8 @@ class CustomerAddintionInfo: UIViewController,UINavigationControllerDelegate, UI
             measureItem.updateValue(leg as AnyObject, forKey: "leg")
             measureItem.updateValue(waist as AnyObject, forKey: "waist")
             
+           
+            
             let userInfo2 = ["userId" : customerId!,"username": self.userName ?? "", "measureItem": measureItem ] as [String : Any]
         self.ref.child("Customers").child("Measurement").childByAutoId().updateChildValues(userInfo2)
             
@@ -197,6 +205,18 @@ class CustomerAddintionInfo: UIViewController,UINavigationControllerDelegate, UI
     }
     
     @IBAction func submit(_ sender: Any) {
+        
+        let height = heightText.text
+        let neck = neckText.text
+        let chest = chestText.text
+        let bust = bustText.text
+        let arm = armLenText.text
+        let leg = legLenText.text
+        let waist = waistText.text
+        
+        if ((height!.isEmpty) && (neck?.isEmpty)! && (chest?.isEmpty)! && (bust?.isEmpty)! && (arm?.isEmpty)! && (leg?.isEmpty)! && (waist?.isEmpty)!){
+            Alert.showAlert(self, title: "Error", message: "Please fill the boxes")
+        }
         savingSampleImage()
     }
     

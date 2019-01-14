@@ -122,7 +122,7 @@ class TailorInfo: UIViewController, UITableViewDelegate,UITableViewDataSource {
                     }
                 }
                 
-                let x = self.reader.filter({(x) -> Bool in
+                _ = self.reader.filter({(x) -> Bool in
                     x.tailorId == tailorID
                 })
                 
