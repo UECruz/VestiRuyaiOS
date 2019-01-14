@@ -94,7 +94,7 @@ class LoginController: UIViewController,UITextFieldDelegate {
                             let key = snap.key
                             
                             print("key == \(key)")
-                            if key as? String == Auth.auth().currentUser?.uid{
+                            if key == Auth.auth().currentUser?.uid{
                                 LoginController.isTailor = false
                                 self.performSegue(withIdentifier: "CustomerHome", sender: nil)
                                 break
@@ -115,7 +115,7 @@ class LoginController: UIViewController,UITextFieldDelegate {
                             let key = snap.key
                             
                             print("key == \(key)")
-                            if key as? String == Auth.auth().currentUser?.uid{
+                            if key == Auth.auth().currentUser?.uid{
                                 LoginController.isTailor = true
                                 self.performSegue(withIdentifier: "TailorHome", sender: nil)
                                 break

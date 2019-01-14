@@ -374,22 +374,23 @@ class CustomerHome: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
     {
-        
-        let deleteBtm  = UITableViewRowAction(style: .default, title: "Delete") { (rowAction, indexPath) in
-            self.deleteOrder()
-            self.orders.remove(at: indexPath.row)
-            self.orderTable.reloadData()
-        }
-        
-        let editBtm = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
-            self.isEditing = true
-            let goToCustomScreen = self.storyboard?.instantiateViewController(withIdentifier: "CustomScreen01") as! CustomScreen01
-            self.navigationController?.pushViewController(goToCustomScreen, animated: true)
-        }
-        
-        editBtm.backgroundColor = UIColor.blue
+            let deleteBtm  = UITableViewRowAction(style: .default, title: "Delete") { (rowAction, indexPath) in
+                self.deleteOrder()
+                self.orders.remove(at: indexPath.row)
+                self.orderTable.reloadData()
+            }
+            
+            let editBtm = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
+                self.isEditing = true
+                let goToCustomScreen = self.storyboard?.instantiateViewController(withIdentifier: "CustomScreen01") as! CustomScreen01
+                self.navigationController?.pushViewController(goToCustomScreen, animated: true)
+            }
+            
+            editBtm.backgroundColor = UIColor.blue
+            
         
         return [deleteBtm, editBtm]
+        
     }
     
     func deleteOrder(){
