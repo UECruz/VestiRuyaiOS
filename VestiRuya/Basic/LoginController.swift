@@ -63,8 +63,11 @@ class LoginController: UIViewController,UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        emailText.resignFirstResponder()
-        passwordText.resignFirstResponder()
+        if textField == emailText {
+            passwordText.becomeFirstResponder()
+        } else {
+            passwordText.resignFirstResponder()
+        }
         return true
     }
     
@@ -160,3 +163,4 @@ class LoginController: UIViewController,UITextFieldDelegate {
 
 
 }
+

@@ -33,7 +33,6 @@ class TailorEditor: UIViewController, UINavigationControllerDelegate, UIImagePic
         present(picking , animated: true, completion: nil)
     }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,11 +42,13 @@ class TailorEditor: UIViewController, UINavigationControllerDelegate, UIImagePic
         
         userEdit.delegate = self
         adde.delegate = self
+       
     }
     
     @IBAction func saveBtm(_ sender: Any) {
         updateInfo()
     }
+    
     
     @IBAction func back(_ sender: Any){
         goBack()
@@ -72,7 +73,8 @@ class TailorEditor: UIViewController, UINavigationControllerDelegate, UIImagePic
     
     func updateInfo(){
         if let userID = Auth.auth().currentUser?.uid{
-            let storageItem = storageRef.child("tailor_profile_images").child(userID)
+            let storageItem = storageRef.child("tailors_profile_images").child(userID)
+            
             guard let image = imageView.image else {return}
             
             if let newImage = UIImagePNGRepresentation(image){
@@ -104,7 +106,7 @@ class TailorEditor: UIViewController, UINavigationControllerDelegate, UIImagePic
                                     print(error!)
                                     return
                                 }
-                                print("Profile Successfully Update")
+                                print("Profile Successfully Update", newValuesForProfile)
                             })
                         }
                     })
@@ -116,6 +118,9 @@ class TailorEditor: UIViewController, UINavigationControllerDelegate, UIImagePic
         }
     }
     
+    
+    
+    
     func goHome(){
         let vc = storyboard?.instantiateViewController(withIdentifier: "TailorHome") as! TailorHome
         self.present(vc, animated: false, completion: nil)
@@ -124,10 +129,10 @@ class TailorEditor: UIViewController, UINavigationControllerDelegate, UIImagePic
     @IBAction func resetPassword (_ sender: Any) {
         Auth.auth().sendPasswordReset(withEmail: (Auth.auth().currentUser?.email)!) { (error) in
             if error == nil {
-                print("Passowrd resent email sent successfully")
+                print("Password resent email sent successfully")
                 Alert.showAlert(self, title: "Reset Password", message: "Passowrd resent email sent successfully")
             } else {
-                print("We have error sending email fo rpassword reset")
+                print("We have error sending email for password reset")
                 Alert.showAlert(self, title: "Error", message: "We have error sending email fo rpassword reset")
             }
         }

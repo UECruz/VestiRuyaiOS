@@ -13,7 +13,7 @@ import FirebaseDatabase
 import FirebaseStorage
 import SVProgressHUD
 
-class TailorRegister: UIViewController,UINavigationControllerDelegate,UIImagePickerControllerDelegate {
+class TailorRegister: UIViewController,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UITextFieldDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var usernameText: UITextField!
@@ -33,10 +33,37 @@ class TailorRegister: UIViewController,UINavigationControllerDelegate,UIImagePic
         // Do any additional setup after loading the view.
         ref = Database.database().reference()
         storageRef = Storage.storage().reference()
+        
+        usernameText.delegate = self
+        emailText.delegate = self
+        passwordText.delegate = self
+        stateCityText.delegate = self
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == usernameText{
+            emailText.becomeFirstResponder()
+        }else{
+            emailText.resignFirstResponder()
+        }
+        
+        if textField == emailText{
+            passwordText.becomeFirstResponder()
+        }else{
+            passwordText.resignFirstResponder()
+        }
+        
+        if textField == passwordText{
+            stateCityText.becomeFirstResponder()
+        }else{
+            stateCityText.resignFirstResponder()
+        }
+        
+        return true
     }
     
     
@@ -78,10 +105,10 @@ class TailorRegister: UIViewController,UINavigationControllerDelegate,UIImagePic
                     
                     if let errCode = AuthErrorCode(rawValue: error._code) {
                         switch errCode {
-                        case .invalidEmail:
-                            Alert.showAlert(self, title: "Error", message: "Enter a valid email.")
                         case .emailAlreadyInUse:
                             Alert.showAlert(self, title: "Error", message: "Email already in use.")
+                        case .invalidEmail:
+                            Alert.showAlert(self, title: "Error", message: "Enter a valid email.")
                         default:
                             Alert.showAlert(self, title: "Error", message: error.localizedDescription)
                         }

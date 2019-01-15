@@ -115,6 +115,8 @@ class CustomerHome: UIViewController,UITableViewDelegate,UITableViewDataSource {
             print("Order recieved ==== \(order)")
             let orderItem = OrderItems(bodyType: "", fabric: "", neckline: "", backDetail: "", straps: "", sleeve: "", embell: "")
             
+            
+            // Note: Can't find any alternative to the warming
             if let bt = order[0] as? Dictionary<String,AnyObject>{
                 orderItem.bodyType = (bt["bodytype"] as! String)
             }
@@ -293,6 +295,12 @@ class CustomerHome: UIViewController,UITableViewDelegate,UITableViewDataSource {
         Next()
     }
     
+    @objc func buttonAction(sender: UIButton!) {
+        print("Button tapped")
+        let goToCustomScreen = self.storyboard?.instantiateViewController(withIdentifier: "CustomScreen01") as! CustomScreen01
+        self.navigationController?.pushViewController(goToCustomScreen, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var count : Int?
         if tableView == self.orderTable{
@@ -302,6 +310,7 @@ class CustomerHome: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
                 emptyLabel.text = "No order Added"
                 emptyLabel.textAlignment = NSTextAlignment.center
+                
                 self.orderButton.isHidden = false
                 
                 self.orderTable.backgroundView = emptyLabel
@@ -371,10 +380,11 @@ class CustomerHome: UIViewController,UITableViewDelegate,UITableViewDataSource {
         return cell02
     }
     
-    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
     {
+        if tableView == orderTable{
             let deleteBtm  = UITableViewRowAction(style: .default, title: "Delete") { (rowAction, indexPath) in
+              
                 self.deleteOrder()
                 self.orders.remove(at: indexPath.row)
                 self.orderTable.reloadData()
@@ -388,10 +398,14 @@ class CustomerHome: UIViewController,UITableViewDelegate,UITableViewDataSource {
             
             editBtm.backgroundColor = UIColor.blue
             
+            
+            return [editBtm,deleteBtm]
+        }
         
-        return [deleteBtm, editBtm]
+        return []
         
     }
+    
     
     func deleteOrder(){
         ref.child("Customers").child("Orders").observeSingleEvent(of: .value, with: {(snapshot) in

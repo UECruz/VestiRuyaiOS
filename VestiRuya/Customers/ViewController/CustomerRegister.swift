@@ -13,7 +13,7 @@ import FirebaseDatabase
 import FirebaseStorage
 import SVProgressHUD
 
-class CustomerRegister: UIViewController,UINavigationControllerDelegate,UIImagePickerControllerDelegate {
+class CustomerRegister: UIViewController,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UITextFieldDelegate {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var usernameText: UITextField!
@@ -28,11 +28,15 @@ class CustomerRegister: UIViewController,UINavigationControllerDelegate,UIImageP
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-//        view.addGestureRecognizer(tap)
         // Do any additional setup after loading the view.
         ref = Database.database().reference()
         storageRef = Storage.storage().reference()
+        
+        usernameText.delegate = self
+        emailText.delegate = self
+        passwordText.delegate = self
+        stateCityText.delegate = self
+        addressText.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,6 +46,34 @@ class CustomerRegister: UIViewController,UINavigationControllerDelegate,UIImageP
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == usernameText{
+            emailText.becomeFirstResponder()
+        }else{
+            emailText.resignFirstResponder()
+        }
+        
+        if textField == emailText{
+            passwordText.becomeFirstResponder()
+        }else{
+            passwordText.resignFirstResponder()
+        }
+        
+        if textField == passwordText{
+            stateCityText.becomeFirstResponder()
+        }else{
+            stateCityText.resignFirstResponder()
+        }
+        
+        if textField == stateCityText{
+            addressText.becomeFirstResponder()
+        }else{
+            addressText.resignFirstResponder()
+        }
+        
+        return true
     }
     
     @IBAction func imageUpload(_ sender: Any) {

@@ -66,13 +66,42 @@ class CustomerAddintionInfo: UIViewController,UINavigationControllerDelegate, UI
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        heightText.resignFirstResponder()
-        neckText.resignFirstResponder()
-        chestText.resignFirstResponder()
-        waistText.resignFirstResponder()
-        bustText.resignFirstResponder()
-        armLenText.resignFirstResponder()
-        legLenText.resignFirstResponder()
+        
+        if textField == heightText{
+            neckText.becomeFirstResponder()
+        }else{
+            neckText.resignFirstResponder()
+        }
+        
+        if textField == neckText{
+            chestText.becomeFirstResponder()
+        }else{
+            chestText.resignFirstResponder()
+        }
+        
+        if textField == chestText{
+            waistText.becomeFirstResponder()
+        }else{
+            waistText.resignFirstResponder()
+        }
+        
+        if textField == waistText{
+            bustText.becomeFirstResponder()
+        }else{
+            bustText.resignFirstResponder()
+        }
+        
+        if textField == bustText{
+            armLenText.becomeFirstResponder()
+        }else{
+            armLenText.resignFirstResponder()
+        }
+        
+        if textField == armLenText{
+            legLenText.becomeFirstResponder()
+        }else{
+            legLenText.resignFirstResponder()
+        }
         return true
     }
    

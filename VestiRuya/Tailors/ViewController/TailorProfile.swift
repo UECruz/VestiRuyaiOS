@@ -43,10 +43,11 @@ class TailorProfile: UIViewController {
             self.userLabel.text = username
             self.emailLabel.text = self.email
             self.passwordLabel.text = self.password
+            print("New Profile URL", pic)
             self.profileImage.kf.setImage(with: URL(string: pic!))
             self.add.text = city
             
-            print("Test 1")
+            print("Test 1", value)
             print(username)
             print("Test 2")
             

@@ -31,6 +31,13 @@ class TailorHome: UIViewController, UITableViewDataSource,UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        if jobs.count != 0{
+//            calltoAction()
+//        }
+        
+        
+        
+        
         NotificationCenter.default.addObserver(self, selector: #selector(jobAccepted(_:)), name: Notification.Name("JobAccepted"), object: nil)
 
         // Do any additional setup after loading the view.
@@ -48,7 +55,10 @@ class TailorHome: UIViewController, UITableViewDataSource,UITableViewDelegate {
             let username = value?["username"] as? String ?? "cs"
             self.navBar.topItem?.title = username
             
+           
             self.jobAccept()
+            self.calltoAction()
+           
             
         }){(error) in
             print(error.localizedDescription)
@@ -353,7 +363,17 @@ class TailorHome: UIViewController, UITableViewDataSource,UITableViewDelegate {
     }
     
     @IBAction func FindJobBTM(_ sender: Any) {
+        startAction()
+    }
+    
+    func startAction() {
         Next()
+    }
+    
+    func calltoAction() {
+        if jobs.count == 0 && sides.count == 0{
+            startAction()
+        }
     }
 
 }
@@ -370,7 +390,7 @@ extension TailorHome{
                 
                 self.tableview.backgroundView = emptyLabel
                 self.tableview.separatorStyle = UITableViewCellSeparatorStyle.none
-                
+        
                 return jobs.count
             } else {
                 let acceptedJobs = self.jobs.filter({ (job) -> Bool in

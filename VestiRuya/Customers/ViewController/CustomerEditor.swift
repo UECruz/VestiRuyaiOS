@@ -31,7 +31,7 @@ class CustomerEditor: UIViewController, UINavigationControllerDelegate, UIImageP
         
         let picking = UIImagePickerController()
         picking .delegate = self
-        picking .allowsEditing = false
+        picking .allowsEditing = true
         picking .sourceType = .photoLibrary
         picking .mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
         present(picking , animated: true, completion: nil)
@@ -48,7 +48,9 @@ class CustomerEditor: UIViewController, UINavigationControllerDelegate, UIImageP
         userEdit.delegate = self
         address1.delegate = self
         address2.delegate = self
+        
     }
+    
     
     @IBAction func saveBtm(_ sender: Any) {
         updateInfo()
@@ -69,8 +71,7 @@ class CustomerEditor: UIViewController, UINavigationControllerDelegate, UIImageP
         if let storyboard = self.storyboard{
             let vc = storyboard.instantiateViewController(withIdentifier: "CustomerHome") as! CustomerHome
             self.present(vc, animated: false, completion: nil)
-           // self.navigationController?.popViewController(animated: true)
-//            self.present(vc, animated: false, completion: nil)
+ 
         }
     }
     
