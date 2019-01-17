@@ -359,6 +359,7 @@ class TailorHome: UIViewController, UITableViewDataSource,UITableViewDelegate {
     
     func Next(){
         let goToCustomScreen = self.storyboard?.instantiateViewController(withIdentifier: "JobList") as! JobList
+        self.present(goToCustomScreen, animated: false, completion: nil)
         self.navigationController?.pushViewController(goToCustomScreen, animated: true)
     }
     

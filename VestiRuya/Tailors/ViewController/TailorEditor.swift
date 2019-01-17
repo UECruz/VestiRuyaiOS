@@ -13,42 +13,53 @@ import FirebaseDatabase
 
 class TailorEditor: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
     
+    @IBOutlet weak var nav: UINavigationBar!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var userEdit: UITextField!
-    @IBOutlet weak var adde: UITextField!
+    @IBOutlet weak var address2: UITextField!
+    @IBOutlet weak var emailEdit: UITextField!
+    @IBOutlet weak var passEdit: UITextField!
     
     var ref: DatabaseReference!
     var storageRef: StorageReference!
+    let user = Auth.auth().currentUser?.uid
+    var desiredProfile: UserProfile?
     
     var email:String?
     var password:String?
+    
+    var newEmail: String?
+    var newPass: String?
     
     @IBAction func imageUpload(_ sender: Any) {
         
         let picking = UIImagePickerController()
         picking .delegate = self
-        picking .allowsEditing = false
+        picking .allowsEditing = true
         picking .sourceType = .photoLibrary
         picking .mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
         present(picking , animated: true, completion: nil)
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+        nav.topItem?.title = "Tailor Editor"
         ref = Database.database().reference()
         storageRef = Storage.storage().reference()
-        
         userEdit.delegate = self
-        adde.delegate = self
-       
+        address2.delegate = self
+        emailEdit.delegate = self
+        passEdit.delegate = self
+        
     }
+    
     
     @IBAction func saveBtm(_ sender: Any) {
         updateInfo()
     }
-    
     
     @IBAction func back(_ sender: Any){
         goBack()
@@ -57,7 +68,15 @@ class TailorEditor: UIViewController, UINavigationControllerDelegate, UIImagePic
     func goBack(){
         if let storyboard = self.storyboard {
             let vc = storyboard.instantiateViewController(withIdentifier: "TailorProfile") as! TailorProfile
-           self.present(vc, animated: false, completion: nil)
+            self.present(vc, animated: false, completion: nil)
+        }
+    }
+    
+    func goHome(){
+        if let storyboard = self.storyboard{
+            let vc = storyboard.instantiateViewController(withIdentifier: "TailorHome") as! TailorHome
+            self.present(vc, animated: false, completion: nil)
+            
         }
     }
     
@@ -66,15 +85,29 @@ class TailorEditor: UIViewController, UINavigationControllerDelegate, UIImagePic
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        userEdit.resignFirstResponder()
-        adde.resignFirstResponder()
+        
+        if textField == userEdit{
+            address2.becomeFirstResponder()
+        }else{
+            address2.resignFirstResponder()
+        }
+        if textField == address2{
+            emailEdit.becomeFirstResponder()
+        }else{
+            emailEdit.resignFirstResponder()
+        }
+        
+        if textField == emailEdit{
+            passEdit.becomeFirstResponder()
+        }else{
+            passEdit.resignFirstResponder()
+        }
         return true
     }
     
     func updateInfo(){
         if let userID = Auth.auth().currentUser?.uid{
             let storageItem = storageRef.child("tailors_profile_images").child(userID)
-            
             guard let image = imageView.image else {return}
             
             if let newImage = UIImagePNGRepresentation(image){
@@ -84,6 +117,8 @@ class TailorEditor: UIViewController, UINavigationControllerDelegate, UIImagePic
                         return
                     }
                     
+                    print(storageItem.name)
+                    
                     storageItem.downloadURL(completion: {(url, error) in
                         if error != nil{
                             print(error!)
@@ -92,48 +127,57 @@ class TailorEditor: UIViewController, UINavigationControllerDelegate, UIImagePic
                         
                         if let profilePhotoURL = url?.absoluteString{
                             guard let name = self.userEdit.text else {return}
-                            guard let ad = self.adde.text else{return}
+                            guard let add2 = self.address2.text else{return}
+                            guard let pass = self.passEdit.text else{return}
+                            guard let email = self.emailEdit.text else{return}
                             
-                            let newValuesForProfile =
-                                ["photo": profilePhotoURL,
+                            let newUpated =
+                                ["profilePic": profilePhotoURL,
                                  "username": name,
-                                 "email": self.email,
-                                 "password": self.password,
-                                 "City,State":ad]
+                                 "email": email,
+                                 "password": pass,
+                                 "City,State":add2]
                             
-                            self.ref.child("Tailors").child(userID).updateChildValues(newValuesForProfile as Any as! [AnyHashable : Any], withCompletionBlock: {(error,refer) in
+                            
+                            self.ref.child("Tailors").child(userID).updateChildValues(newUpated as Any as! [AnyHashable : Any], withCompletionBlock: {(error,refer) in
                                 if error != nil{
                                     print(error!)
                                     return
                                 }
-                                print("Profile Successfully Update", newValuesForProfile)
+                                
+                                let user = Auth.auth().currentUser
+                                user?.updatePassword(to: pass, completion: {(error) in
+                                    if error == nil {
+                                        print("Passowrd update is successfully")
+                                        Alert.showAlert(self, title: "Password Updated", message: "Pass word is updated")
+                                    } else {
+                                        print("We have error sending email for password reset")
+                                        Alert.showAlert(self, title: "Error", message: "We have error updating password")
+                                    }
+                                })
+                                
+                                user?.updateEmail(to: email, completion: {(error) in
+                                    if error == nil {
+                                        print("Passowrd resent email sent successfully")
+                                        Alert.showAlert(self, title: "Email Updated", message: "PEmail is updated")
+                                    } else {
+                                        print("We have error sending email for password reset")
+                                        Alert.showAlert(self, title: "Error", message: "We have error updating email")
+                                    }
+                                })
+                                
+                                
+                                
+                                print("Profile Successfully Update")
+                                
                             })
+                            
+                            
                         }
                     })
                 })
                 
                 goHome()
-                
-            }
-        }
-    }
-    
-    
-    
-    
-    func goHome(){
-        let vc = storyboard?.instantiateViewController(withIdentifier: "TailorHome") as! TailorHome
-        self.present(vc, animated: false, completion: nil)
-    }
-    
-    @IBAction func resetPassword (_ sender: Any) {
-        Auth.auth().sendPasswordReset(withEmail: (Auth.auth().currentUser?.email)!) { (error) in
-            if error == nil {
-                print("Password resent email sent successfully")
-                Alert.showAlert(self, title: "Reset Password", message: "Passowrd resent email sent successfully")
-            } else {
-                print("We have error sending email for password reset")
-                Alert.showAlert(self, title: "Error", message: "We have error sending email fo rpassword reset")
             }
         }
     }
@@ -151,21 +195,9 @@ class TailorEditor: UIViewController, UINavigationControllerDelegate, UIImagePic
         dismiss(animated: true, completion: nil)
     }
     
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

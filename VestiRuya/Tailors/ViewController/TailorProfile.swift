@@ -22,8 +22,8 @@ class TailorProfile: UIViewController {
     
     @IBOutlet weak var navi: UINavigationBar!
     var ref: DatabaseReference!
-    var email:String?
-    var password:String?
+    var profile : [UserProfile] = []
+    var pro : UserProfile?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,21 +35,14 @@ class TailorProfile: UIViewController {
         ref.child("Tailors").child("\(user!)").observeSingleEvent(of: .value, with: {(snapshot) in
             let value = snapshot.value as? NSDictionary
             let username = value?["username"] as? String ?? ""
-            self.email = value?["email"] as? String
-            self.password = value?["password"] as? String
+             let email = value?["email"] as? String
             let pic = value?["profilePic"] as? String
             let city = value?["City,State"] as? String
             
             self.userLabel.text = username
-            self.emailLabel.text = self.email
-            self.passwordLabel.text = self.password
-            print("New Profile URL", pic)
+            self.emailLabel.text = email
             self.profileImage.kf.setImage(with: URL(string: pic!))
             self.add.text = city
-            
-            print("Test 1", value)
-            print(username)
-            print("Test 2")
             
         }){ (error) in
             print(error.localizedDescription)
@@ -58,8 +51,6 @@ class TailorProfile: UIViewController {
     
     @IBAction func goToEdit(_ sender: Any){
         let vc = storyboard?.instantiateViewController(withIdentifier: "TailorEditor") as! TailorEditor
-        vc.email = self.email
-        vc.password = self.password
         self.present(vc, animated: false, completion: nil)
     }
 
@@ -71,6 +62,8 @@ class TailorProfile: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
     
     @IBAction func logOut(_ sender: Any) {
         try! Auth.auth().signOut()

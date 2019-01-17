@@ -91,17 +91,21 @@ class CustomSummary: UIViewController, UITextFieldDelegate{
     
     @IBAction func postBTM(_ sender: Any) {
         
-        var dict = Dictionary<String, AnyObject>()
-        dict.updateValue(prices.text as AnyObject, forKey: "price")
-        customDress.append(dict)
-        
-        //Using notification as passing class
-        NotificationCenter.default.post(name: Notification.Name("ORDEROPLACED"), object: nil, userInfo: ["order":customDress])
-        
-    for vc in (self.navigationController?.viewControllers)! {
-        if vc is CustomerHome {
-                _ = self.navigationController?.popToViewController(vc, animated: true)
-                break
+        if (prices.text?.isEmpty)!{
+            Alert.showAlert(self, title: "Error", message: "Please enter price")
+        }else{
+            var dict = Dictionary<String, AnyObject>()
+            dict.updateValue(prices.text as AnyObject, forKey: "price")
+            customDress.append(dict)
+            
+            //Using notification as passing class
+            NotificationCenter.default.post(name: Notification.Name("ORDEROPLACED"), object: nil, userInfo: ["order":customDress])
+            
+            for vc in (self.navigationController?.viewControllers)! {
+                if vc is CustomerHome {
+                    _ = self.navigationController?.popToViewController(vc, animated: true)
+                    break
+                }
             }
         }
     }

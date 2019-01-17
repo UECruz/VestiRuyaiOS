@@ -25,8 +25,7 @@ class CustomerProfile: UIViewController {
     var ref: DatabaseReference!
     var profile : [UserProfile] = []
     var pro : UserProfile?
-    var email:String?
-    var password:String?
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,15 +37,13 @@ class CustomerProfile: UIViewController {
         ref.child("Customers").child("\(user!)").observeSingleEvent(of: .value, with: {(snapshot) in
             let value = snapshot.value as? NSDictionary
             let username = value?["username"] as? String ?? ""
-            self.email = value?["email"] as? String
-            self.password = value?["password"] as? String
+            let email = value?["email"] as? String
             let pic = value?["profilePic"] as? String
             let add1 = value?["address"] as? String
             let add2 = value?["City,State"] as? String
             
             self.userLabel.text = username
-            self.emailLabel.text = self.email
-            self.passwordLabel.text = self.password
+            self.emailLabel.text = email
             self.address1.text = add1
             self.address2.text = add2
             self.profileImage.kf.setImage(with: URL(string: pic!))
@@ -61,8 +58,6 @@ class CustomerProfile: UIViewController {
     
     @IBAction func goToEdit(_ sender: Any){
         let vc = storyboard?.instantiateViewController(withIdentifier: "CustomerEditor") as! CustomerEditor
-        vc.email = self.email
-        vc.password = self.password
         self.present(vc, animated: false, completion: nil)
     }
 

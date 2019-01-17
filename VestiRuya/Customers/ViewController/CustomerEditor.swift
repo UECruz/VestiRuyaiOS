@@ -18,6 +18,8 @@ class CustomerEditor: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet weak var userEdit: UITextField!
     @IBOutlet weak var address1: UITextField!
     @IBOutlet weak var address2: UITextField!
+    @IBOutlet weak var emailEdit: UITextField!
+    @IBOutlet weak var passEdit: UITextField!
     
     var ref: DatabaseReference!
     var storageRef: StorageReference!
@@ -26,6 +28,9 @@ class CustomerEditor: UIViewController, UINavigationControllerDelegate, UIImageP
     
     var email:String?
     var password:String?
+    
+    var newEmail: String?
+    var newPass: String?
     
     @IBAction func imageUpload(_ sender: Any) {
         
@@ -86,19 +91,6 @@ class CustomerEditor: UIViewController, UINavigationControllerDelegate, UIImageP
         return true
     }
     
-    
-    @IBAction func resetPassword (_ sender: Any) {
-        Auth.auth().sendPasswordReset(withEmail: (Auth.auth().currentUser?.email)!) { (error) in
-            if error == nil {
-                print("Passowrd resent email sent successfully")
-                Alert.showAlert(self, title: "Reset Password", message: "Passowrd resent email sent successfully")
-            } else {
-                print("We have error sending email fo rpassword reset")
-                Alert.showAlert(self, title: "Error", message: "We have error sending email fo rpassword reset")
-            }
-        }
-    }
-    
     func updateInfo(){
         if let userID = Auth.auth().currentUser?.uid{
             let storageItem = storageRef.child("customers_profile_images").child(userID)
@@ -123,14 +115,17 @@ class CustomerEditor: UIViewController, UINavigationControllerDelegate, UIImageP
                             guard let name = self.userEdit.text else {return}
                             guard let add1 = self.address1.text else{return}
                             guard let add2 = self.address2.text else{return}
+                            guard let pass = self.passEdit.text else{return}
+                            guard let email = self.emailEdit.text else{return}
                             
                             let newUpated =
                                 ["profilePic": profilePhotoURL,
                                  "username": name,
-                                 "email": self.email,
-                                 "password": self.password,
+                                 "email": email,
+                                 "password": pass,
                                  "address":add1,
                                  "City,State":add2]
+                            
                             
                             self.ref.child("Customers").child(userID).updateChildValues(newUpated as Any as! [AnyHashable : Any], withCompletionBlock: {(error,refer) in
                                 if error != nil{
@@ -138,13 +133,38 @@ class CustomerEditor: UIViewController, UINavigationControllerDelegate, UIImageP
                                     return
                                 }
                                 
+                                let user = Auth.auth().currentUser
+                                user?.updatePassword(to: pass, completion: {(error) in
+                                    if error == nil {
+                                        print("Passowrd update is successfully")
+                                        Alert.showAlert(self, title: "Password Updated", message: "Pass word is updated")
+                                    } else {
+                                        print("We have error sending email for password reset")
+                                        Alert.showAlert(self, title: "Error", message: "We have error updating password")
+                                    }
+                                })
+                                
+                                user?.updateEmail(to: email, completion: {(error) in
+                                    if error == nil {
+                                        print("Passowrd resent email sent successfully")
+                                        Alert.showAlert(self, title: "Email Updated", message: "PEmail is updated")
+                                    } else {
+                                        print("We have error sending email for password reset")
+                                        Alert.showAlert(self, title: "Error", message: "We have error updating email")
+                                    }
+                                })
+                                
+                               
                                 
                                 print("Profile Successfully Update")
                                 
                             })
+                            
+                            
                         }
                     })
                 })
+                
                 goHome()
             }
         }

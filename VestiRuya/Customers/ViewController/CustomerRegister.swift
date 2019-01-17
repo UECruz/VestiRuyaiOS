@@ -62,15 +62,15 @@ class CustomerRegister: UIViewController,UINavigationControllerDelegate,UIImageP
         }
         
         if textField == passwordText{
-            stateCityText.becomeFirstResponder()
-        }else{
-            stateCityText.resignFirstResponder()
-        }
-        
-        if textField == stateCityText{
             addressText.becomeFirstResponder()
         }else{
             addressText.resignFirstResponder()
+        }
+        
+        if textField == addressText{
+            stateCityText.becomeFirstResponder()
+        }else{
+            stateCityText.resignFirstResponder()
         }
         
         return true
