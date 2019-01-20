@@ -31,8 +31,12 @@ class JobList: UIViewController ,UITableViewDelegate, UITableViewDataSource {
         getOrdersList()
     }
     
-    @IBAction func back(_ sender: Any) {     
-        self.navigationController?.popViewController(animated: true)
+    @IBAction func back(_ sender: Any) {
+        if let navController = self.navigationController {
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     func getOrdersList() {
@@ -161,8 +165,13 @@ class JobList: UIViewController ,UITableViewDelegate, UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "JobDetails") as! JobDetail
-        vc.selects = self.data[indexPath.row]
-        self.navigationController?.pushViewController(vc, animated: true)
+         vc.selects = self.data[indexPath.row]
+        if let navController = self.navigationController{
+            self.navigationController?.pushViewController(vc, animated: true)
+        }else{
+            self.present(vc, animated: true, completion: nil)
+        }
+        
         
     }
 

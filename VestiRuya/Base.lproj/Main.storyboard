@@ -2439,7 +2439,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lvd-JO-odE">
-                                <rect key="frame" x="0.0" y="20" width="354" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="355" height="44"/>
                                 <color key="backgroundColor" red="0.58431372550000005" green="0.59607843140000005" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
                                     <navigationItem title="Title" id="YtT-pI-wtu">
@@ -2452,28 +2452,28 @@
                                 </items>
                             </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nrZ-jP-mEe">
-                                <rect key="frame" x="5" y="69" width="344" height="134"/>
+                                <rect key="frame" x="5" y="69" width="345" height="134"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hvx-q6-j9S">
-                                <rect key="frame" x="5" y="208" width="344" height="21"/>
+                                <rect key="frame" x="5" y="208" width="345" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J6F-1G-rwP">
-                                <rect key="frame" x="5" y="234" width="344" height="21"/>
+                                <rect key="frame" x="5" y="234" width="345" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JYa-nS-2ha">
-                                <rect key="frame" x="5" y="260" width="344" height="21"/>
+                                <rect key="frame" x="5" y="260" width="345" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="owR-rM-Vwy">
-                                <rect key="frame" x="5" y="286" width="344" height="21"/>
+                                <rect key="frame" x="5" y="286" width="345" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2492,21 +2492,21 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sHR-7C-PPb">
-                                <rect key="frame" x="145" y="338.5" width="81" height="104"/>
+                                <rect key="frame" x="145" y="338.5" width="95" height="104"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="104" id="S1h-of-XBb"/>
                                     <constraint firstAttribute="width" constant="95" id="lPW-U8-TBr"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cLB-a7-7My">
-                                <rect key="frame" x="254" y="338.5" width="95" height="104"/>
+                                <rect key="frame" x="269" y="338.5" width="81" height="104"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="104" id="I24-8Y-0ZR"/>
                                     <constraint firstAttribute="width" constant="95" id="fEi-Q0-Yl4"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P4T-5K-gRh">
-                                <rect key="frame" x="145" y="447.5" width="81" height="30"/>
+                                <rect key="frame" x="145" y="447.5" width="95" height="30"/>
                                 <color key="backgroundColor" red="0.66046981670000005" green="0.7957478791" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Select work">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2516,7 +2516,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vay-IR-bfY">
-                                <rect key="frame" x="254" y="447.5" width="95" height="30"/>
+                                <rect key="frame" x="269" y="447.5" width="81" height="30"/>
                                 <color key="backgroundColor" red="0.66046981670000005" green="0.7957478791" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Select work">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

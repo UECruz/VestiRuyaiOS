@@ -180,7 +180,12 @@ class CustomerInfo: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func backBTm(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        
+        if let navController = self.navigationController{
+            self.navigationController?.popViewController(animated: true)
+        }else{
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     @IBAction func chatBTm(_ sender: Any) {
@@ -224,7 +229,12 @@ class CustomerInfo: UIViewController {
                     print("Got here 2")
                     DispatchQueue.main.async {
                         SVProgressHUD.dismiss()
-                        self.navigationController?.pushViewController(chatContainerViewController, animated: true)
+                       
+                        if let navController = self.navigationController{
+                          self.navigationController?.pushViewController(chatContainerViewController, animated: true)
+                        }else{
+                            self.present(chatContainerViewController, animated: true, completion: nil)
+                        }
                     }
                    
                 }

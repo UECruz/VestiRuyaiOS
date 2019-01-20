@@ -25,17 +25,12 @@ class TailorHome: UIViewController, UITableViewDataSource,UITableViewDelegate {
     var orderAccepted : [Dictionary<String, AnyObject>] = []
     var tailorJobs: [TailorJob] = []
     var finishedJobs: [TailorJob] = []
+    var historyJobs : [TailorJob] = []
     
     var pricey:Double = 0.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        if jobs.count != 0{
-//            calltoAction()
-//        }
-        
-        
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(jobAccepted(_:)), name: Notification.Name("JobAccepted"), object: nil)
@@ -153,6 +148,16 @@ class TailorHome: UIViewController, UITableViewDataSource,UITableViewDelegate {
                 self.finishedJobs = self.tailorJobs.filter({ (job) -> Bool in
                     job.isConfimed == true
                 })
+                
+//                ref.child("Tailors").child("History").childByAutoId().
+//
+//                self.ref.child("Tailors").child(userID).updateChildValues(newvalueInfo, withCompletionBlock: {(error,refer) in
+//                    if error != nil{
+//                        print(error!)
+//                        return
+//                    }
+//                    print("Profile Successfully Update")
+//                })
                 
                 self.tableview2.reloadData()
             }
@@ -359,8 +364,13 @@ class TailorHome: UIViewController, UITableViewDataSource,UITableViewDelegate {
     
     func Next(){
         let goToCustomScreen = self.storyboard?.instantiateViewController(withIdentifier: "JobList") as! JobList
-        self.present(goToCustomScreen, animated: false, completion: nil)
-        self.navigationController?.pushViewController(goToCustomScreen, animated: true)
+        
+        if let navController = self.navigationController {
+            self.navigationController?.pushViewController(goToCustomScreen, animated: true)
+        } else {
+            self.present(goToCustomScreen, animated: true, completion: nil)
+        }
+        
     }
     
     @IBAction func FindJobBTM(_ sender: Any) {
@@ -403,16 +413,18 @@ extension TailorHome{
             
         } else if tableView == self.tableview2 {
             self.tableview2.backgroundView = nil
-            if finishedJobs.count == 0{
+            let ownJobs = finishedJobs.filter { $0.userId == Auth.auth().currentUser?.uid}
+            print("Own jobs", ownJobs)
+            if ownJobs.count == 0 {
                 let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
                 emptyLabel.text = "History are't made yet"
                 emptyLabel.textAlignment = NSTextAlignment.center
                 
                 self.tableview2.backgroundView = emptyLabel
                 self.tableview2.separatorStyle = UITableViewCellSeparatorStyle.none
-                return finishedJobs.count
+                return ownJobs.count
             }
-            return finishedJobs.count
+            return ownJobs.count
         } else {
             return 0
         }
@@ -437,12 +449,17 @@ extension TailorHome{
         } else if tableView == tableview2 {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell02") as! HistoryCell
+            let ownJobs = finishedJobs.filter { $0.userId == Auth.auth().currentUser?.uid}
+            let job = ownJobs[indexPath.row]
             
-            let job = finishedJobs[indexPath.row]
-            cell.orderLabel.text = job.name
-            if let urlString = job.pics, let imageURL = URL(string: urlString) {
-                cell.orderImageView.af_setImage(withURL: imageURL)
+            print("Job job", job, "###", Auth.auth().currentUser?.uid, "finishedJobs", finishedJobs)
+            if job.userId == Auth.auth().currentUser?.uid{
+                cell.orderLabel.text = job.name
+                if let urlString = job.pics, let imageURL = URL(string: urlString) {
+                    cell.orderImageView.af_setImage(withURL: imageURL)
+                }
             }
+           
             
             return cell
         } else {
@@ -455,6 +472,10 @@ extension TailorHome{
         vc.selects = jobs[indexPath.row]
          vc.transfer = sides[indexPath.row]
         vc.customerId = sides[indexPath.row].originalId
-        self.navigationController?.pushViewController(vc, animated: true)
+        if let navController = self.navigationController {
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            self.present(vc, animated: true, completion: nil)
+        }
     }
 }

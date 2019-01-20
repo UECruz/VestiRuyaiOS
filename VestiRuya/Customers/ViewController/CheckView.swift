@@ -92,7 +92,12 @@ class CheckView: UIViewController {
     @IBAction func confirmBTM(_ sender: Any) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "PayView") as! PayView
         vc.desiredSummary = desiredTailorJob
-        self.navigationController?.pushViewController(vc, animated: true)
+        if let navController = self.navigationController{
+            self.navigationController?.pushViewController(vc, animated: true)
+        }else{
+            self.present(vc, animated: true, completion: nil)
+        }
+        
     }
     
     /*

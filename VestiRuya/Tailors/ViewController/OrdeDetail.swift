@@ -74,12 +74,21 @@ class OrdeDetail: UIViewController {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "CustomerInfo") as! CustomerInfo
          vc.select = self.transfer
         vc.selects = self.selects
-        self.navigationController?.pushViewController(vc, animated: true)
+        
+        if let navController = self.navigationController{
+            self.navigationController?.pushViewController(vc, animated: true)
+        }else{
+            self.present(vc, animated: true, completion: nil)
+        }
     }
     
     
     @IBAction func BackBtm(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        if let navController = self.navigationController {
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     func alertPopup(){
@@ -118,7 +127,11 @@ class OrdeDetail: UIViewController {
         }
         print(value.description)
         
-        self.navigationController?.pushViewController(vc, animated: true)
+        if let navController = self.navigationController{
+            self.navigationController?.pushViewController(vc, animated: true)
+        }else{
+            self.present(vc, animated: true, completion: nil)
+        }
          
     }
     override func didReceiveMemoryWarning() {

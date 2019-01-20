@@ -171,7 +171,12 @@ class PayView: UIViewController, PayPalPaymentDelegate {
                             if error == nil {
                                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmCustomer") as! ConfirmCustomer
                                 vc.desiredConfirm = self.desiredSummary
-                                self.navigationController?.pushViewController(vc, animated: true)
+                                
+                                if let navController = self.navigationController{
+                                    self.navigationController?.pushViewController(vc, animated: true)
+                                }else{
+                                    self.present(vc, animated: true, completion: nil)
+                                }
                             } else {
                                 Alert.showAlert(self, title: "Error", message: "Please enter payment, review, and rating before processing")
                             }

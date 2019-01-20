@@ -178,7 +178,12 @@ class TailorInfo: UIViewController, UITableViewDelegate,UITableViewDataSource {
                                                       otherImage: otherImage, loggedinUserName: loggedinUserName)
                     
                     SVProgressHUD.dismiss()
-                    self.navigationController?.pushViewController(chatContainerViewController, animated: true)
+                    if let navController = self.navigationController{
+                       self.navigationController?.pushViewController(chatContainerViewController, animated: true)
+                    }else{
+                        self.present(chatContainerViewController, animated: true, completion: nil)
+                    }
+                    
                 }
             }
         })
@@ -186,8 +191,14 @@ class TailorInfo: UIViewController, UITableViewDelegate,UITableViewDataSource {
     
     @IBAction func confirmed(_ sender: Any){
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "CheckView") as! CheckView
-        vc.desiredTailorJob = desiredTailorJob
-        self.navigationController?.pushViewController(vc, animated: true)
+        
+        if let navController = self.navigationController{
+            vc.desiredTailorJob = desiredTailorJob
+            self.navigationController?.pushViewController(vc, animated: true)
+        }else{
+            self.present(vc, animated: true, completion: nil)
+        }
+        
     }
 
     private func fetchJobInformation() {

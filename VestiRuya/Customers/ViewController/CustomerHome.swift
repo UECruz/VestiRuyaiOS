@@ -421,8 +421,10 @@ class CustomerHome: UIViewController,UITableViewDelegate,UITableViewDataSource {
                             continue
                         }
                         print(x.key)
-                        
                         self.ref.child("Customers").child("Orders").child(x.key).removeValue()
+                
+                        self.ref.child("Tailors").child("Job").childByAutoId().child("\(userId)")
+
                     
                     }
                 }

@@ -129,7 +129,12 @@ class JobDetail: UIViewController {
     }
     
     @IBAction func cancel(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        if let navController = self.navigationController{
+            self.navigationController?.popViewController(animated: true)
+        }else{
+            dismiss(animated: true, completion: nil)
+        }
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

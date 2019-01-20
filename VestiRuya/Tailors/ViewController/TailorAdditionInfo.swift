@@ -114,7 +114,11 @@ class TailorAdditionInfo: UIViewController,UINavigationControllerDelegate, UIIma
     
     func naviagteToHomeScreen() {
         let tailorHomeVC = self.storyboard?.instantiateViewController(withIdentifier: "TailorHome") as! TailorHome
-        self.navigationController?.pushViewController(tailorHomeVC, animated: true)
+        if let navController = self.navigationController{
+            self.navigationController?.pushViewController(tailorHomeVC, animated: true)
+        }else{
+            self.present(tailorHomeVC, animated: true, completion: nil)
+        }
     }
     
     @objc func naviagteToHome () {

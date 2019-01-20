@@ -167,7 +167,11 @@ class CustomerAddintionInfo: UIViewController,UINavigationControllerDelegate, UI
     
     func naviagteToHomeScreen() {
         let tailorHomeVC = self.storyboard?.instantiateViewController(withIdentifier: "CustomerHome") as! CustomerHome
-        self.navigationController?.pushViewController(tailorHomeVC, animated: true)
+        if let navController = self.navigationController{
+         self.navigationController?.pushViewController(tailorHomeVC, animated: true)
+        }else{
+          self.present(tailorHomeVC, animated: true, completion: nil)
+        }
     }
     
     func measureInfo(){
@@ -230,7 +234,11 @@ class CustomerAddintionInfo: UIViewController,UINavigationControllerDelegate, UI
     
     @objc func naviagteToHome () {
         let homeVC = self.storyboard?.instantiateViewController(withIdentifier: "CustomerHome") as! CustomerHome
-        self.navigationController?.pushViewController(homeVC, animated: true)
+        if let navController = self.navigationController{
+             self.navigationController?.pushViewController(homeVC, animated: true)
+        }else{
+            self.present(homeVC, animated: true, completion: nil)
+        }
     }
     
     @IBAction func submit(_ sender: Any) {
