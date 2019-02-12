@@ -118,7 +118,7 @@ class JobDetail: UIViewController {
         
         NotificationCenter.default.post(name:Notification.Name("JobAccepted"),object:nil,
                                         userInfo:["OrderAccept":customerOrders])
-        
+        //error
         for vc in (self.navigationController?.viewControllers)! {
             if vc is TailorHome {
                 _ = self.navigationController?.popToViewController(vc, animated: true)

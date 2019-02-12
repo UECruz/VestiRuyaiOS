@@ -13,7 +13,12 @@ class TailorOffer: UITableViewCell {
     @IBOutlet weak var check: UIImageView!
     @IBOutlet weak var message: UILabel!
     @IBOutlet weak var tailorName: UILabel!
-    @IBOutlet weak var tailorPic: UIImageView!
+    @IBOutlet weak var tailorPic: UIImageView! {
+        didSet {
+            tailorPic.layer.cornerRadius = tailorPic.bounds.width/2
+            tailorPic.layer.masksToBounds = true
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

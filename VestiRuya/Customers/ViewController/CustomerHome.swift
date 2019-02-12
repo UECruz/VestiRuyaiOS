@@ -56,6 +56,9 @@ class CustomerHome: UIViewController,UITableViewDelegate,UITableViewDataSource {
         orderTable.delegate = self
         orderTable.dataSource = self
         
+        tailorJobTable.estimatedRowHeight = 75
+        tailorJobTable.rowHeight = UITableViewAutomaticDimension
+        
         
     }
     
@@ -375,6 +378,7 @@ class CustomerHome: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         if let tailorPic = dict["tailorPic"] as? String{
             cell02.tailorPic.kf.setImage(with: URL(string: tailorPic))
+            cell02.tailorPic.contentMode = .scaleAspectFit
         }
         
         return cell02
@@ -435,8 +439,12 @@ class CustomerHome: UIViewController,UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == tailorJobTable {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "TailorInfo") as! TailorInfo
-        vc.tailorInfo =  tailorIntersted[indexPath.row]
-        self.navigationController?.pushViewController(vc, animated: true)
+            vc.tailorInfo =  tailorIntersted[indexPath.row]
+            if let navController = self.navigationController {
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                self.present(vc, animated: true, completion: nil)
+            }
         }
     }
 }

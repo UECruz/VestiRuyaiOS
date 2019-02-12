@@ -368,7 +368,6 @@
 				AC17576121C21A0300AC9E16 /* HistoryCell.swift */,
 				AC17576221C21A0300AC9E16 /* JobAcceptCell.swift */,
 				AC17575C21C21A0200AC9E16 /* JobCell.swift */,
-				AC17576321C21A0300AC9E16 /* TailorOffer.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -376,6 +375,8 @@
 		AC1756F821C216C300AC9E16 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				AC17576321C21A0300AC9E16 /* TailorOffer.swift */,
+				AC17570521C2199100AC9E16 /* SummaryItem.swift */,
 				AC17575D21C21A0200AC9E16 /* ItemDetail01.swift */,
 				AC17576021C21A0300AC9E16 /* ItemDetail02.swift */,
 				AC17575E21C21A0200AC9E16 /* ItemDetail03.swift */,
@@ -399,7 +400,6 @@
 				AC17570821C2199100AC9E16 /* OrderForCustomer.swift */,
 				AC1756FC21C2199100AC9E16 /* OrderItems.swift */,
 				AC1756FE21C2199100AC9E16 /* ReviewReader.swift */,
-				AC17570521C2199100AC9E16 /* SummaryItem.swift */,
 				AC2226C321C3360800D2744A /* UserProfile.swift */,
 			);
 			path = Model;
@@ -883,6 +883,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TW5V72YMHT;
 				INFOPLIST_FILE = VestiRuya/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -905,6 +906,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TW5V72YMHT;
 				INFOPLIST_FILE = VestiRuya/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -106,6 +106,7 @@ class CustomSummary: UIViewController, UITextFieldDelegate{
                     _ = self.navigationController?.popToViewController(vc, animated: true)
                     break
                 }
+                
             }
         }
     }
