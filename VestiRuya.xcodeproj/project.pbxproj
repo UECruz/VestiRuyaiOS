@@ -195,6 +195,7 @@
 		AC41D86E221F66E6004852DB /* Review02Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review02Cell.swift; sourceTree = "<group>"; };
 		AC41D8702220DA05004852DB /* CustomSummary02.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSummary02.swift; sourceTree = "<group>"; };
 		AC41D8722220E77A004852DB /* SummaryItem02.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryItem02.swift; sourceTree = "<group>"; };
+		AC41D8742223AD5E004852DB /* VestiRuya.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VestiRuya.entitlements; sourceTree = "<group>"; };
 		ACCFB2E42215E09D003EA4B0 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BA7CDFE6D4CD366D155D1AD2 /* Pods_VestiRuya.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VestiRuya.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6235B49903A431D8294034F /* Pods-VestiRuya.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VestiRuya.release.xcconfig"; path = "Pods/Target Support Files/Pods-VestiRuya/Pods-VestiRuya.release.xcconfig"; sourceTree = "<group>"; };
@@ -289,6 +290,7 @@
 		AC17566921C20A6200AC9E16 /* VestiRuya */ = {
 			isa = PBXGroup;
 			children = (
+				AC41D8742223AD5E004852DB /* VestiRuya.entitlements */,
 				AC17577421C2258800AC9E16 /* Basic */,
 				AC1756B221C215F700AC9E16 /* Tailors */,
 				AC1756B121C215EC00AC9E16 /* Customers */,
@@ -526,6 +528,9 @@
 						LastSwiftMigration = 0940;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+							com.apple.SafariKeychain = {
 								enabled = 1;
 							};
 						};
@@ -897,6 +902,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = VestiRuya/VestiRuya.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TW5V72YMHT;
 				INFOPLIST_FILE = VestiRuya/Info.plist;
@@ -920,6 +926,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = VestiRuya/VestiRuya.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TW5V72YMHT;
 				INFOPLIST_FILE = VestiRuya/Info.plist;

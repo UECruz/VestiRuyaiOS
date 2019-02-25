@@ -37,6 +37,7 @@ class Review02Cell: UITableViewCell {
     
     public func configure(with rating: ReviewReader)
     {
+        nameLabel.text = rating.userName ?? ""
         ratingView.rating = Double(rating.rating ?? 3)
         messageLabel.text = rating.message ?? ""
         dateLabel.text = rating.timeStamp ?? ""
