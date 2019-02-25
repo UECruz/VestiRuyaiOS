@@ -4647,7 +4647,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Sleeve:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4A-ut-rgx">
-                                <rect key="frame" x="10" y="346.33333333333331" width="49" height="18"/>
+                                <rect key="frame" x="10" y="346.33333333333331" width="159.66666666666666" height="18"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -4667,7 +4667,7 @@
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1gq-24-umd">
                                 <rect key="frame" x="215.33333333333331" y="593" width="156.33333333333331" height="51"/>
                                 <color key="backgroundColor" red="0.66046981670000005" green="0.7957478791" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Ok">
+                                <state key="normal" image="Checkmark">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -4680,7 +4680,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="51" id="txg-Zj-6OU"/>
                                 </constraints>
-                                <state key="normal" title="Cancel">
+                                <state key="normal" image="delete">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -4712,11 +4712,15 @@
                         <color key="backgroundColor" red="0.85490196080000003" green="0.95686274510000002" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="2y7-Sp-LlH" firstAttribute="bottom" secondItem="CbY-KF-Asi" secondAttribute="bottom" constant="92" id="1k5-h5-GNf"/>
+                            <constraint firstItem="a4w-OV-COA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="o0z-hE-q9F" secondAttribute="trailing" constant="8" symbolic="YES" id="1tg-D2-3m3"/>
                             <constraint firstItem="OMH-xE-chU" firstAttribute="trailing" secondItem="2y7-Sp-LlH" secondAttribute="trailing" id="2GQ-Yy-xud"/>
                             <constraint firstItem="CbY-KF-Asi" firstAttribute="leading" secondItem="HmC-bk-CXF" secondAttribute="leadingMargin" id="2yt-nc-QBf"/>
                             <constraint firstItem="a4w-OV-COA" firstAttribute="leading" secondItem="JRM-kW-Jbw" secondAttribute="leading" id="3fG-Rn-Neu"/>
+                            <constraint firstItem="aU9-rY-Ahp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ovs-ey-8Cm" secondAttribute="trailing" constant="8" symbolic="YES" id="3qJ-AR-hVV"/>
                             <constraint firstItem="Z7v-K2-JeT" firstAttribute="leading" secondItem="2y7-Sp-LlH" secondAttribute="leading" constant="10" id="53S-TR-RbC"/>
                             <constraint firstItem="yZW-8o-Hxf" firstAttribute="leading" secondItem="JRM-kW-Jbw" secondAttribute="leading" id="6RS-D3-abV"/>
+                            <constraint firstItem="2y7-Sp-LlH" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="HWN-nL-sn8" secondAttribute="trailing" symbolic="YES" id="85o-TA-shA"/>
+                            <constraint firstItem="2y7-Sp-LlH" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gf0-Ep-3tg" secondAttribute="trailing" symbolic="YES" id="8O3-Xb-Rzu"/>
                             <constraint firstItem="JRM-kW-Jbw" firstAttribute="top" secondItem="CXG-fw-q9H" secondAttribute="bottom" constant="10" id="8il-dF-Ead"/>
                             <constraint firstItem="gf0-Ep-3tg" firstAttribute="height" secondItem="JRM-kW-Jbw" secondAttribute="height" id="9Ku-qG-Nlg"/>
                             <constraint firstItem="OMH-xE-chU" firstAttribute="leading" secondItem="2y7-Sp-LlH" secondAttribute="leading" id="BO6-bT-Idg"/>
@@ -4725,8 +4729,10 @@
                             <constraint firstItem="1gq-24-umd" firstAttribute="width" secondItem="CbY-KF-Asi" secondAttribute="width" id="DrX-af-Sqj"/>
                             <constraint firstItem="1kb-5Q-42O" firstAttribute="top" secondItem="2y7-Sp-LlH" secondAttribute="top" multiplier="1.5" id="Dtd-tO-TGS"/>
                             <constraint firstItem="JRM-kW-Jbw" firstAttribute="leading" secondItem="CXG-fw-q9H" secondAttribute="leading" id="FRb-o8-ynD"/>
+                            <constraint firstItem="2y7-Sp-LlH" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="aU9-rY-Ahp" secondAttribute="trailing" symbolic="YES" id="Fpa-0E-ZN1"/>
                             <constraint firstItem="yZW-8o-Hxf" firstAttribute="height" secondItem="a4w-OV-COA" secondAttribute="height" id="Gst-7O-5gv"/>
                             <constraint firstItem="Z7v-K2-JeT" firstAttribute="top" secondItem="bgR-7P-ykv" secondAttribute="bottom" constant="10" id="H6f-XB-LPK"/>
+                            <constraint firstItem="gf0-Ep-3tg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xRg-9P-FX3" secondAttribute="trailing" constant="8" symbolic="YES" id="HBe-8P-Lmm"/>
                             <constraint firstItem="HWN-nL-sn8" firstAttribute="leading" secondItem="JRM-kW-Jbw" secondAttribute="leading" id="HT7-YS-uLM"/>
                             <constraint firstItem="bgR-7P-ykv" firstAttribute="leading" secondItem="2y7-Sp-LlH" secondAttribute="leading" constant="10" id="HeB-s8-Fcf"/>
                             <constraint firstItem="2y7-Sp-LlH" firstAttribute="trailing" secondItem="1gq-24-umd" secondAttribute="trailing" multiplier="1.1" constant="5" id="IIA-4H-Oe2"/>
@@ -4740,16 +4746,23 @@
                             <constraint firstItem="2y7-Sp-LlH" firstAttribute="trailing" secondItem="1kb-5Q-42O" secondAttribute="trailing" constant="36" id="UU8-6T-URk"/>
                             <constraint firstItem="2y7-Sp-LlH" firstAttribute="trailing" secondItem="JRM-kW-Jbw" secondAttribute="trailing" id="VWH-EY-lqw"/>
                             <constraint firstItem="qmd-3P-6iT" firstAttribute="top" secondItem="OMH-xE-chU" secondAttribute="bottom" id="VhS-ba-AF1"/>
+                            <constraint firstItem="HWN-nL-sn8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="IFe-4K-MlI" secondAttribute="trailing" constant="8" symbolic="YES" id="d7W-1o-ygs"/>
                             <constraint firstItem="CXG-fw-q9H" firstAttribute="top" secondItem="qmd-3P-6iT" secondAttribute="bottom" constant="10" id="dlP-uW-38F"/>
                             <constraint firstItem="Ovs-ey-8Cm" firstAttribute="leading" secondItem="2y7-Sp-LlH" secondAttribute="leading" constant="10" id="ePV-WM-p3b"/>
+                            <constraint firstItem="2y7-Sp-LlH" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yZW-8o-Hxf" secondAttribute="trailing" symbolic="YES" id="eT9-5L-QWW"/>
                             <constraint firstItem="o0z-hE-q9F" firstAttribute="leading" secondItem="2y7-Sp-LlH" secondAttribute="leading" constant="10" id="eU4-mi-lDD"/>
                             <constraint firstItem="1kb-5Q-42O" firstAttribute="leading" secondItem="2y7-Sp-LlH" secondAttribute="leading" constant="35" id="eeL-hl-akC"/>
+                            <constraint firstItem="CXG-fw-q9H" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bgR-7P-ykv" secondAttribute="trailing" constant="8" symbolic="YES" id="gA3-0Z-hqi"/>
                             <constraint firstItem="HWN-nL-sn8" firstAttribute="top" secondItem="gf0-Ep-3tg" secondAttribute="bottom" constant="10" id="gA9-Im-opc"/>
                             <constraint firstItem="aU9-rY-Ahp" firstAttribute="top" secondItem="yZW-8o-Hxf" secondAttribute="bottom" constant="10" id="gUU-iT-uJO"/>
                             <constraint firstItem="JRM-kW-Jbw" firstAttribute="height" secondItem="CXG-fw-q9H" secondAttribute="height" id="hxy-VZ-RpF"/>
                             <constraint firstItem="OMH-xE-chU" firstAttribute="top" secondItem="1kb-5Q-42O" secondAttribute="bottom" multiplier="1.1" id="mKk-uA-Qet"/>
                             <constraint firstItem="xRg-9P-FX3" firstAttribute="leading" secondItem="2y7-Sp-LlH" secondAttribute="leading" constant="10" id="nRH-ZJ-VNy"/>
+                            <constraint firstItem="JRM-kW-Jbw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Z7v-K2-JeT" secondAttribute="trailing" constant="8" symbolic="YES" id="nYU-zS-ghS"/>
                             <constraint firstItem="a4w-OV-COA" firstAttribute="top" secondItem="HWN-nL-sn8" secondAttribute="bottom" constant="10" id="ohg-YI-gya"/>
+                            <constraint firstItem="yZW-8o-Hxf" firstAttribute="leading" secondItem="a4A-ut-rgx" secondAttribute="trailing" constant="8" symbolic="YES" id="oxj-6L-Li2"/>
+                            <constraint firstItem="2y7-Sp-LlH" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="a4w-OV-COA" secondAttribute="trailing" symbolic="YES" id="pnK-SX-nP1"/>
+                            <constraint firstItem="2y7-Sp-LlH" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="CXG-fw-q9H" secondAttribute="trailing" symbolic="YES" id="pvb-UJ-Sur"/>
                             <constraint firstItem="xRg-9P-FX3" firstAttribute="top" secondItem="Z7v-K2-JeT" secondAttribute="bottom" constant="10" id="rRp-0T-S1u"/>
                             <constraint firstItem="o0z-hE-q9F" firstAttribute="top" secondItem="IFe-4K-MlI" secondAttribute="bottom" constant="10" id="rTC-Vy-JF5"/>
                             <constraint firstItem="gf0-Ep-3tg" firstAttribute="top" secondItem="JRM-kW-Jbw" secondAttribute="bottom" constant="10" id="rrB-ug-cYb"/>
@@ -5065,6 +5078,7 @@
     <resources>
         <image name="Back" width="25" height="25"/>
         <image name="Button2" width="180" height="40"/>
+        <image name="Checkmark" width="25" height="25"/>
         <image name="Edit" width="25" height="25"/>
         <image name="New Job_white" width="25" height="25"/>
         <image name="Redo" width="25" height="25"/>
