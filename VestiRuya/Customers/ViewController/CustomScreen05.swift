@@ -19,7 +19,8 @@ class CustomScreen05: UIViewController,UICollectionViewDelegate, UICollectionVie
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var collectionview05: UICollectionView!
     
-     var customDress:[Dictionary<String, AnyObject>]!
+    var customDress:[Dictionary<String, AnyObject>]!
+    var dress = [Dictionary<String, AnyObject>]()
     
     var data = [Material]()
     
@@ -67,7 +68,7 @@ class CustomScreen05: UIViewController,UICollectionViewDelegate, UICollectionVie
         let x : Material
         
         x = data[indexPath.row]
-        cell.label.text = x.title?.capitalized
+        cell.label.text = x.title?.capitalized.uppercased()
         
         var imageUrl = ""
         if let image = x.pic   {
@@ -103,18 +104,27 @@ class CustomScreen05: UIViewController,UICollectionViewDelegate, UICollectionVie
         dict.updateValue(material.title as AnyObject, forKey: "straps")
         customDress.append(dict)
         
+        var dressType = Dictionary<String, AnyObject>()
+        dressType.updateValue(material.title as AnyObject, forKey: "type")
+        dressType.updateValue(material.pic as AnyObject, forKey: "image")
+        dress.append(dressType)
     }
     
     @IBAction func navigateToNextScreen(_ sender : Any) {
         if customDress.count == 4 {
-            //user did not select bidy type show errro message
+             Alert.showAlert(self, title: "Error", message: "Please select one card to process")
         } else {
             let customScreen = self.storyboard?.instantiateViewController(withIdentifier: "CustomScreen06") as! CustomScreen06
             if let bodyType = customDress[4] as? Dictionary<String,AnyObject> {
                 print("User selected bodytype == \(bodyType["sleeves"])")
             }
             customScreen.customDress = customDress
-            self.navigationController?.pushViewController(customScreen, animated: true)
+            customScreen.dress = dress
+           if let navController = self.navigationController {
+                self.navigationController?.pushViewController(customScreen, animated: true)
+            } else {
+                self.present(customScreen, animated: true, completion: nil)
+            }
         }
     }
 }

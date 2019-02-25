@@ -122,7 +122,7 @@ class TailorInfo: UIViewController, UITableViewDelegate,UITableViewDataSource {
                     }
                 }
                 
-                _ = self.reader.filter({(x) -> Bool in
+                self.reader = self.reader.filter({(x) -> Bool in
                     x.tailorId == tailorID
                 })
                 
@@ -201,6 +201,7 @@ class TailorInfo: UIViewController, UITableViewDelegate,UITableViewDataSource {
         
     }
 
+    //Tailor Interest not showing
     private func fetchJobInformation() {
         let ref = Database.database().reference()
         
@@ -258,7 +259,7 @@ class TailorInfo: UIViewController, UITableViewDelegate,UITableViewDataSource {
         if desiredTailorJob.isConfimed ?? false {
             let identifier = "ORDERREMINDER_" + String(arc4random_uniform(100000))
             let components = Calendar.current.dateComponents([.second, .minute, .hour], from: Date().addingTimeInterval(3))
-            appDelegate.createNotification(title: "Order Update", subtitle: "", body: "Your order is completed.", components: components, identifier: identifier)
+            appDelegate.createNotification(title: "Order Update", subtitle: "", body: "This order is completed.", components: components, identifier: identifier)
             jobConfirmationButton.setImage(#imageLiteral(resourceName: "New Job_black"), for: .normal)
         } else {
             jobConfirmationButton.setImage(#imageLiteral(resourceName: "New Job_white"), for: .normal)

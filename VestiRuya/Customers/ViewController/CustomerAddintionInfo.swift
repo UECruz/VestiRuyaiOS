@@ -110,27 +110,138 @@ class CustomerAddintionInfo: UIViewController,UINavigationControllerDelegate, UI
         sample1 = UIImagePickerController()
         sample1! .delegate = self
         sample1! .allowsEditing = false
-        sample1! .sourceType = .photoLibrary
-        sample1! .mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-        present(sample1! , animated: true, completion: nil)
+        let alert:UIAlertController=UIAlertController(title: "Choose Image", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let cameraAction = UIAlertAction(title: "Camera", style: UIAlertActionStyle.default)
+        {
+            UIAlertAction in
+            self.openCamera1()
+        }
+        let gallaryAction = UIAlertAction(title: "Gallary", style: UIAlertActionStyle.default)
+        {
+            UIAlertAction in
+            self.openGallery1()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel)
+        {
+            UIAlertAction in
+        }
+        
+        alert.addAction(cameraAction)
+        alert.addAction(gallaryAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func uploadImage2(_ sender: Any) {
         sample2 = UIImagePickerController()
         sample2! .delegate = self
         sample2! .allowsEditing = false
-        sample2! .sourceType = .photoLibrary
-        sample2! .mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-        present(sample2! , animated: true, completion: nil)
+        let alert:UIAlertController=UIAlertController(title: "Choose Image", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let cameraAction = UIAlertAction(title: "Camera", style: UIAlertActionStyle.default)
+        {
+            UIAlertAction in
+            self.openCamera2()
+        }
+        let gallaryAction = UIAlertAction(title: "Gallary", style: UIAlertActionStyle.default)
+        {
+            UIAlertAction in
+            self.openGallery2()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel)
+        {
+            UIAlertAction in
+        }
+        
+        alert.addAction(cameraAction)
+        alert.addAction(gallaryAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func uploadIMage3(_ sender: Any) {
         sample3 = UIImagePickerController()
         sample3! .delegate = self
         sample3! .allowsEditing = false
-        sample3! .sourceType = .photoLibrary
-        sample3! .mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-        present(sample3! , animated: true, completion: nil)
+        let alert:UIAlertController=UIAlertController(title: "Choose Image", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let cameraAction = UIAlertAction(title: "Camera", style: UIAlertActionStyle.default)
+        {
+            UIAlertAction in
+            self.openCamera3()
+        }
+        let gallaryAction = UIAlertAction(title: "Gallary", style: UIAlertActionStyle.default)
+        {
+            UIAlertAction in
+            self.openGallery3()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel)
+        {
+            UIAlertAction in
+        }
+        
+        alert.addAction(cameraAction)
+        alert.addAction(gallaryAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func openGallery1(){
+        if(UIImagePickerController .isSourceTypeAvailable(.photoLibrary)){
+            sample1!.sourceType = .photoLibrary
+            sample1! .mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+            present(sample1!, animated: true, completion: nil)
+        }
+    }
+    
+    func openCamera1(){
+        if(UIImagePickerController .isSourceTypeAvailable(.camera)){
+            sample1!.sourceType = .camera
+            sample1! .mediaTypes = UIImagePickerController.availableMediaTypes(for: .camera)!
+            present(sample1!, animated: true, completion: nil)
+        } else {
+            let alertWarning = UIAlertController(title: "Warning", message: "Camera not avaible", preferredStyle: .alert)
+            alertWarning.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alertWarning, animated: true, completion: nil)
+        }
+    }
+    
+    func openGallery2(){
+        if(UIImagePickerController .isSourceTypeAvailable(.photoLibrary)){
+            sample2!.sourceType = .photoLibrary
+            sample2! .mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+            present(sample2!, animated: true, completion: nil)
+        }
+    }
+    
+    func openCamera2(){
+        if(UIImagePickerController .isSourceTypeAvailable(.camera)){
+            sample2!.sourceType = .camera
+            sample2! .mediaTypes = UIImagePickerController.availableMediaTypes(for: .camera)!
+            present(sample2!, animated: true, completion: nil)
+        } else {
+            let alertWarning = UIAlertController(title: "Warning", message: "Camera not avaible", preferredStyle: .alert)
+            alertWarning.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alertWarning, animated: true, completion: nil)
+        }
+    }
+    
+    func openGallery3(){
+        if(UIImagePickerController .isSourceTypeAvailable(.photoLibrary)){
+            sample3!.sourceType = .photoLibrary
+            sample3! .mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+            present(sample3!, animated: true, completion: nil)
+        }
+    }
+    
+    func openCamera3(){
+        if(UIImagePickerController .isSourceTypeAvailable(.camera)){
+            sample3!.sourceType = .camera
+            sample3! .mediaTypes = UIImagePickerController.availableMediaTypes(for: .camera)!
+            present(sample3!, animated: true, completion: nil)
+        } else {
+            let alertWarning = UIAlertController(title: "Warning", message: "Camera not avaible", preferredStyle: .alert)
+            alertWarning.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alertWarning, animated: true, completion: nil)
+        }
     }
     
     func savingSampleImage(){

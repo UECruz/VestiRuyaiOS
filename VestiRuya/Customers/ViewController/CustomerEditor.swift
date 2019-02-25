@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
+import SVProgressHUD
 
 class CustomerEditor: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
 
@@ -32,15 +33,269 @@ class CustomerEditor: UIViewController, UINavigationControllerDelegate, UIImageP
     var newEmail: String?
     var newPass: String?
     
+    @IBOutlet weak var image1: UIImageView!
+    @IBOutlet weak var image2: UIImageView!
+    @IBOutlet weak var image3: UIImageView!
+    
+    var sample1: UIImagePickerController?
+    var sample2: UIImagePickerController?
+    var sample3: UIImagePickerController?
+    var picking = UIImagePickerController()
+    
     @IBAction func imageUpload(_ sender: Any) {
         
-        let picking = UIImagePickerController()
         picking .delegate = self
         picking .allowsEditing = true
-        picking .sourceType = .photoLibrary
-        picking .mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-        present(picking , animated: true, completion: nil)
+        let alert:UIAlertController=UIAlertController(title: "Choose Image", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let cameraAction = UIAlertAction(title: "Camera", style: UIAlertActionStyle.default)
+        {
+            UIAlertAction in
+            self.openCamera()
+        }
+        let gallaryAction = UIAlertAction(title: "Gallary", style: UIAlertActionStyle.default)
+        {
+            UIAlertAction in
+            self.openGallery()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel)
+        {
+            UIAlertAction in
+        }
+        
+        alert.addAction(cameraAction)
+        alert.addAction(gallaryAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
     }
+    
+    @IBAction func imageUpload1(_ sender: Any) {
+        sample1 = UIImagePickerController()
+        sample1!.delegate = self
+        sample1!.allowsEditing = false
+        let alert:UIAlertController=UIAlertController(title: "Choose Image", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let cameraAction = UIAlertAction(title: "Camera", style: UIAlertActionStyle.default)
+        {
+            UIAlertAction in
+            self.openCamera1()
+        }
+        let gallaryAction = UIAlertAction(title: "Gallary", style: UIAlertActionStyle.default)
+        {
+            UIAlertAction in
+            self.openGallery1()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel)
+        {
+            UIAlertAction in
+        }
+        
+        alert.addAction(cameraAction)
+        alert.addAction(gallaryAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func imageUpload2(_ sender: Any) {
+        sample2 = UIImagePickerController()
+        sample2! .delegate = self
+        sample2! .allowsEditing = false
+        let alert:UIAlertController=UIAlertController(title: "Choose Image", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let cameraAction = UIAlertAction(title: "Camera", style: UIAlertActionStyle.default)
+        {
+            UIAlertAction in
+            self.openCamera2()
+        }
+        let gallaryAction = UIAlertAction(title: "Gallary", style: UIAlertActionStyle.default)
+        {
+            UIAlertAction in
+            self.openGallery2()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel)
+        {
+            UIAlertAction in
+        }
+        
+        alert.addAction(cameraAction)
+        alert.addAction(gallaryAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func imageUpload3(_ sender: Any) {
+        sample3 = UIImagePickerController()
+        sample3! .delegate = self
+        sample3! .allowsEditing = false
+        let alert:UIAlertController=UIAlertController(title: "Choose Image", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let cameraAction = UIAlertAction(title: "Camera", style: UIAlertActionStyle.default)
+        {
+            UIAlertAction in
+            self.openCamera3()
+        }
+        let gallaryAction = UIAlertAction(title: "Gallary", style: UIAlertActionStyle.default)
+        {
+            UIAlertAction in
+            self.openGallery3()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel)
+        {
+            UIAlertAction in
+        }
+        
+        alert.addAction(cameraAction)
+        alert.addAction(gallaryAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func openGallery(){
+        if(UIImagePickerController .isSourceTypeAvailable(.photoLibrary)){
+            picking.sourceType = .photoLibrary
+            picking .mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+            present(picking, animated: true, completion: nil)
+        }
+    }
+    
+    func openCamera(){
+        if(UIImagePickerController .isSourceTypeAvailable(.camera)){
+            picking.sourceType = .camera
+            picking .mediaTypes = UIImagePickerController.availableMediaTypes(for: .camera)!
+            present(picking, animated: true, completion: nil)
+        } else {
+            let alertWarning = UIAlertController(title: "Warning", message: "Camera not avaible", preferredStyle: .alert)
+            alertWarning.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alertWarning, animated: true, completion: nil)
+        }
+    }
+    
+    func openGallery1(){
+        if(UIImagePickerController .isSourceTypeAvailable(.photoLibrary)){
+            sample1!.sourceType = .photoLibrary
+            sample1! .mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+            present(sample1!, animated: true, completion: nil)
+        }
+    }
+    
+    func openCamera1(){
+        if(UIImagePickerController .isSourceTypeAvailable(.camera)){
+            sample1!.sourceType = .camera
+            sample1! .mediaTypes = UIImagePickerController.availableMediaTypes(for: .camera)!
+            present(sample1!, animated: true, completion: nil)
+        } else {
+            let alertWarning = UIAlertController(title: "Warning", message: "Camera not avaible", preferredStyle: .alert)
+            alertWarning.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alertWarning, animated: true, completion: nil)
+        }
+    }
+    
+    func openGallery2(){
+        if(UIImagePickerController .isSourceTypeAvailable(.photoLibrary)){
+            sample2!.sourceType = .photoLibrary
+            sample2! .mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+            present(sample2!, animated: true, completion: nil)
+        }
+    }
+    
+    func openCamera2(){
+        if(UIImagePickerController .isSourceTypeAvailable(.camera)){
+            sample2!.sourceType = .camera
+            sample2! .mediaTypes = UIImagePickerController.availableMediaTypes(for: .camera)!
+            present(sample2!, animated: true, completion: nil)
+        } else {
+            let alertWarning = UIAlertController(title: "Warning", message: "Camera not avaible", preferredStyle: .alert)
+            alertWarning.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alertWarning, animated: true, completion: nil)
+        }
+    }
+    
+    func openGallery3(){
+        if(UIImagePickerController .isSourceTypeAvailable(.photoLibrary)){
+            sample3!.sourceType = .photoLibrary
+            sample3! .mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+            present(sample3!, animated: true, completion: nil)
+        }
+    }
+    
+    func openCamera3(){
+        if(UIImagePickerController .isSourceTypeAvailable(.camera)){
+            sample3!.sourceType = .camera
+            sample3! .mediaTypes = UIImagePickerController.availableMediaTypes(for: .camera)!
+            present(sample3!, animated: true, completion: nil)
+        } else {
+            let alertWarning = UIAlertController(title: "Warning", message: "Camera not avaible", preferredStyle: .alert)
+            alertWarning.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alertWarning, animated: true, completion: nil)
+        }
+    }
+    
+    func savingSamples(){
+        let tailorUser = Auth.auth().currentUser?.uid
+        
+        guard let image1 = self.image1.image else {return}
+        guard let image2 = self.image2.image else {return}
+        guard let image3 = self.image3.image else {return}
+        
+        let imageArray = [image1,image2,image3]
+        
+        var index = 1
+        SVProgressHUD.show()
+        for im in imageArray{
+            let storageRef = self.storageRef.child("customers_sample_images").child("\(tailorUser!)_File_\(index)")
+            let data: NSData = NSData(data: UIImagePNGRepresentation(im)!)
+            storageRef.putData(data as Data,metadata:nil,completion: {(metadata,error) in
+                if error != nil{
+                    print(error!)
+                    SVProgressHUD.dismiss()
+                    return
+                }
+            })
+            index = index + 1
+        }
+        SVProgressHUD.dismiss()
+        
+    }
+    
+    fileprivate func prepoluateData() {
+        ref.child("Customers").child("\(user!)").observeSingleEvent(of: .value, with: {(snapshot) in
+            let value = snapshot.value as? NSDictionary
+            let username = value?["username"] as? String ?? ""
+            let email = value?["email"] as? String
+            let pic = value?["profilePic"] as? String
+            let address = value?["address"] as? String
+            let city = value?["city"] as? String
+            let password = value?["password"] as? String
+            
+            self.userEdit.text = username
+            self.emailEdit.text = email
+            self.imageView.kf.setImage(with: URL(string: pic!))
+            self.address1.text = address
+            self.address2.text = city
+            self.passEdit.text = password
+            
+        }){ (error) in
+            print(error.localizedDescription)
+        }
+        
+        for  i in 1...3 {
+            let sampleStorageReference =  storageRef.child("customers_sample_images").child("\(Auth.auth().currentUser?.uid ?? "")_File_\(i)")
+            
+            sampleStorageReference.downloadURL { (imageURL, error) in
+                if error == nil {
+                    if i == 1 {
+                        self.image1.kf.setImage(with: imageURL)
+                    } else if i == 2 {
+                        self.image2.kf.setImage(with: imageURL)
+                    } else {
+                        self.image3.kf.setImage(with: imageURL)
+                    }
+                } else {
+                    print("We have error = \(error?.localizedDescription ?? "")")
+                }
+                
+            }
+        }
+        
+        
+    }
+    
     
     
     override func viewDidLoad() {
@@ -54,10 +309,13 @@ class CustomerEditor: UIViewController, UINavigationControllerDelegate, UIImageP
         address1.delegate = self
         address2.delegate = self
         
+        prepoluateData()
+        
     }
     
     
     @IBAction func saveBtm(_ sender: Any) {
+        savingSamples()
         updateInfo()
     }
     

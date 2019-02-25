@@ -25,6 +25,10 @@ class CustomerProfile: UIViewController {
     var ref: DatabaseReference!
     var profile : [UserProfile] = []
     var pro : UserProfile?
+    
+    @IBOutlet weak var image1: UIImageView!
+    @IBOutlet weak var image2: UIImageView!
+    @IBOutlet weak var image3: UIImageView!
  
     
     override func viewDidLoad() {
@@ -51,6 +55,25 @@ class CustomerProfile: UIViewController {
             
         }){ (error) in
             print(error.localizedDescription)
+        }
+        
+        for  i in 1...3 {
+            let sampleStorageReference =  Storage.storage().reference().child("customers_sample_images").child("\(Auth.auth().currentUser?.uid ?? "")_File_\(i)")
+            
+            sampleStorageReference.downloadURL { (imageURL, error) in
+                if error == nil {
+                    if i == 1 {
+                        self.image1.kf.setImage(with: imageURL)
+                    } else if i == 2 {
+                        self.image2.kf.setImage(with: imageURL)
+                    } else {
+                        self.image3.kf.setImage(with: imageURL)
+                    }
+                } else {
+                    print("We have error = \(error?.localizedDescription ?? "")")
+                }
+                
+            }
         }
     }
     

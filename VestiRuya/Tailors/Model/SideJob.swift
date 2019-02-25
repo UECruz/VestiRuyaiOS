@@ -18,8 +18,9 @@ class SideJob: NSObject{
     var accepted: Bool?
     var userId: String
     var originalId: String
+    var date: String
     
-    init(username:String,pic: String, priceTotal: Double, items: OrderItems, opion: Bool, userId: String, custId:String,isConfirmed: Bool){
+    init(username:String,pic: String, priceTotal: Double,date:String, items: OrderItems, opion: Bool, userId: String, custId:String,isConfirmed: Bool){
         
         self.name = username
         self.urlPic = pic
@@ -29,5 +30,6 @@ class SideJob: NSObject{
         self.accepted = opion
         self.isConfirmed = isConfirmed
         self.originalId = custId
+        self.date = date
     }
 }

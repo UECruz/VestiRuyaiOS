@@ -18,12 +18,14 @@ class OrderData: NSObject{
     var tailorID :String?
     var picUrl: String?
     var intrestsShown = [AnyObject]()
+    var dateDue: String?
     
     
-    init(username:String,pc: String, priceTotal: Double, items: OrderItems){
+    init(username:String,pc: String, dateDue:String, priceTotal: Double, items: OrderItems){
         self.username = username
         self.picUrl = pc
         self.totalPrice = priceTotal
         self.orderItems = items
+        self.dateDue = dateDue
     }
 }

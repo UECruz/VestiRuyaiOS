@@ -38,6 +38,9 @@ class JobDetail: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         dataRef = Database.database().reference()
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        proficImage.isUserInteractionEnabled = true
+        proficImage.addGestureRecognizer(tapGestureRecognizer)
         
         desc()
     }
@@ -58,6 +61,24 @@ class JobDetail: UIViewController {
         self.neckline.text = selects?.orderItems.neckline
         self.slevee.text = selects?.orderItems.sleeves
         self.strap.text = selects?.orderItems.straps
+        
+    }
+    
+    func checkJobInfo(){
+     
+    }
+    
+    // Go to Customer Info
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CustomerInfo") as! CustomerInfo
+        vc.orderData = self.selects
+        
+        if let navController = self.navigationController{
+            self.navigationController?.pushViewController(vc, animated: true)
+        }else{
+            self.present(vc, animated: true, completion: nil)
+        }
         
     }
     
@@ -112,18 +133,22 @@ class JobDetail: UIViewController {
         customerOrders.append(dict1)
         print(customerOrders.description)
         
-        let orderlistDict = ["userId": tailorUser!,"name": name.text ?? "", "price": price.text ?? "", "pics": selects?.picUrl ?? "","customerId": selects?.customerId ?? "", "isAccepted": accepted,"isConfimed": false,"items": ["dressType": dresstype.text, "fabric": fabric.text, "embellish": embellishment.text, "backDetail": backDetail.text, "slevee": slevee.text, "neckline": neckline.text, "strap": strap.text]] as [String : Any]
+        let orderlistDict = ["userId": tailorUser!,"tailorname": Auth.auth().currentUser?.displayName ?? "","name": name.text ?? "", "price": price.text ?? "", "pics": selects?.picUrl ?? "","customerId": selects?.customerId ?? "","date": selects?.dateDue ?? "", "isAccepted": accepted,"isConfimed": false,"items": ["dressType": dresstype.text, "fabric": fabric.text, "embellish": embellishment.text, "backDetail": backDetail.text, "slevee": slevee.text, "neckline": neckline.text, "strap": strap.text]] as [String : Any]
         
-        self.dataRef.child("Tailors").child("Job").childByAutoId().updateChildValues(orderlistDict)
+        self.dataRef.child("Tailors").child("Job").child((self.selects?.orderID)!).updateChildValues(orderlistDict)
         
-        NotificationCenter.default.post(name:Notification.Name("JobAccepted"),object:nil,
-                                        userInfo:["OrderAccept":customerOrders])
-        //error
-        for vc in (self.navigationController?.viewControllers)! {
-            if vc is TailorHome {
-                _ = self.navigationController?.popToViewController(vc, animated: true)
-                break
+      
+        if let viewControllers = self.navigationController?.viewControllers {
+            for vc in viewControllers {
+                if vc is TailorHome {
+                    _ = self.navigationController?.popToViewController(vc, animated: true)
+                    break
+                }
             }
+        } else {
+            let tailorHomeVC = self.storyboard?.instantiateViewController(withIdentifier: "TailorHome") as! TailorHome
+            
+            self.present(tailorHomeVC, animated: true, completion: nil)
         }
 
     }

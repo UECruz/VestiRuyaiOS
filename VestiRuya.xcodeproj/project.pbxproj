@@ -65,7 +65,6 @@
 		AC17575221C219AE00AC9E16 /* CheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17573121C219AD00AC9E16 /* CheckView.swift */; };
 		AC17575321C219AE00AC9E16 /* PayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17573221C219AD00AC9E16 /* PayView.swift */; };
 		AC17575421C219AE00AC9E16 /* CustomScreen07.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17573321C219AD00AC9E16 /* CustomScreen07.swift */; };
-		AC17575521C219AE00AC9E16 /* CustomSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17573421C219AD00AC9E16 /* CustomSummary.swift */; };
 		AC17575621C219AE00AC9E16 /* CustomerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17573521C219AD00AC9E16 /* CustomerInfo.swift */; };
 		AC17575721C219AE00AC9E16 /* TailorEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17573621C219AD00AC9E16 /* TailorEditor.swift */; };
 		AC17575821C219AE00AC9E16 /* TailorRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17573721C219AD00AC9E16 /* TailorRegister.swift */; };
@@ -84,6 +83,10 @@
 		AC17577321C2240C00AC9E16 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC17577221C2240C00AC9E16 /* GoogleService-Info.plist */; };
 		AC206C3D21EC7E5D00F378BB /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC206C3C21EC7E5D00F378BB /* LoginController.swift */; };
 		AC2226C421C3360800D2744A /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2226C321C3360800D2744A /* UserProfile.swift */; };
+		AC41D86F221F66E6004852DB /* Review02Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC41D86E221F66E6004852DB /* Review02Cell.swift */; };
+		AC41D8712220DA05004852DB /* CustomSummary02.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC41D8702220DA05004852DB /* CustomSummary02.swift */; };
+		AC41D8732220E77A004852DB /* SummaryItem02.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC41D8722220E77A004852DB /* SummaryItem02.swift */; };
+		ACCFB2E52215E09D003EA4B0 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACCFB2E42215E09D003EA4B0 /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,7 +173,6 @@
 		AC17573121C219AD00AC9E16 /* CheckView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckView.swift; sourceTree = "<group>"; };
 		AC17573221C219AD00AC9E16 /* PayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayView.swift; sourceTree = "<group>"; };
 		AC17573321C219AD00AC9E16 /* CustomScreen07.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomScreen07.swift; sourceTree = "<group>"; };
-		AC17573421C219AD00AC9E16 /* CustomSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSummary.swift; sourceTree = "<group>"; };
 		AC17573521C219AD00AC9E16 /* CustomerInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerInfo.swift; sourceTree = "<group>"; };
 		AC17573621C219AD00AC9E16 /* TailorEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TailorEditor.swift; sourceTree = "<group>"; };
 		AC17573721C219AD00AC9E16 /* TailorRegister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TailorRegister.swift; sourceTree = "<group>"; };
@@ -190,6 +192,10 @@
 		AC17577221C2240C00AC9E16 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		AC206C3C21EC7E5D00F378BB /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		AC2226C321C3360800D2744A /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		AC41D86E221F66E6004852DB /* Review02Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review02Cell.swift; sourceTree = "<group>"; };
+		AC41D8702220DA05004852DB /* CustomSummary02.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSummary02.swift; sourceTree = "<group>"; };
+		AC41D8722220E77A004852DB /* SummaryItem02.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryItem02.swift; sourceTree = "<group>"; };
+		ACCFB2E42215E09D003EA4B0 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BA7CDFE6D4CD366D155D1AD2 /* Pods_VestiRuya.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VestiRuya.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6235B49903A431D8294034F /* Pods-VestiRuya.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VestiRuya.release.xcconfig"; path = "Pods/Target Support Files/Pods-VestiRuya/Pods-VestiRuya.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -209,6 +215,7 @@
 				AC1756A221C213E700AC9E16 /* AudioToolbox.framework in Frameworks */,
 				AC1756A021C213CC00AC9E16 /* Accelerate.framework in Frameworks */,
 				8317CD0E1A8D2DD7E1E854C8 /* Pods_VestiRuya.framework in Frameworks */,
+				ACCFB2E52215E09D003EA4B0 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +248,7 @@
 		491C1A41B3CAA4B78FF1F476 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ACCFB2E42215E09D003EA4B0 /* StoreKit.framework */,
 				AC1756A621C2144100AC9E16 /* CoreLocation.framework */,
 				AC1756A721C2144100AC9E16 /* CoreMedia.framework */,
 				AC1756A521C2144100AC9E16 /* Messages.framework */,
@@ -368,6 +376,7 @@
 				AC17576121C21A0300AC9E16 /* HistoryCell.swift */,
 				AC17576221C21A0300AC9E16 /* JobAcceptCell.swift */,
 				AC17575C21C21A0200AC9E16 /* JobCell.swift */,
+				AC41D86E221F66E6004852DB /* Review02Cell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -385,6 +394,7 @@
 				AC17575A21C21A0200AC9E16 /* ItemDetail06.swift */,
 				AC17575B21C21A0200AC9E16 /* ItemDetail07.swift */,
 				AC17575F21C21A0300AC9E16 /* ReviewCell.swift */,
+				AC41D8722220E77A004852DB /* SummaryItem02.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -423,7 +433,7 @@
 				AC17571721C219AB00AC9E16 /* CustomScreen05.swift */,
 				AC17571B21C219AB00AC9E16 /* CustomScreen06.swift */,
 				AC17573321C219AD00AC9E16 /* CustomScreen07.swift */,
-				AC17573421C219AD00AC9E16 /* CustomSummary.swift */,
+				AC41D8702220DA05004852DB /* CustomSummary02.swift */,
 				AC17573221C219AD00AC9E16 /* PayView.swift */,
 				AC17572321C219AC00AC9E16 /* TailorInfo.swift */,
 			);
@@ -514,6 +524,11 @@
 					AC17566621C20A6200AC9E16 = {
 						CreatedOnToolsVersion = 9.4.1;
 						LastSwiftMigration = 0940;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 					AC17567D21C20A6400AC9E16 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -583,6 +598,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-VestiRuya/Pods-VestiRuya-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/CLImageViewPopup/CLImageViewPopup.framework",
 				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
 				"${BUILT_PRODUCTS_DIR}/FlexibleSteppedProgressBar/FlexibleSteppedProgressBar.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
@@ -591,7 +607,6 @@
 				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/MessageKit/MessageKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -601,6 +616,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CLImageViewPopup.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlexibleSteppedProgressBar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
@@ -609,7 +625,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -658,6 +673,7 @@
 				AC17574A21C219AE00AC9E16 /* CustomerProfile.swift in Sources */,
 				AC17570A21C2199100AC9E16 /* OrderItems.swift in Sources */,
 				AC17574721C219AE00AC9E16 /* CustomerHome.swift in Sources */,
+				AC41D8732220E77A004852DB /* SummaryItem02.swift in Sources */,
 				AC206C3D21EC7E5D00F378BB /* LoginController.swift in Sources */,
 				AC17576B21C21A0300AC9E16 /* ReviewCell.swift in Sources */,
 				AC17574921C219AE00AC9E16 /* OrdeDetail.swift in Sources */,
@@ -684,12 +700,14 @@
 				AC17574321C219AE00AC9E16 /* TailorProfile.swift in Sources */,
 				AC17570C21C2199100AC9E16 /* ReviewReader.swift in Sources */,
 				AC17573B21C219AE00AC9E16 /* CustomerAddintionInfo.swift in Sources */,
+				AC41D86F221F66E6004852DB /* Review02Cell.swift in Sources */,
 				AC17573921C219AE00AC9E16 /* TailorAdditionInfo.swift in Sources */,
 				AC17575421C219AE00AC9E16 /* CustomScreen07.swift in Sources */,
 				AC17575821C219AE00AC9E16 /* TailorRegister.swift in Sources */,
 				AC17576621C21A0300AC9E16 /* ItemDetail06.swift in Sources */,
 				AC17575321C219AE00AC9E16 /* PayView.swift in Sources */,
 				AC17575021C219AE00AC9E16 /* CustomerEditor.swift in Sources */,
+				AC41D8712220DA05004852DB /* CustomSummary02.swift in Sources */,
 				AC17574D21C219AE00AC9E16 /* JobList.swift in Sources */,
 				AC17574621C219AE00AC9E16 /* ConfirmCustomer.swift in Sources */,
 				AC17571221C2199100AC9E16 /* Alerts.swift in Sources */,
@@ -704,7 +722,6 @@
 				AC17575621C219AE00AC9E16 /* CustomerInfo.swift in Sources */,
 				AC17573821C219AE00AC9E16 /* CustomScreen05.swift in Sources */,
 				AC17574821C219AE00AC9E16 /* ChatContainerViewController.swift in Sources */,
-				AC17575521C219AE00AC9E16 /* CustomSummary.swift in Sources */,
 				AC17577021C21A0300AC9E16 /* ItemDetail05.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

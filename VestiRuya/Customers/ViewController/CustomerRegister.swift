@@ -25,6 +25,7 @@ class CustomerRegister: UIViewController,UINavigationControllerDelegate,UIImageP
     
     var ref:DatabaseReference!
     var storageRef: StorageReference!
+    var picking = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,12 +79,49 @@ class CustomerRegister: UIViewController,UINavigationControllerDelegate,UIImageP
     
     @IBAction func imageUpload(_ sender: Any) {
         
-        let picking = UIImagePickerController()
+        
         picking .delegate = self
         picking .allowsEditing = false
-        picking .sourceType = .photoLibrary
-        picking .mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-        present(picking , animated: true, completion: nil)
+        let alert:UIAlertController=UIAlertController(title: "Choose Image", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let cameraAction = UIAlertAction(title: "Camera", style: UIAlertActionStyle.default)
+        {
+            UIAlertAction in
+            self.openCamera()
+        }
+        let gallaryAction = UIAlertAction(title: "Gallary", style: UIAlertActionStyle.default)
+        {
+            UIAlertAction in
+            self.openGallery()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel)
+        {
+            UIAlertAction in
+        }
+        
+        alert.addAction(cameraAction)
+        alert.addAction(gallaryAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func openGallery(){
+        if(UIImagePickerController .isSourceTypeAvailable(.photoLibrary)){
+            picking.sourceType = .photoLibrary
+            picking .mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+            present(picking, animated: true, completion: nil)
+        }
+    }
+    
+    func openCamera(){
+        if(UIImagePickerController .isSourceTypeAvailable(.camera)){
+            picking.sourceType = .camera
+            picking .mediaTypes = UIImagePickerController.availableMediaTypes(for: .camera)!
+            present(picking, animated: true, completion: nil)
+        } else {
+            let alertWarning = UIAlertController(title: "Warning", message: "Camera not avaible", preferredStyle: .alert)
+            alertWarning.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alertWarning, animated: true, completion: nil)
+        }
     }
     
     @IBAction func submit(_ sender: Any) {
@@ -99,7 +137,9 @@ class CustomerRegister: UIViewController,UINavigationControllerDelegate,UIImageP
         
         if ((email?.isEmpty)! && (password?.isEmpty)! && (username?.isEmpty)! && (stateCity?.isEmpty)! && (address?.isEmpty)!){
             Alert.showAlert(self, title: "Error", message: "Please fill in the box.")
-        }else{
+        } else if !isValidPassword(password ?? "") {
+            Alert.showAlert(self, title: "Security Alert", message: "Password must be minimum 8 characters long with at least 1 Alphabet and 1 Number.")
+        } else {
             SVProgressHUD.show()
             Auth.auth().createUser(withEmail: email!, password: password!, completion: { (user, error) in
                 if let error = error {
@@ -179,6 +219,11 @@ class CustomerRegister: UIViewController,UINavigationControllerDelegate,UIImageP
     func Next(){
         SVProgressHUD.dismiss()
         self.performSegue(withIdentifier: "signUpSegue", sender: nil)
+    }
+    
+    public func isValidPassword(_ password: String) -> Bool {
+        let passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$"
+        return NSPredicate(format: "SELF MATCHES %@", passwordRegex).evaluate(with: password)
     }
 
 }

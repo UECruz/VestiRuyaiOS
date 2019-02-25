@@ -15,8 +15,18 @@ import Kingfisher
 class TailorHome: UIViewController, UITableViewDataSource,UITableViewDelegate {
     
     @IBOutlet weak var navBar: UINavigationBar!
-    @IBOutlet weak var tableview: UITableView!
-    @IBOutlet weak var tableview2: UITableView!
+    @IBOutlet weak var tableview: UITableView! {
+        didSet {
+            tableview.delegate = self
+            tableview.dataSource = self
+        }
+    }
+    @IBOutlet weak var tableview2: UITableView! {
+        didSet {
+            tableview2.delegate = self
+            tableview2.dataSource = self
+        }
+    }
     
     var ref: DatabaseReference!
     
@@ -26,6 +36,7 @@ class TailorHome: UIViewController, UITableViewDataSource,UITableViewDelegate {
     var tailorJobs: [TailorJob] = []
     var finishedJobs: [TailorJob] = []
     var historyJobs : [TailorJob] = []
+    var ownJobs: [TailorJob] = []
     
     var pricey:Double = 0.0
 
@@ -36,6 +47,12 @@ class TailorHome: UIViewController, UITableViewDataSource,UITableViewDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(jobAccepted(_:)), name: Notification.Name("JobAccepted"), object: nil)
 
         // Do any additional setup after loading the view.
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         let tailorUser = Auth.auth().currentUser?.uid
         ref = Database.database().reference()
         
@@ -50,10 +67,10 @@ class TailorHome: UIViewController, UITableViewDataSource,UITableViewDelegate {
             let username = value?["username"] as? String ?? "cs"
             self.navBar.topItem?.title = username
             
-           
+            
             self.jobAccept()
             self.calltoAction()
-           
+            
             
         }){(error) in
             print(error.localizedDescription)
@@ -112,6 +129,8 @@ class TailorHome: UIViewController, UITableViewDataSource,UITableViewDelegate {
             
             let price = infoDict["price"] as! String
             
+            let date = infoDict["date"] as! String
+            
             if let bD = infoDict["backDetails"] as? String{
                 orderItem.backDetail = bD
             }
@@ -120,7 +139,7 @@ class TailorHome: UIViewController, UITableViewDataSource,UITableViewDelegate {
                 orderItem.neckline = neckLines
             }
             
-            let tailorJob = JobOrders(username: customerName, pic: customerProfile, priceTotal: Double(price)!, items: orderItem, opion: acc, userId: "FakeId11Fake",isConfirmed: isConfirmed)
+            let tailorJob = JobOrders(username: customerName, pic: customerProfile, date: date, priceTotal: Double(price)!, items: orderItem, opion: acc, userId: "FakeId11Fake", isConfirmed: isConfirmed)
             
             print(tailorJob.description)
             
@@ -129,11 +148,11 @@ class TailorHome: UIViewController, UITableViewDataSource,UITableViewDelegate {
         }
         
     }
-    
+
     private func getFinishedOrders() {
         ref.child("Tailors").child("Job").observe(.value) { snapshot in
+            self.tailorJobs.removeAll()
             if snapshot.childrenCount > 0 {
-                self.tailorJobs.removeAll()
                 for tailorJob in snapshot.children.allObjects as! [DataSnapshot] {
                     do {
                         let data = try JSONSerialization.data(withJSONObject: tailorJob.value as Any, options: .prettyPrinted)
@@ -148,17 +167,8 @@ class TailorHome: UIViewController, UITableViewDataSource,UITableViewDelegate {
                 self.finishedJobs = self.tailorJobs.filter({ (job) -> Bool in
                     job.isConfimed == true
                 })
-                
-//                ref.child("Tailors").child("History").childByAutoId().
-//
-//                self.ref.child("Tailors").child(userID).updateChildValues(newvalueInfo, withCompletionBlock: {(error,refer) in
-//                    if error != nil{
-//                        print(error!)
-//                        return
-//                    }
-//                    print("Profile Successfully Update")
-//                })
-                
+                self.tableview2.reloadData()
+            } else {
                 self.tableview2.reloadData()
             }
         }
@@ -168,11 +178,13 @@ class TailorHome: UIViewController, UITableViewDataSource,UITableViewDelegate {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "TailorProfile") as! TailorProfile
          self.present(vc, animated: false, completion: nil)
     }
+    
     func jobAccept(){
         self.jobs.removeAll()
-        self.ref.child("Tailors").child("Job").observe(.value){(snapshot) in
-            if snapshot.childrenCount > 0{
-                for x in snapshot.children.allObjects as! [DataSnapshot]{
+        self.ref.child("Tailors").child("Job").observe(.value){ (snapshot) in
+            self.jobs.removeAll()
+            if snapshot.childrenCount > 0 {
+                for x in snapshot.children.allObjects as! [DataSnapshot] {
                     if let obj = x.value as? [String:Any]{
                         
                         guard let userID = obj["userId"] as? String else{
@@ -224,6 +236,9 @@ class TailorHome: UIViewController, UITableViewDataSource,UITableViewDelegate {
                             guard let price  = obj["price"] as? String else {
                                 return
                             }
+                            guard let date = obj["date"] as? String else{
+                                return
+                            }
                             
                             guard let userName  = obj["name"] as? String else {
                                 return
@@ -250,16 +265,16 @@ class TailorHome: UIViewController, UITableViewDataSource,UITableViewDelegate {
                                 self.pricey = amount
                             }
                             
-                            let pack = JobOrders(username: userName, pic: image, priceTotal: self.pricey, items: items, opion: isAccepted, userId: userId, isConfirmed: isConfirmed)
+                            let pack = JobOrders(username: userName, pic: image, date: date, priceTotal: self.pricey, items: items, opion: isAccepted, userId: userId, isConfirmed: isConfirmed)
                             
                             print(pack.description)
                             self.jobs.append(pack)
                         }
-                        
-                        self.tableview.reloadData()
                     }
-                    
+                    self.tableview.reloadData()
                 }
+            } else {
+                self.tableview.reloadData()
             }
         }
     }
@@ -324,6 +339,10 @@ class TailorHome: UIViewController, UITableViewDataSource,UITableViewDelegate {
                                 return
                             }
                             
+                            guard let date = obj["date"] as? String else{
+                                return
+                            }
+                            
                             guard let userName  = obj["name"] as? String else {
                                 return
                             }
@@ -350,7 +369,7 @@ class TailorHome: UIViewController, UITableViewDataSource,UITableViewDelegate {
                                 self.pricey = amount
                             }
                             
-                            let pack2 = SideJob(username: userName, pic: image, priceTotal: self.pricey, items: items, opion: isAccepted, userId: userId, custId: id, isConfirmed: isConfirmed)
+                            let pack2 = SideJob(username: userName, pic: image, priceTotal: self.pricey, date: date, items: items, opion: isAccepted, userId: userId, custId: id, isConfirmed: isConfirmed)
                             print(pack2.description)
                             
                             self.sides.append(pack2)
@@ -413,11 +432,11 @@ extension TailorHome{
             
         } else if tableView == self.tableview2 {
             self.tableview2.backgroundView = nil
-            let ownJobs = finishedJobs.filter { $0.userId == Auth.auth().currentUser?.uid}
+            ownJobs = finishedJobs.filter { $0.userId == Auth.auth().currentUser?.uid}
             print("Own jobs", ownJobs)
             if ownJobs.count == 0 {
                 let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
-                emptyLabel.text = "History are't made yet"
+                emptyLabel.text = "None"
                 emptyLabel.textAlignment = NSTextAlignment.center
                 
                 self.tableview2.backgroundView = emptyLabel
@@ -449,10 +468,8 @@ extension TailorHome{
         } else if tableView == tableview2 {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell02") as! HistoryCell
-            let ownJobs = finishedJobs.filter { $0.userId == Auth.auth().currentUser?.uid}
             let job = ownJobs[indexPath.row]
             
-            print("Job job", job, "###", Auth.auth().currentUser?.uid, "finishedJobs", finishedJobs)
             if job.userId == Auth.auth().currentUser?.uid{
                 cell.orderLabel.text = job.name
                 if let urlString = job.pics, let imageURL = URL(string: urlString) {
@@ -468,14 +485,26 @@ extension TailorHome{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "OrdeDetail") as! OrdeDetail
-        vc.selects = jobs[indexPath.row]
-         vc.transfer = sides[indexPath.row]
-        vc.customerId = sides[indexPath.row].originalId
-        if let navController = self.navigationController {
-            self.navigationController?.pushViewController(vc, animated: true)
-        } else {
-            self.present(vc, animated: true, completion: nil)
+        if tableView == self.tableview {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "OrdeDetail") as! OrdeDetail
+            vc.selects = jobs[indexPath.row]
+             vc.transfer = sides[indexPath.row]
+            vc.customerId = sides[indexPath.row].originalId
+            
+            if let navController = self.navigationController {
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                self.present(vc, animated: true, completion: nil)
+            }
+        } else if tableView == self.tableview2 {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmCustomer") as! ConfirmCustomer
+            vc.desiredConfirm = ownJobs[indexPath.row]
+            vc.isTailorFlow = true
+            if let navController = self.navigationController {
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                self.present(vc, animated: true, completion: nil)
+            }
         }
     }
 }

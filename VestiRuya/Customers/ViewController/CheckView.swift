@@ -45,7 +45,7 @@ class CheckView: UIViewController {
         let storageRef = StorageReference()
         
         for  i in 1...3 {
-            let sampleStorageReference =  storageRef.child("tailors_sample_images").child("\(desiredTailorJob.userId ?? "")_File_\(i)")
+            let sampleStorageReference =  storageRef.child("orders_images").child("\(desiredTailorJob.userId ?? "")_File_\(i)")
             
             sampleStorageReference.downloadURL { (imageURL, error) in
                 if error == nil {

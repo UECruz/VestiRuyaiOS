@@ -26,8 +26,8 @@ pod 'SVProgressHUD'
 pod 'Kingfisher', '~> 4.0'
 pod 'PayPal-iOS-SDK'
 pod 'JSQMessagesViewController'
-pod 'MessageKit'
 pod "FlexibleSteppedProgressBar"
 pod 'Cosmos', '~> 16.0'
+pod "CLImageViewPopup"
 
 end

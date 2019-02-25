@@ -17,6 +17,7 @@ struct TailorJob: Codable {
     let price: String?
     let userId: String?
     let customerId: String?
+    let date: String?
 
     struct Item: Codable {
         let backDetail: String?

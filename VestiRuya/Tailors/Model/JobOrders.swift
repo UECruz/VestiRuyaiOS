@@ -17,8 +17,9 @@ class JobOrders: NSObject{
     var isConfirmed: Bool?
     var accepted: Bool?
     var userId: String
+    var date: String?
     
-    init(username:String,pic: String, priceTotal: Double, items: OrderItems, opion: Bool, userId: String,isConfirmed: Bool){
+    init(username:String,pic: String,date:String, priceTotal: Double, items: OrderItems, opion: Bool, userId: String,isConfirmed: Bool){
         
         self.name = username
         self.urlPic = pic
@@ -27,5 +28,6 @@ class JobOrders: NSObject{
         self.userId = userId
         self.accepted = opion
         self.isConfirmed = isConfirmed
+        self.date = date
     }
 }

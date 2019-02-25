@@ -19,6 +19,7 @@ class CustomScreen02: UIViewController,UICollectionViewDelegate, UICollectionVie
     
     var data = [Material]()
     var customDress:[Dictionary<String, AnyObject>]!
+    var dress = [Dictionary<String, AnyObject>]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,7 +91,7 @@ class CustomScreen02: UIViewController,UICollectionViewDelegate, UICollectionVie
         let x : Material
         
         x = data[indexPath.row]
-        cell.label.text = x.title?.capitalized
+        cell.label.text = x.title?.capitalized.uppercased()
         
         var imageUrl = ""
         if let image = x.pic   {
@@ -124,28 +125,30 @@ class CustomScreen02: UIViewController,UICollectionViewDelegate, UICollectionVie
         }
         var dict = Dictionary<String, AnyObject>()
         dict.updateValue(material.title as AnyObject, forKey: "fabrics")
+        dict.updateValue(material.pic as AnyObject, forKey: "fabricsImage")
         customDress.append(dict)
         
+        var dressType = Dictionary<String, AnyObject>()
+        dressType.updateValue(material.title as AnyObject, forKey: "type")
+        dressType.updateValue(material.pic as AnyObject, forKey: "image")
+        dress.append(dressType)
     }
     
     
     @IBAction func navigateToNextScreen(_ sender : Any) {
         if customDress.count == 1 {
-            //user did not select bidy type show errro message
+            Alert.showAlert(self, title: "Error", message: "Please select one card to process")
         } else {
             let customScreen = self.storyboard?.instantiateViewController(withIdentifier: "CustomScreen03") as! CustomScreen03
             customScreen.customDress = customDress
+            customScreen.dress = dress
             print("Custom dress = \(customDress)")
             
-            //Use for last screen for summary
-//            if let bodyType = customDress[0] as? Dictionary<String,AnyObject> {
-//                print("User selected bodytype == \(bodyType["bodytype"])")
-//            }
-            //result:
-//            Custom dress = Optional([["bodytype": Short], ["fabrics": WHEAT PATTERNED CORDING/ CHEMICAL LACE]])
-//            User selected bodytype == Optional(Short)
-            
-            self.navigationController?.pushViewController(customScreen, animated: true)
+            if let navController = self.navigationController {
+                self.navigationController?.pushViewController(customScreen, animated: true)
+            } else {
+                self.present(customScreen, animated: true, completion: nil)
+            }
         }
     }
     

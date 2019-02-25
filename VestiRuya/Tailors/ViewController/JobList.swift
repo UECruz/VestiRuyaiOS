@@ -42,7 +42,7 @@ class JobList: UIViewController ,UITableViewDelegate, UITableViewDataSource {
     func getOrdersList() {
        
         self.ref.child("Customers").child("Orders").observe(.value) { (snapshot) in
-           
+            self.data.removeAll()
             if snapshot.childrenCount > 0{
                 for x in snapshot.children.allObjects as! [DataSnapshot]{
                     
@@ -93,7 +93,11 @@ class JobList: UIViewController ,UITableViewDelegate, UITableViewDataSource {
                             orderAmount = price
                         }
                         
-                        let orderData = OrderData.init(username: userName, pc: pics, priceTotal: Double(orderAmount)!, items: items)
+                        guard let date = obj["date"] as? String else{
+                            return
+                        }
+                        
+                        let orderData = OrderData.init(username: userName, pc: pics, dateDue: date, priceTotal: Double(orderAmount)!, items: items)
                         
                         //userID = customerID
                         if let userID = obj["userid"] as? String{
@@ -128,7 +132,10 @@ class JobList: UIViewController ,UITableViewDelegate, UITableViewDataSource {
                         
                     }
                 }
-                 self.tableView.reloadData()
+                self.data = self.data.filter({ $0.isJobConfirmed == false })
+                self.tableView.reloadData()
+            } else {
+                self.tableView.reloadData()
             }
         }
         

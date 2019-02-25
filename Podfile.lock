@@ -3,6 +3,7 @@ PODS:
   - AlamofireImage (3.3.1):
     - Alamofire (~> 4.5)
   - CardIO (5.4.1)
+  - CLImageViewPopup (0.1.1)
   - Cosmos (16.0.0)
   - Firebase/AdMob (5.6.0):
     - Firebase/Core
@@ -125,7 +126,6 @@ PODS:
   - JSQSystemSoundPlayer (2.0.1)
   - Kingfisher (4.8.1)
   - leveldb-library (1.20)
-  - MessageKit (1.0.0)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
@@ -143,6 +143,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.5)
   - AlamofireImage (~> 3.3.1)
+  - CLImageViewPopup
   - Cosmos (~> 16.0)
   - Firebase/AdMob
   - Firebase/Analytics
@@ -157,7 +158,6 @@ DEPENDENCIES:
   - FlexibleSteppedProgressBar
   - JSQMessagesViewController
   - Kingfisher (~> 4.0)
-  - MessageKit
   - PayPal-iOS-SDK
   - SVProgressHUD
 
@@ -166,6 +166,7 @@ SPEC REPOS:
     - Alamofire
     - AlamofireImage
     - CardIO
+    - CLImageViewPopup
     - Cosmos
     - Firebase
     - FirebaseABTesting
@@ -190,7 +191,6 @@ SPEC REPOS:
     - JSQSystemSoundPlayer
     - Kingfisher
     - leveldb-library
-    - MessageKit
     - nanopb
     - PayPal-iOS-SDK
     - Protobuf
@@ -200,6 +200,7 @@ SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   AlamofireImage: 3b35b586853abaf94ca1250f4e94cff3c21a4c0d
   CardIO: 56983b39b62f495fc6dae9ad7cf875143df06443
+  CLImageViewPopup: 66e459b179084dbcc8cf56749c27078b73640af6
   Cosmos: 7bcee0fa858a9355a214f2a181be5dffcee42c81
   Firebase: 75ea9e232eefa158c1049028030b8f661a2ccb62
   FirebaseABTesting: 1f50b8d50f5e3469eea54e7463a7b7fe221d1f5e
@@ -224,12 +225,11 @@ SPEC CHECKSUMS:
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   Kingfisher: 868c1149679a7ab6869be118faa9b5aed154aaf0
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
-  MessageKit: 16160036b16476b04bd0e9f2c7ce67e662e503e4
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   PayPal-iOS-SDK: 10654cd111e911a9807bddb96fae81aacb8e9915
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 989def59c34b2af9f70ebf10b8c222fb49ff60d4
+PODFILE CHECKSUM: afc6a75bece4fc7931cc15bcaedc52da6962bc76
 
 COCOAPODS: 1.5.2

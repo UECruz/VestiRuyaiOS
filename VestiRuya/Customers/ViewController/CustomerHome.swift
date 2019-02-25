@@ -36,8 +36,8 @@ class CustomerHome: UIViewController,UITableViewDelegate,UITableViewDataSource {
         NotificationCenter.default.addObserver(self, selector: #selector(orderRecieved(_ :)), name: Notification.Name("ORDEROPLACED"), object: nil)
         
         // Do any additional setup after loading the view.
-        let customerUser = Auth.auth().currentUser?.uid
         ref = Database.database().reference()
+        let customerUser = Auth.auth().currentUser?.uid
         ref.child("Customers").child("\(customerUser!)").observeSingleEvent(of: .value, with: {(snapshot) in
             let value = snapshot.value as? NSDictionary
             
@@ -49,16 +49,16 @@ class CustomerHome: UIViewController,UITableViewDelegate,UITableViewDataSource {
             
             self.checkOrder()
             self.getOrders()
-            
         }){(error) in
             print(error.localizedDescription)
         }
+       
+        
         orderTable.delegate = self
         orderTable.dataSource = self
         
         tailorJobTable.estimatedRowHeight = 75
         tailorJobTable.rowHeight = UITableViewAutomaticDimension
-        
         
     }
     
@@ -149,9 +149,11 @@ class CustomerHome: UIViewController,UITableViewDelegate,UITableViewDataSource {
             }
             
             let price = order[7]["price"] as! String
-            let cOrder = CustomerOrder(username: (self.navBar.topItem?.title)!, priceTotal: Double(price)!, items: orderItem)
-            orders.append(cOrder)
-            orderTable.reloadData()
+            let date = order[7]["date"] as! String //index out of range
+            let cOrder = CustomerOrder(username: self.navBar.topItem?.title ?? "", dateDue: date, priceTotal: Double(price)!, items: orderItem, isJobConfirmed: false)
+            
+            //orders.append(cOrder)
+           // orderTable.reloadData()
             
             let customerUser = Auth.auth().currentUser?.uid
             ref = Database.database().reference()
@@ -171,7 +173,7 @@ class CustomerHome: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 orderItemDict.updateValue(cOrder.orderItems.straps as AnyObject, forKey: "straps")
                 
                 
-                let ordesFir = ["userid": customerUser!, "username": name ?? "","photoImage": profileImageURL ?? "", "price": price, "items": orderItemDict, "interestsShown":[], "tailorID":"", "isJobConfirmed":false,"canEdit":false] as [String : Any]
+                let ordesFir = ["userid": customerUser!, "username": name ?? "","photoImage": profileImageURL ?? "", "price": price, "items": orderItemDict, "interestsShown":[], "date": date,"tailorID":"", "isJobConfirmed":false,"canEdit":false] as [String : Any]
                 
                 
                 if self.isEditing{
@@ -189,7 +191,9 @@ class CustomerHome: UIViewController,UITableViewDelegate,UITableViewDataSource {
                                     }
                                     print(x.key)
                                     
-                                    self.ref.child("Customers").child("Orders").child(x.key).updateChildValues(ordesFir)
+                                    self.ref.child("Customers").child("Orders").child(x.key).updateChildValues(ordesFir, withCompletionBlock: { (error, dbref) in
+                                        self.getOrders()
+                                    })
                                     
                                 }
                             }
@@ -197,7 +201,9 @@ class CustomerHome: UIViewController,UITableViewDelegate,UITableViewDataSource {
                     })
                     
                 }else{
-                    self.ref.child("Customers").child("Orders").childByAutoId().updateChildValues(ordesFir)
+                    self.ref.child("Customers").child("Orders").childByAutoId().updateChildValues(ordesFir, withCompletionBlock: { (error, dbref) in
+                        self.getOrders()
+                    })
                 }
                
             })
@@ -206,12 +212,14 @@ class CustomerHome: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     
     func getOrders() {
-     
+        self.orders.removeAll()
+        self.tailorIntersted.removeAll()
         self.ref.child("Customers").child("Orders").observe(.value) { (snapshot) in
-            if snapshot.childrenCount > 0{
-                   self.orders.removeAll()
-                for x in snapshot.children.allObjects as! [DataSnapshot]{
-                    if let obj = x.value as? [String : Any]{
+            self.orders.removeAll()
+            self.tailorIntersted.removeAll()
+            if snapshot.childrenCount > 0 {
+                for x in snapshot.children.allObjects as! [DataSnapshot] {
+                    if let obj = x.value as? [String : Any] {
                         
                         guard let userID = obj["userid"] as? String else  {
                             return
@@ -258,6 +266,13 @@ class CustomerHome: UIViewController,UITableViewDelegate,UITableViewDataSource {
                         if price.count != 0 {
                             orderAmount = price
                         }
+                        guard let date = obj["date"] as? String else{
+                            return
+                        }
+                        
+                        guard let isJobConfirmed = obj["isJobConfirmed"] as? Bool else {
+                            return
+                        }
                         
                         if let tailorsInterested = obj["interestsShown"] as? [AnyObject] {
                             for dct in tailorsInterested {
@@ -269,7 +284,7 @@ class CustomerHome: UIViewController,UITableViewDelegate,UITableViewDataSource {
                         }
                         
                         
-                        let cOrder = CustomerOrder(username:userName, priceTotal: Double(price)!, items: items)
+                        let cOrder = CustomerOrder(username:userName, dateDue: date, priceTotal: Double(price)!, items: items, isJobConfirmed: isJobConfirmed)
                         
                         print(cOrder.description)
                         self.orders.append(cOrder)
@@ -277,6 +292,11 @@ class CustomerHome: UIViewController,UITableViewDelegate,UITableViewDataSource {
                         
                     }
                 }
+                
+                self.orders = self.orders.filter({ $0.isJobConfirmed == false })
+                self.tailorIntersted = self.tailorIntersted.filter({ (dict) -> Bool in
+                    (dict["isJobAccepted"] as? Bool) == true
+                })
                 self.orderTable.reloadData()
                 self.tailorJobTable.reloadData()
             }
@@ -286,7 +306,11 @@ class CustomerHome: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     func Next(){
         let goToCustomScreen = self.storyboard?.instantiateViewController(withIdentifier: "CustomScreen01") as! CustomScreen01
-        self.navigationController?.pushViewController(goToCustomScreen, animated: true)
+        if navigationController != nil {
+            self.navigationController?.pushViewController(goToCustomScreen, animated: true)
+        } else {
+            present(goToCustomScreen, animated: true)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -413,7 +437,7 @@ class CustomerHome: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     func deleteOrder(){
         ref.child("Customers").child("Orders").observeSingleEvent(of: .value, with: {(snapshot) in
-            if snapshot.childrenCount > 0{
+            if snapshot.childrenCount > 0 {
                 for x in snapshot.children.allObjects as! [DataSnapshot]{
                     print("Object a: \(String(describing: snapshot.description))")
                     if let obj = x.value as? [String: Any]{
@@ -421,17 +445,25 @@ class CustomerHome: UIViewController,UITableViewDelegate,UITableViewDataSource {
                             return
                         }
                         
-                        if userId  != Auth.auth().currentUser?.uid {
+                        if userId != Auth.auth().currentUser?.uid {
                             continue
                         }
                         print(x.key)
-                        self.ref.child("Customers").child("Orders").child(x.key).removeValue()
+                        
+                        self.ref.child("Customers").child("Orders").child(x.key).removeValue(completionBlock: { (error, ref) in
+                            self.ref.child("Tailors").child("Job").child(x.key).removeValue(completionBlock: { (jerror
+                                , jref) in
+                                self.getOrders()
+                                self.tailorJobTable.reloadData()
+                            })
+                        })
                 
-                        self.ref.child("Tailors").child("Job").childByAutoId().child("\(userId)")
+                        
 
                     
                     }
                 }
+                
             }
         })
     }

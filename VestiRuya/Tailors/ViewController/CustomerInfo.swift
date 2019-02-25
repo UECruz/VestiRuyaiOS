@@ -41,41 +41,59 @@ class CustomerInfo: UIViewController {
     var custUser : [CustomerUser] = []
     var desiredUser: CustomerUser?
     var appDelegate: AppDelegate!
+    var orderData: OrderData!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBar.topItem?.title = "Customer Info"
         
         ref = Database.database().reference()
+        
+        //Make chat icon disappear
+        
 
         // Do any additional setup after loading the view.
-        name.text = select?.name
-        pic.kf.setImage(with: URL(string: (select?.urlPic)!))
-        
-        guard let appDelagte = UIApplication.shared.delegate as? AppDelegate else {
-            return
+        if orderData != nil {
+            name.text = orderData!.username
+            pic.kf.setImage(with: URL(string: (orderData!.picUrl)!))
+            
+            if !orderData.isJobConfirmed {
+                navigationBar.items?.first?.rightBarButtonItem = nil
+            } 
+        } else {
+            name.text = select?.name
+            pic.kf.setImage(with: URL(string: (select?.urlPic)!))
+            
+            guard let appDelagte = UIApplication.shared.delegate as? AppDelegate else {
+                return
+            }
+            
+            self.appDelegate = appDelagte
+            
+            guard let customerProfile = select else{
+                return
+            }
+            
+            if let customername = customerProfile.name{
+                name.text = customername
+            }
+            
+            if let customerPic = customerProfile.urlPic{
+                pic.kf.setImage(with: URL(string: customerPic))
+            }
         }
-        
-        self.appDelegate = appDelagte
-        
-        guard let customerProfile = select else{
-            return
-        }
-        
-        if let customername = customerProfile.name{
-            name.text = customername
-        }
-        
-        if let customerPic = customerProfile.urlPic{
-            pic.kf.setImage(with: URL(string: customerPic))
-        }
-
 
         let storageRef = StorageReference()
-
+        
         for  i in 1...3 {
-            let sampleStorageReference =  storageRef.child("customers_sample_images").child("\(select?.originalId ?? "")_File_\(i)")
-
+            var customerId = ""
+            if let id = select?.originalId {
+                customerId = id
+            } else {
+                customerId = orderData.customerId ?? ""
+            }
+            let sampleStorageReference =  storageRef.child("customers_sample_images").child("\(customerId)_File_\(i)")
+            
             sampleStorageReference.downloadURL { (imageURL, error) in
                 if error == nil {
                     if i == 1 {
@@ -88,87 +106,92 @@ class CustomerInfo: UIViewController {
                 } else {
                     print("We have error = \(String(describing: error?.localizedDescription))")
                 }
-
+                
             }
         }
         
         getInfo()
-
     }
     
     func getInfo(){
         ref.child("Customers").child("Measurement").observe(.value, with: {(snapshot) in
             if snapshot.childrenCount > 0{
                 for x in snapshot.children.allObjects as! [DataSnapshot]{
-                    if let obj = x.value as? [String:Any]{
+                    if let obj = x.value as? [String: Any] {
                         
-                        guard let userID = obj["userId"] as? String else{return}
+                        //guard let userID = obj["userId"] as? String else{return}
+                        if let userID = obj["userId"] as? String {
+                            var customerId = ""
+                            if let id = self.select?.originalId {
+                                customerId = id
+                            } else {
+                                customerId = self.orderData.customerId ?? ""
+                            }
+                            if userID != customerId {continue}
+                            let measureItem = MeasurementItem(height: "", arm: "", leg: "", bust: "", chest: "", neck: "", waisit: "")
+
+                            if let measure = obj["measureItem"] as? Dictionary<String, AnyObject>{
+                                
+                                if let height = measure["height"] as? String{
+                                    measureItem.height = height
+                                    self.height.text = height
+                                }
+                                
+                                if let ar = measure["arm"] as? String{
+                                    measureItem.arm = ar
+                                    print(ar)
+                                    self.arm.text = ar
+                                }
+                                
+                                if let wais = measure["waist"] as? String{
+                                    measureItem.waist = wais
+                                    self.waist.text = wais
+                                }
+                                
+                                if let chess = measure["chest"] as? String{
+                                    measureItem.chest = chess
+                                    self.chest.text = chess
+                                }
+                                
+                                if let buss = measure["bust"] as? String{
+                                    measureItem.bust = buss
+                                    self.bust.text = buss
+                                }
+                                
+                                if let leg = measure["leg"] as? String{
+                                    measureItem.leg = leg
+                                    self.leg.text = leg
+                                }
+                                
+                                if let neck = measure["neck"] as? String{
+                                    measureItem.neck = neck
+                                    self.neck.text = neck
+                                }
+                            }
                         
-                        if userID != self.select?.originalId{continue}
-                        
 
-                        let measureItem = MeasurementItem(height: "", arm: "", leg: "", bust: "", chest: "", neck: "", waisit: "")
 
-                        if let measure = obj["measureItem"] as? Dictionary<String, AnyObject>{
 
-                            if let height = measure["height"] as? String{
-                                measureItem.height = height
-                                self.height.text = height
-                            }
+                            self.ref.child("Customers").child(customerId).observe(.value, with: {(snapshot) in
+                                let value = snapshot.value as? NSDictionary
+                                print(snapshot.value ?? "")
 
-                            if let ar = measure["arm"] as? String{
-                                measureItem.arm = ar
-                                print(ar)
-                                self.arm.text = ar
-                            }
-                            
-                            if let wais = measure["waist"] as? String{
-                                measureItem.waist = wais
-                                self.waist.text = wais
-                            }
+                                let username = value?["username"] as? String ?? ""
+                                let pic = value?["profilePic"] as? String ?? ""
+                                let add = value?["address"] as? String ?? ""
+                                let state = value?["City,State"] as? String ?? ""
+                                
+                                self.address.text = add
+                                self.state.text = state
 
-                            if let chess = measure["chest"] as? String{
-                                measureItem.chest = chess
-                                self.chest.text = chess
-                            }
 
-                            if let buss = measure["bust"] as? String{
-                                measureItem.bust = buss
-                                self.bust.text = buss
-                            }
+                                let user = CustomerUser(id: userID, name: username, picURL: pic, state: state, add: add, measure: measureItem)
 
-                            if let leg = measure["leg"] as? String{
-                                measureItem.leg = leg
-                                self.leg.text = leg
-                            }
+                                self.custUser.append(user)
+                                print(self.custUser.description)
 
-                            if let neck = measure["neck"] as? String{
-                                measureItem.neck = neck
-                                self.neck.text = neck
-                            }
+                            })
                         }
-
-
-
-                        self.ref.child("Customers").child((self.select?.originalId)!).observe(.value, with: {(snapshot) in
-                            let value = snapshot.value as? NSDictionary
-                            print(snapshot.value ?? "")
-
-                            let username = value?["username"] as? String ?? ""
-                            let pic = value?["profilePic"] as? String ?? ""
-                            let add = value?["address"] as? String ?? ""
-                            let state = value?["City,State"] as? String ?? ""
-                            
-                            self.address.text = add
-                            self.state.text = state
-
-
-                            let user = CustomerUser(id: userID, name: username, picURL: pic, state: state, add: add, measure: measureItem)
-
-                            self.custUser.append(user)
-                            print(self.custUser.description)
-
-                        })
                     }
                 }
             }
@@ -226,7 +249,6 @@ class CustomerInfo: UIViewController {
                                                       otherId: self.select!.originalId,
                                                       currentUserImage:currentUserImage,
                                                       otherImage: otherImage, loggedinUserName: loggedinUserName)
-                    print("Got here 2")
                     DispatchQueue.main.async {
                         SVProgressHUD.dismiss()
                        
