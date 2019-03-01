@@ -120,32 +120,32 @@ class CustomerHome: UIViewController,UITableViewDelegate,UITableViewDataSource {
             
             
             // Note: Can't find any alternative to the warming
-            if let bt = order[0] as? Dictionary<String,AnyObject>{
-                orderItem.bodyType = (bt["bodytype"] as! String)
+            if let bodytype = order[0]["bodytype"] as? String {
+                orderItem.bodyType = bodytype
             }
             
-            if let fab = order[1] as? Dictionary<String,AnyObject>{
-                orderItem.fabric = (fab["fabrics"] as! String)
+            if let fabric = order[1]["fabrics"] as? String {
+                orderItem.fabric = fabric
             }
             
-            if let neckLines = order[2] as? Dictionary<String,AnyObject>{
-                orderItem.neckline = (neckLines["neckline"] as! String)
+            if let neckLines = order[2]["neckline"] as? String {
+                orderItem.neckline = neckLines
             }
             
-            if let sleve = order[3] as? Dictionary<String,AnyObject>{
-                orderItem.sleeves = (sleve["sleeves"] as! String)
+            if let sleve = order[3]["sleeves"] as? String {
+                orderItem.sleeves = sleve
             }
             
-            if let strap = order[4] as? Dictionary<String,AnyObject>{
-                orderItem.straps = (strap["straps"] as! String)
+            if let strap = order[4]["straps"] as? String{
+                orderItem.straps = strap
             }
             
-            if let bD = order[5] as? Dictionary<String,AnyObject>{
-                orderItem.backDetail = (bD["backDetails"] as! String)
+            if let backDetails = order[5]["backDetails"] as? String{
+                orderItem.backDetail = backDetails
             }
             
-            if let embell = order[6] as? Dictionary<String,AnyObject>{
-                orderItem.embellishment = (embell["embellishment"] as! String)
+            if let embellishment = order[6]["embellishment"] as? String {
+                orderItem.embellishment = embellishment
             }
             
             let price = order[7]["price"] as! String
@@ -153,7 +153,7 @@ class CustomerHome: UIViewController,UITableViewDelegate,UITableViewDataSource {
             let cOrder = CustomerOrder(username: self.navBar.topItem?.title ?? "", dateDue: date, priceTotal: Double(price)!, items: orderItem, isJobConfirmed: false)
             
             //orders.append(cOrder)
-           // orderTable.reloadData()
+            //orderTable.reloadData()
             
             let customerUser = Auth.auth().currentUser?.uid
             ref = Database.database().reference()
@@ -255,39 +255,23 @@ class CustomerHome: UIViewController,UITableViewDelegate,UITableViewDataSource {
                             }
                         }
                         
-                        guard let userName  = obj["username"] as? String else {
-                            return
-                        }
-                        
-                        var orderAmount = "0"
-                        guard let price  = obj["price"] as? String else {
-                            return
-                        }
-                        if price.count != 0 {
-                            orderAmount = price
-                        }
-                        guard let date = obj["date"] as? String else{
-                            return
-                        }
-                        
-                        guard let isJobConfirmed = obj["isJobConfirmed"] as? Bool else {
-                            return
-                        }
-                        
-                        if let tailorsInterested = obj["interestsShown"] as? [AnyObject] {
-                            for dct in tailorsInterested {
-                                if let tailorInfo = dct as? Dictionary<String, AnyObject
-                                    > {
-                                   self.tailorIntersted.append(tailorInfo)
+                        if let userName  = obj["username"] as? String, let price  = obj["price"] as? String, let date = obj["date"] as? String, let isJobConfirmed = obj["isJobConfirmed"] as? Bool  {
+                            let cOrder = CustomerOrder(username:userName, dateDue: date, priceTotal: Double(price)!, items: items, isJobConfirmed: isJobConfirmed)
+                            
+                            print(cOrder.description)
+                            self.orders.append(cOrder)
+                            
+                            if let tailorsInterested = obj["interestsShown"] as? [AnyObject] {
+                                for dct in tailorsInterested {
+                                    if let tailorInfo = dct as? Dictionary<String, AnyObject
+                                        > {
+                                        if !isJobConfirmed  {
+                                            self.tailorIntersted.append(tailorInfo)
+                                        }
+                                    }
                                 }
                             }
                         }
-                        
-                        
-                        let cOrder = CustomerOrder(username:userName, dateDue: date, priceTotal: Double(price)!, items: items, isJobConfirmed: isJobConfirmed)
-                        
-                        print(cOrder.description)
-                        self.orders.append(cOrder)
                         
                         
                     }
@@ -472,7 +456,7 @@ class CustomerHome: UIViewController,UITableViewDelegate,UITableViewDataSource {
         if tableView == tailorJobTable {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "TailorInfo") as! TailorInfo
             vc.tailorInfo =  tailorIntersted[indexPath.row]
-            if let navController = self.navigationController {
+            if let _ = self.navigationController {
                 self.navigationController?.pushViewController(vc, animated: true)
             } else {
                 self.present(vc, animated: true, completion: nil)

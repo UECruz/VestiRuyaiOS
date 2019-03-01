@@ -115,8 +115,8 @@ class CustomScreen05: UIViewController,UICollectionViewDelegate, UICollectionVie
              Alert.showAlert(self, title: "Error", message: "Please select one card to process")
         } else {
             let customScreen = self.storyboard?.instantiateViewController(withIdentifier: "CustomScreen06") as! CustomScreen06
-            if let bodyType = customDress[4] as? Dictionary<String,AnyObject> {
-                print("User selected bodytype == \(bodyType["sleeves"])")
+            if (customDress[4] as? Dictionary<String,AnyObject>) != nil {
+    //            print("User selected bodytype == \(bodyType["sleeves"])")
             }
             customScreen.customDress = customDress
             customScreen.dress = dress

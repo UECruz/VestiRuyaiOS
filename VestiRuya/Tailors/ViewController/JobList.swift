@@ -32,7 +32,7 @@ class JobList: UIViewController ,UITableViewDelegate, UITableViewDataSource {
     }
     
     @IBAction func back(_ sender: Any) {
-        if let navController = self.navigationController {
+        if let _ = self.navigationController {
             self.navigationController?.popViewController(animated: true)
         } else {
             self.dismiss(animated: true, completion: nil)
@@ -75,61 +75,41 @@ class JobList: UIViewController ,UITableViewDelegate, UITableViewDataSource {
                             }
                         }
                         
-                        
-                        guard let userName  = obj["username"] as? String else {
-                            return
-                        }
-                        
-                        guard let pics = obj["photoImage"] as? String else{
-                            return
-                        }
-                        
-                        
                         var orderAmount = "0"
-                        guard let price  = obj["price"] as? String else {
-                            return
-                        }
-                        if price.count != 0 {
+                        if let userName  = obj["username"] as? String, let pics =  obj["photoImage"] as? String, let price  = obj["price"] as? String, let date = obj["date"] as? String {
                             orderAmount = price
+                            let orderData = OrderData.init(username: userName, pc: pics, dateDue: date, priceTotal: Double(orderAmount)!, items: items)
+                            
+                            if let userID = obj["userid"] as? String{
+                                orderData.customerId = userID
+                            }
+                            
+                            print(orderData.customerId ?? "")
+                            
+                            if let isJobConfirmed = obj["isJobConfirmed"] as? Bool {
+                                orderData.isJobConfirmed = isJobConfirmed
+                            }
+                            
+                            if let tailorID = obj["tailorID"] as? String {
+                                orderData.tailorID = tailorID
+                            }
+                            
+                            
+                            
+                            orderData.orderID =   x.key
+                            
+                            //orderID
+                            print(orderData.orderID ?? "")
+                            
+                            if let tailorsInterested = obj["interestsShown"] as? [AnyObject] {
+                                orderData.intrestsShown = tailorsInterested
+                            }
+                            
+                            
+                            self.data.append(orderData)
+                            
+                            print(orderData.customerId ?? "")
                         }
-                        
-                        guard let date = obj["date"] as? String else{
-                            return
-                        }
-                        
-                        let orderData = OrderData.init(username: userName, pc: pics, dateDue: date, priceTotal: Double(orderAmount)!, items: items)
-                        
-                        //userID = customerID
-                        if let userID = obj["userid"] as? String{
-                            orderData.customerId = userID
-                        }
-                        
-                        print(orderData.customerId ?? "")
-                        
-                        if let isJobConfirmed = obj["isJobConfirmed"] as? Bool {
-                            orderData.isJobConfirmed = isJobConfirmed
-                        }
-
-                        if let tailorID = obj["tailorID"] as? String {
-                            orderData.tailorID = tailorID
-                        }
-                        
-                        
-
-                        orderData.orderID =   x.key
-                        
-                        //orderID
-                        print(orderData.orderID ?? "")
-
-                        if let tailorsInterested = obj["interestsShown"] as? [AnyObject] {
-                            orderData.intrestsShown = tailorsInterested
-                        }
-
-                        
-                        self.data.append(orderData)
-                        
-                        print(orderData.customerId ?? "")
-                        
                     }
                 }
                 self.data = self.data.filter({ $0.isJobConfirmed == false })
@@ -173,7 +153,7 @@ class JobList: UIViewController ,UITableViewDelegate, UITableViewDataSource {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "JobDetails") as! JobDetail
          vc.selects = self.data[indexPath.row]
-        if let navController = self.navigationController{
+        if let _ = self.navigationController{
             self.navigationController?.pushViewController(vc, animated: true)
         }else{
             self.present(vc, animated: true, completion: nil)

@@ -106,8 +106,8 @@ class ChatViewController: JSQMessagesViewController {
     func isMyMessage(_ indexPath: IndexPath) -> Bool {
         let msg = messages[indexPath.row]
         print(senderId)
-        print(msg.senderDisplayName())
-        print(msg.senderId())
+       // print(msg.senderDisplayName())
+      //  print(msg.senderId())
         
         return msg.senderId() == senderId
     }
@@ -121,7 +121,7 @@ class ChatViewController: JSQMessagesViewController {
                                           "sender": senderId,
                                           "senderName":self.senderDisplayName], withCompletionBlock: { (error, reference) in
                                             
-                                            // clean up
+                                            
                                             self.finishSendingMessage(animated: true)
         })
     }
@@ -158,7 +158,7 @@ class ChatViewController: JSQMessagesViewController {
             cell.textView.textColor = UIColor.white
         }
         
-        print(messages[indexPath.row].senderDisplayName())
+       // print(messages[indexPath.row].senderDisplayName())
              cell.messageBubbleTopLabel.text = messages[indexPath.row].senderDisplayName()
        
        

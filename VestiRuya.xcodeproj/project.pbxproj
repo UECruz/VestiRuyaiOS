@@ -13,7 +13,6 @@
 		AC17567321C20A6200AC9E16 /* VestiRuya.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC17567121C20A6200AC9E16 /* VestiRuya.xcdatamodeld */; };
 		AC17567521C20A6400AC9E16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC17567421C20A6400AC9E16 /* Assets.xcassets */; };
 		AC17567821C20A6400AC9E16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC17567621C20A6400AC9E16 /* LaunchScreen.storyboard */; };
-		AC17568321C20A6400AC9E16 /* VestiRuyaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17568221C20A6400AC9E16 /* VestiRuyaTests.swift */; };
 		AC17568E21C20A6400AC9E16 /* VestiRuyaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17568D21C20A6400AC9E16 /* VestiRuyaUITests.swift */; };
 		AC1756A021C213CC00AC9E16 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC17569F21C213CC00AC9E16 /* Accelerate.framework */; };
 		AC1756A221C213E700AC9E16 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC1756A121C213E700AC9E16 /* AudioToolbox.framework */; };
@@ -86,6 +85,7 @@
 		AC41D86F221F66E6004852DB /* Review02Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC41D86E221F66E6004852DB /* Review02Cell.swift */; };
 		AC41D8712220DA05004852DB /* CustomSummary02.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC41D8702220DA05004852DB /* CustomSummary02.swift */; };
 		AC41D8732220E77A004852DB /* SummaryItem02.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC41D8722220E77A004852DB /* SummaryItem02.swift */; };
+		AC7150022224F032008AF644 /* VestiRuyaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17568221C20A6400AC9E16 /* VestiRuyaTests.swift */; };
 		ACCFB2E52215E09D003EA4B0 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACCFB2E42215E09D003EA4B0 /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -735,7 +735,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC17568321C20A6400AC9E16 /* VestiRuyaTests.swift in Sources */,
+				AC7150022224F032008AF644 /* VestiRuyaTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
