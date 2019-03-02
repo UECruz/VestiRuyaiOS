@@ -120,7 +120,7 @@ class CustomScreen05: UIViewController,UICollectionViewDelegate, UICollectionVie
             }
             customScreen.customDress = customDress
             customScreen.dress = dress
-           if let navController = self.navigationController {
+            if self.navigationController != nil {
                 self.navigationController?.pushViewController(customScreen, animated: true)
             } else {
                 self.present(customScreen, animated: true, completion: nil)

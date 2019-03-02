@@ -87,7 +87,7 @@ class OrdeDetail: UIViewController,UINavigationControllerDelegate, UIImagePicker
         vc.select = self.transfer
         vc.selects = self.selects
         
-        if let navController = self.navigationController{
+        if self.navigationController != nil{
             self.navigationController?.pushViewController(vc, animated: true)
         }else{
             self.present(vc, animated: true, completion: nil)
@@ -288,7 +288,7 @@ class OrdeDetail: UIViewController,UINavigationControllerDelegate, UIImagePicker
     
     
     @IBAction func BackBtm(_ sender: Any) {
-        if let navController = self.navigationController {
+        if self.navigationController != nil {
             self.navigationController?.popViewController(animated: true)
         } else {
             self.dismiss(animated: true, completion: nil)
@@ -299,7 +299,7 @@ class OrdeDetail: UIViewController,UINavigationControllerDelegate, UIImagePicker
         Alert.showAlert(self, title: "Advice", message: "Click on image to get detail on the current customer")
     }
     
-    // send confirmation to customer to let them know the order is ready?
+
     @IBAction func finishBTM(_ sender: Any) {
         savingSamples()
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "TailorHome") as! TailorHome
@@ -332,7 +332,7 @@ class OrdeDetail: UIViewController,UINavigationControllerDelegate, UIImagePicker
         }
         print(value.description)
         
-        if let navController = self.navigationController{
+        if self.navigationController != nil{
             self.navigationController?.pushViewController(vc, animated: true)
         }else{
             self.present(vc, animated: true, completion: nil)

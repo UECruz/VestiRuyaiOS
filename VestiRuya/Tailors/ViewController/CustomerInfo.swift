@@ -49,8 +49,6 @@ class CustomerInfo: UIViewController {
         
         ref = Database.database().reference()
         
-        //Make chat icon disappear
-        
 
         // Do any additional setup after loading the view.
         if orderData != nil {
@@ -119,7 +117,6 @@ class CustomerInfo: UIViewController {
                 for x in snapshot.children.allObjects as! [DataSnapshot]{
                     if let obj = x.value as? [String: Any] {
                         
-                        //guard let userID = obj["userId"] as? String else{return}
                         if let userID = obj["userId"] as? String {
                             var customerId = ""
                             if let id = self.select?.originalId {
@@ -204,7 +201,7 @@ class CustomerInfo: UIViewController {
     }
     @IBAction func backBTm(_ sender: Any) {
         
-        if let navController = self.navigationController{
+        if self.navigationController != nil{
             self.navigationController?.popViewController(animated: true)
         }else{
             self.dismiss(animated: true, completion: nil)
@@ -244,7 +241,7 @@ class CustomerInfo: UIViewController {
                         ImageCache.default.store(img, forKey: currentUserImageUrl)
                     }
                     let chatContainerViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChatContainerViewController") as! ChatContainerViewController
-                    let _ = chatContainerViewController.view // load the view to instantiate the ChatViewController itself
+                    let _ = chatContainerViewController.view 
                     chatContainerViewController.setup(myId: currentUserId,
                                                       otherId: self.select!.originalId,
                                                       currentUserImage:currentUserImage,
@@ -252,7 +249,7 @@ class CustomerInfo: UIViewController {
                     DispatchQueue.main.async {
                         SVProgressHUD.dismiss()
                        
-                        if let navController = self.navigationController{
+                        if self.navigationController != nil{
                           self.navigationController?.pushViewController(chatContainerViewController, animated: true)
                         }else{
                             self.present(chatContainerViewController, animated: true, completion: nil)
