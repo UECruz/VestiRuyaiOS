@@ -115,7 +115,10 @@ class CustomScreen01: UIViewController,UICollectionViewDelegate, UICollectionVie
     
     
     @IBAction func backBTm(_ sender: Any) {
-      self.navigationController?.popViewController(animated: true)
+        if let storyboard = self.storyboard {
+            let vc = storyboard.instantiateViewController(withIdentifier: "CustomerHome") as! CustomerHome
+            self.present(vc, animated: false, completion: nil)
+        }
     }
     
     @IBAction func navigateToNextScreen(_ sender : Any) {
@@ -126,7 +129,7 @@ class CustomScreen01: UIViewController,UICollectionViewDelegate, UICollectionVie
             customScreen.customDress = customDress
             customScreen.dress = dress
             
-            if let navController = self.navigationController {
+            if self.navigationController != nil {
                 self.navigationController?.pushViewController(customScreen, animated: true)
             } else {
                 self.present(customScreen, animated: true, completion: nil)

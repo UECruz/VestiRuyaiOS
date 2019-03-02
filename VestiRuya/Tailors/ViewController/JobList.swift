@@ -105,14 +105,24 @@ class JobList: UIViewController ,UITableViewDelegate, UITableViewDataSource {
                                 orderData.intrestsShown = tailorsInterested
                             }
                             
+                            let tailorAccepted =  orderData.intrestsShown.filter({ (tailorIntrested) -> Bool in
+                                if let obj = tailorIntrested as? [String: Any], let isJobAccepted = obj["isJobAccepted"] as? Bool {
+                                    return isJobAccepted
+                                } else {
+                                    return false
+                                }
+                            })
                             
-                            self.data.append(orderData)
+                            if tailorAccepted.count == 0 {
+                                self.data.append(orderData)
                             
-                            print(orderData.customerId ?? "")
+                                print(orderData.customerId ?? "")
+                            }
                         }
                     }
                 }
                 self.data = self.data.filter({ $0.isJobConfirmed == false })
+                //if job is accepted it should not show on the list of job
                 self.tableView.reloadData()
             } else {
                 self.tableView.reloadData()

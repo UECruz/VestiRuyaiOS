@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseStorage
 
 class ConfirmCustomer: UIViewController {
 
@@ -28,6 +29,12 @@ class ConfirmCustomer: UIViewController {
     var desiredConfirm: TailorJob?
     var isTailorFlow: Bool? = false
     
+    var ref: DatabaseReference!
+    var desiredTailorJob: TailorJob!
+    
+    @IBOutlet weak var image1: UIImageView!
+    @IBOutlet weak var image2: UIImageView!
+    @IBOutlet weak var image3: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,6 +42,7 @@ class ConfirmCustomer: UIViewController {
         populateData()
         getTailorName()
         getCustomerAddress()
+        getImages()
     }
     
     private func populateData() {
@@ -70,6 +78,29 @@ class ConfirmCustomer: UIViewController {
             self.customerAddress.text = state
         }){(error) in
             print(error.localizedDescription)
+        }
+    }
+    
+    private func getImages(){
+        let storageRef = StorageReference()
+        
+        for  i in 1...3 {
+            let sampleStorageReference =  storageRef.child("orders_images").child("\(desiredConfirm?.userId ?? "")_File_\(i)")
+            
+            sampleStorageReference.downloadURL { (imageURL, error) in
+                if error == nil {
+                    if i == 1 {
+                        self.image1.kf.setImage(with: imageURL)
+                    } else if i == 2 {
+                        self.image2.kf.setImage(with: imageURL)
+                    } else {
+                        self.image3.kf.setImage(with: imageURL)
+                    }
+                } else {
+                    print("We have error = \(error?.localizedDescription ?? "")")
+                }
+                
+            }
         }
     }
     

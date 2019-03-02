@@ -172,7 +172,7 @@ class PayView: UIViewController, PayPalPaymentDelegate {
                                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmCustomer") as! ConfirmCustomer
                                 vc.desiredConfirm = self.desiredSummary
                                 
-                                if let navController = self.navigationController{
+                                if self.navigationController != nil{
                                     self.navigationController?.pushViewController(vc, animated: true)
                                 }else{
                                     self.present(vc, animated: true, completion: nil)

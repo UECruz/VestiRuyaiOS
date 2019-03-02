@@ -260,7 +260,7 @@ class CustomerEditor: UIViewController, UINavigationControllerDelegate, UIImageP
             let email = value?["email"] as? String
             let pic = value?["profilePic"] as? String
             let address = value?["address"] as? String
-            let city = value?["city"] as? String
+            let city = value?["City,State"] as? String
             let password = value?["password"] as? String
             
             self.userEdit.text = username

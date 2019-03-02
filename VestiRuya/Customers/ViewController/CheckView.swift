@@ -85,7 +85,10 @@ class CheckView: UIViewController {
     
     
     @IBAction func cancelBTM(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
+        if let storyboard = self.storyboard {
+            let vc = storyboard.instantiateViewController(withIdentifier: "CustomerHome") as! CustomerHome
+            self.present(vc, animated: false, completion: nil)
+        }
     }
     
     

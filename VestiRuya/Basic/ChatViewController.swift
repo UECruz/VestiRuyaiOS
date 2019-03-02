@@ -70,7 +70,7 @@ class ChatViewController: JSQMessagesViewController {
             guard isContainsMessage == false else { return }
             
             print("senderName:\(senderName)")
-            let jsqMsg = JSQMessage(senderId: rawMessage["sender"]! as! String, senderDisplayName: rawMessage["senderName"]! as! String, date: date, text: rawMessage["message"]! as! String)!
+            let jsqMsg = JSQMessage(senderId: rawMessage["sender"]! as? String, senderDisplayName: rawMessage["senderName"]! as? String, date: date, text: rawMessage["message"]! as? String)!
             self.messages.append(jsqMsg)
         }
         roomRef.observe(DataEventType.childAdded, with: { (snapshot) in
@@ -106,8 +106,8 @@ class ChatViewController: JSQMessagesViewController {
     func isMyMessage(_ indexPath: IndexPath) -> Bool {
         let msg = messages[indexPath.row]
         print(senderId)
-       // print(msg.senderDisplayName())
-      //  print(msg.senderId())
+     //   print(msg.senderDisplayName())
+     //  print(msg.senderId())
         
         return msg.senderId() == senderId
     }
@@ -119,7 +119,7 @@ class ChatViewController: JSQMessagesViewController {
         roomRef.childByAutoId().setValue(["timestamp": date,
                                           "message": text,
                                           "sender": senderId,
-                                          "senderName":self.senderDisplayName], withCompletionBlock: { (error, reference) in
+                                          "senderName":self.senderDisplayName as NSString], withCompletionBlock: { (error, reference) in
                                             
                                             
                                             self.finishSendingMessage(animated: true)
@@ -158,7 +158,7 @@ class ChatViewController: JSQMessagesViewController {
             cell.textView.textColor = UIColor.white
         }
         
-       // print(messages[indexPath.row].senderDisplayName())
+  //      print(messages[indexPath.row].senderDisplayName())
              cell.messageBubbleTopLabel.text = messages[indexPath.row].senderDisplayName()
        
        

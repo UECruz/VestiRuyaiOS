@@ -384,7 +384,7 @@ class TailorHome: UIViewController, UITableViewDataSource,UITableViewDelegate {
     func Next(){
         let goToCustomScreen = self.storyboard?.instantiateViewController(withIdentifier: "JobList") as! JobList
         
-        if let navController = self.navigationController {
+        if self.navigationController != nil {
             self.navigationController?.pushViewController(goToCustomScreen, animated: true)
         } else {
             self.present(goToCustomScreen, animated: true, completion: nil)
@@ -491,7 +491,7 @@ extension TailorHome{
              vc.transfer = sides[indexPath.row]
             vc.customerId = sides[indexPath.row].originalId
             
-            if let navController = self.navigationController {
+            if self.navigationController != nil {
                 self.navigationController?.pushViewController(vc, animated: true)
             } else {
                 self.present(vc, animated: true, completion: nil)
@@ -500,7 +500,7 @@ extension TailorHome{
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmCustomer") as! ConfirmCustomer
             vc.desiredConfirm = ownJobs[indexPath.row]
             vc.isTailorFlow = true
-            if let navController = self.navigationController {
+            if self.navigationController != nil {
                 self.navigationController?.pushViewController(vc, animated: true)
             } else {
                 self.present(vc, animated: true, completion: nil)

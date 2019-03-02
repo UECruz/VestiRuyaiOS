@@ -171,7 +171,7 @@ class TailorInfo: UIViewController, UITableViewDelegate,UITableViewDataSource {
                         ImageCache.default.store(img, forKey: currentUserImageUrl)
                     }
                     let chatContainerViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChatContainerViewController") as! ChatContainerViewController
-                    let _ = chatContainerViewController.view // load the view to instantiate the ChatViewController itself
+                    let _ = chatContainerViewController.view
                     chatContainerViewController.setup(myId: currentUserId,
                                                       otherId: otherId,
                                                       currentUserImage:currentUserImage,
@@ -201,7 +201,6 @@ class TailorInfo: UIViewController, UITableViewDelegate,UITableViewDataSource {
         
     }
 
-    //Tailor Interest not showing
     private func fetchJobInformation() {
         let ref = Database.database().reference()
         
